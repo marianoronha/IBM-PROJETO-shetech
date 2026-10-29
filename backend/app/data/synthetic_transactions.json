@@ -1,0 +1,64 @@
+[
+  {
+    "tx_id": "TX001",
+    "user_id": "U001",
+    "type": "pix_out",
+    "amount": 120.00,
+    "recipient": "Farmácia Popular",
+    "timestamp": "2024-05-01T14:32:00",
+    "channel": "app_mobile",
+    "status": "completed"
+  },
+  {
+    "tx_id": "TX002",
+    "user_id": "U001",
+    "type": "pix_out",
+    "amount": 85.50,
+    "recipient": "Supermercado Boa Compra",
+    "timestamp": "2024-05-03T09:10:00",
+    "channel": "app_mobile",
+    "status": "completed"
+  },
+  {
+    "tx_id": "TX003",
+    "user_id": "U001",
+    "type": "pix_out",
+    "amount": 800.00,
+    "recipient": "número desconhecido +55 11 99999-8877",
+    "timestamp": "2024-05-15T20:45:00",
+    "channel": "app_mobile",
+    "status": "pending",
+    "flagged": true,
+    "flag_reason": "caso de teste — golpe do número novo"
+  },
+  {
+    "tx_id": "TX004",
+    "user_id": "U002",
+    "type": "pix_out",
+    "amount": 350.00,
+    "recipient": "Academia FitLife",
+    "timestamp": "2024-05-05T07:00:00",
+    "channel": "internet_banking",
+    "status": "completed"
+  },
+  {
+    "tx_id": "TX005",
+    "user_id": "U002",
+    "type": "pix_in",
+    "amount": 8500.00,
+    "recipient": "salário Empresa XYZ",
+    "timestamp": "2024-05-05T08:00:00",
+    "channel": "ted",
+    "status": "completed"
+  },
+  {
+    "tx_id": "TX006",
+    "user_id": "U003",
+    "type": "pix_out",
+    "amount": 1800.00,
+    "recipient": "Aluguel Imóveis SC",
+    "timestamp": "2024-05-05T10:00:00",
+    "channel": "app_mobile",
+    "status": "completed"
+  }
+]

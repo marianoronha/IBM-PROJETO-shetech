@@ -1,0 +1,100 @@
+[
+  {
+    "case_id": "SCAM-001",
+    "label": "scam",
+    "scam_type": "golpe_numero_novo",
+    "input_channel": "whatsapp_text",
+    "message": "Oi, mãe. Troquei o número. Preciso que você faça um Pix de R$ 800 para mim agora.",
+    "expected_risk_min": 75,
+    "expected_signals": ["pedido_de_dinheiro", "urgencia", "mudanca_de_numero", "se_passar_por_conhecido"],
+    "user_id": "U001",
+    "transaction_pending": "TX003",
+    "notes": "Caso de teste obrigatório RF-G-10. Risco esperado ≥75%."
+  },
+  {
+    "case_id": "SCAM-002",
+    "label": "scam",
+    "scam_type": "falso_suporte_tecnico",
+    "input_channel": "sms_text",
+    "message": "BANCO DO BRASIL: Detectamos acesso suspeito na sua conta. Para desbloquear, acesse agora: http://bb-seguranca-update.xyz/verificar e informe seu token.",
+    "expected_risk_min": 75,
+    "expected_risk_exact": 78,
+    "expected_signals": ["link_suspeito", "urgencia", "pedido_de_credencial", "impersonation_banco"],
+    "user_id": "U002",
+    "transaction_pending": null,
+    "notes": "Caso de teste obrigatório RF-G-11. Risco esperado 78%, tipo: falso suporte técnico."
+  },
+  {
+    "case_id": "SCAM-003",
+    "label": "scam",
+    "scam_type": "falso_comprovante",
+    "input_channel": "whatsapp_text",
+    "message": "Olá! Sou do suporte BB. Vi que você tem uma cobrança indevida de R$350 na sua conta. Preciso que você confirme seus dados (CPF e senha) para estornar.",
+    "expected_risk_min": 80,
+    "expected_signals": ["pedido_de_credencial", "urgencia", "impersonation_banco", "oferta_suspeita"],
+    "user_id": "U001",
+    "transaction_pending": null,
+    "notes": "Golpe de phishing por engenharia social via mensagem."
+  },
+  {
+    "case_id": "SCAM-004",
+    "label": "scam",
+    "scam_type": "falso_premio",
+    "input_channel": "sms_text",
+    "message": "Parabéns! Você foi selecionado para receber R$1.500,00 do programa BB Premiação. Para liberar, faça um Pix de R$50 como taxa de confirmação para a chave: premios@bb-pagamentos.com",
+    "expected_risk_min": 85,
+    "expected_signals": ["pedido_de_dinheiro", "oferta_suspeita", "link_suspeito", "urgencia"],
+    "user_id": "U003",
+    "transaction_pending": null,
+    "notes": "Golpe do falso prêmio — pede Pix como 'taxa'."
+  },
+  {
+    "case_id": "LEGIT-001",
+    "label": "legitimate",
+    "scam_type": null,
+    "input_channel": "whatsapp_text",
+    "message": "Oi mãe, tudo bem? Você conseguiu fazer o Pix pro mercado? Me avisa quando puder.",
+    "expected_risk_max": 20,
+    "expected_signals": [],
+    "user_id": "U001",
+    "transaction_pending": null,
+    "notes": "Mensagem legítima — conversa informal sem pedido de dinheiro."
+  },
+  {
+    "case_id": "LEGIT-002",
+    "label": "legitimate",
+    "scam_type": null,
+    "input_channel": "email_text",
+    "message": "Prezado cliente, seu extrato do mês de maio está disponível no aplicativo BB. Acesse pelo app oficial ou pelo site bb.com.br.",
+    "expected_risk_max": 15,
+    "expected_signals": [],
+    "user_id": "U002",
+    "transaction_pending": null,
+    "notes": "Comunicação legítima de banco — sem link externo, sem pedido de dado."
+  },
+  {
+    "case_id": "LEGIT-003",
+    "label": "legitimate",
+    "scam_type": null,
+    "input_channel": "whatsapp_text",
+    "message": "Carlos, é a Luciana. Você pode me mandar R$200 pra pagar a pizza de sexta? Já temos feito isso várias vezes.",
+    "expected_risk_max": 25,
+    "expected_signals": [],
+    "user_id": "U002",
+    "transaction_pending": null,
+    "notes": "Pedido de Pix legítimo de contato habitual — risco baixo."
+  },
+  {
+    "case_id": "EDGE-001",
+    "label": "ambiguous",
+    "scam_type": null,
+    "input_channel": "whatsapp_text",
+    "message": "Oi! Mudei de chip e de número. Este é meu novo WhatsApp. Você consegue me mandar R$100 pra uma emergência?",
+    "expected_risk_min": 50,
+    "expected_risk_max": 80,
+    "expected_signals": ["mudanca_de_numero", "pedido_de_dinheiro", "urgencia"],
+    "user_id": "U001",
+    "transaction_pending": null,
+    "notes": "Caso limítrofe — pode ser golpe ou legítimo. Testa equilíbrio FP/FN (RN-04)."
+  }
+]

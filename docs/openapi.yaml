@@ -1,0 +1,490 @@
+openapi: "3.1.0"
+
+info:
+  title: BB IA MVP — Guardião + BB Decision
+  version: "0.1.0"
+  description: |
+    Protótipo funcional das soluções Guardião (IA contra golpes de engenharia social)
+    e BB Decision (simulador de decisões financeiras).
+
+    **Classificação**: Protótipo / Não-produção.
+    Todos os dados são sintéticos. As simulações são estimativas educacionais,
+    não constituem garantia nem recomendação de investimento.
+
+    **Segurança**: o texto da mensagem nunca é registrado em logs (LGPD).
+  contact:
+    name: Equipe BB IA MVP
+  license:
+    name: Interno — uso restrito
+
+servers:
+  - url: http://localhost:8000
+    description: Desenvolvimento local
+
+tags:
+  - name: Guardião
+    description: Detecção e intervenção em golpes de engenharia social
+  - name: BB Decision
+    description: Simulação de decisões financeiras em linguagem natural
+  - name: Infraestrutura
+    description: Health checks
+
+# ---------------------------------------------------------------------------
+# Paths
+# ---------------------------------------------------------------------------
+paths:
+
+  /health:
+    get:
+      tags: [Infraestrutura]
+      summary: Verifica disponibilidade da API
+      operationId: health_check
+      responses:
+        "200":
+          description: API no ar
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HealthResponse"
+
+  /api/guardiao/health:
+    get:
+      tags: [Infraestrutura]
+      summary: Verifica disponibilidade do Guardião
+      operationId: guardiao_health
+      responses:
+        "200":
+          description: Serviço no ar
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceHealthResponse"
+
+  /api/guardiao/analyze:
+    post:
+      tags: [Guardião]
+      summary: Analisa uma mensagem em busca de golpes de engenharia social
+      operationId: analyze_message
+      description: |
+        Executa o fluxo agêntico completo do Guardião (8 nós LangGraph) sobre a
+        mensagem informada. Retorna pontuação de risco, sinais detectados, tipo
+        do golpe, como é aplicado, próximo passo e, se necessário, mensagem de
+        intervenção adaptada ao perfil do usuário.
+
+        **Segurança**: o texto da mensagem nunca é registrado em logs.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GuardiaoRequest"
+            examples:
+              golpe_numero_novo:
+                summary: Golpe do número novo (WhatsApp)
+                value:
+                  message: "Oi mãe, troquei o número. Precisa fazer um Pix de R$ 800 urgente"
+                  user_id: "U001"
+                  input_channel: "whatsapp_text"
+                  language_profile: "standard"
+                  monitoring_consent: true
+              pix_em_andamento:
+                summary: Pix em andamento + mensagem suspeita
+                value:
+                  message: "Seu Pix foi interceptado. Cancele e refaça pelo link oficial"
+                  user_id: "U002"
+                  transaction_id: "TX003"
+                  input_channel: "sms_text"
+                  language_profile: "low"
+                  monitoring_consent: true
+              mensagem_legitima:
+                summary: Mensagem legítima
+                value:
+                  message: "Seu extrato de março está disponível no app"
+                  user_id: ""
+                  input_channel: "text"
+                  language_profile: "standard"
+                  monitoring_consent: true
+      responses:
+        "200":
+          description: Análise concluída
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GuardiaoResponse"
+        "400":
+          description: Entrada inválida (mensagem vazia, injeção de prompt detectada)
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "422":
+          description: Erro de validação Pydantic
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Erro interno
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /api/bbdecision/health:
+    get:
+      tags: [Infraestrutura]
+      summary: Verifica disponibilidade do BB Decision
+      operationId: bbdecision_health
+      responses:
+        "200":
+          description: Serviço no ar
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ServiceHealthResponse"
+
+  /api/bbdecision/simulate:
+    post:
+      tags: [BB Decision]
+      summary: Simula decisões financeiras em linguagem natural
+      operationId: simulate
+      description: |
+        Interpreta a pergunta do usuário, identifica o cenário financeiro,
+        executa o cálculo **determinístico** e retorna a comparação entre o
+        caminho atual e o alternativo, com narrativa em linguagem simples.
+
+        **Cenários suportados**: parcelamento, perda de renda, mudança de emprego,
+        compra de casa.
+
+        **Aviso obrigatório**: resultados são estimativas educacionais,
+        não constituem garantia nem recomendação de investimento.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BBDecisionRequest"
+            examples:
+              parcelamento:
+                summary: Parcelamento em 12x
+                value:
+                  question: "E se eu parcelar essa compra de R$ 1200 em 12 vezes?"
+                  user_id: "U001"
+                  language_profile: "standard"
+                  simulation_consent: true
+              perda_renda:
+                summary: Perda de renda por 3 meses
+                value:
+                  question: "E se eu perder meu emprego por 3 meses? Tenho R$ 15000 de reserva"
+                  user_id: "U002"
+                  language_profile: "low"
+                  simulation_consent: true
+      responses:
+        "200":
+          description: Simulação concluída
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BBDecisionResponse"
+        "400":
+          description: Entrada inválida ou parâmetros insuficientes
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "500":
+          description: Erro interno
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+# ---------------------------------------------------------------------------
+# Components
+# ---------------------------------------------------------------------------
+components:
+  schemas:
+
+    # --- Infraestrutura ---
+    HealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        version:
+          type: string
+          example: "0.1.0"
+      required: [status, version]
+
+    ServiceHealthResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          example: ok
+        service:
+          type: string
+          example: guardiao
+      required: [status, service]
+
+    # --- Guardião — Request ---
+    GuardiaoRequest:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+          minLength: 1
+          maxLength: 2000
+          description: Mensagem, link ou descrição recebida para análise.
+          example: "Oi, mãe. Troquei o número. Preciso que você faça um Pix de R$ 800 para mim agora."
+        user_id:
+          type: string
+          maxLength: 20
+          pattern: "^[A-Za-z0-9_-]*$"
+          default: ""
+          description: ID sintético do usuário (opcional). Habilita análise de Nível 2.
+          example: "U001"
+        input_channel:
+          type: string
+          enum: [whatsapp_text, sms_text, email_text, text]
+          default: text
+          description: Canal de origem da mensagem.
+        transaction_id:
+          type: string
+          maxLength: 20
+          pattern: "^[A-Za-z0-9_-]*$"
+          nullable: true
+          description: ID de transação Pix pendente correlacionada (opcional). Ativa fluxo (b).
+          example: "TX003"
+        language_profile:
+          type: string
+          enum: [standard, low]
+          default: standard
+          description: "'standard' = linguagem técnica; 'low' = linguagem simples"
+        monitoring_consent:
+          type: boolean
+          default: true
+          description: "RC-02: consentimento do cliente para uso do perfil no monitoramento."
+
+    # --- Guardião — Response ---
+    RiskSignal:
+      type: object
+      properties:
+        signal_id:
+          type: string
+          example: URGENCY_LANGUAGE
+        label:
+          type: string
+          example: "Urgência artificial"
+        description:
+          type: string
+        evidence:
+          type: string
+          description: Trecho da mensagem que ativou o sinal
+
+    Anomaly:
+      type: object
+      properties:
+        anomaly_id:
+          type: string
+        label:
+          type: string
+        description:
+          type: string
+        score_delta:
+          type: number
+          format: float
+        criterion:
+          type: string
+
+    Rule:
+      type: object
+      properties:
+        rule_id:
+          type: string
+          example: R001
+        triggered:
+          type: boolean
+        reason:
+          type: string
+
+    Intervention:
+      type: object
+      properties:
+        paused:
+          type: boolean
+          description: Se a transação foi pausada (somente fluxo b)
+        pix_flow:
+          type: boolean
+          description: True = fluxo (b) — Pix em andamento foi correlacionado
+        pause_is_temporary:
+          type: boolean
+        scam_type:
+          type: string
+          nullable: true
+          example: golpe_numero_novo
+        scam_name:
+          type: string
+          nullable: true
+          example: "Golpe do Número Novo"
+        how_it_works:
+          type: string
+          nullable: true
+        how_applied:
+          type: string
+          nullable: true
+        alert_signals:
+          type: array
+          items:
+            type: string
+        next_step:
+          type: string
+        language_profile:
+          type: string
+          enum: [standard, low]
+        language_profile_label:
+          type: string
+          example: "Padrão"
+        user_control_note:
+          type: string
+
+    GuardiaoResponse:
+      type: object
+      properties:
+        risk_score:
+          type: number
+          format: float
+          minimum: 0
+          maximum: 100
+          description: Pontuação de risco de 0 a 100
+        risk_label:
+          type: string
+          enum: [baixo, médio, alto, crítico]
+        signals:
+          type: array
+          items:
+            $ref: "#/components/schemas/RiskSignal"
+        profile_found:
+          type: boolean
+        anomalies:
+          type: array
+          items:
+            $ref: "#/components/schemas/Anomaly"
+        level1_score:
+          type: number
+          format: float
+        level2_score_delta:
+          type: number
+          format: float
+        requires_intervention:
+          type: boolean
+        requires_human_review:
+          type: boolean
+          description: "True se score ≥ 85 (tier crítico) — exige supervisão humana"
+        rules_triggered:
+          type: array
+          items:
+            $ref: "#/components/schemas/Rule"
+        intervention:
+          nullable: true
+          allOf:
+            - $ref: "#/components/schemas/Intervention"
+        intervention_message:
+          type: string
+        followup_message:
+          type: string
+        input_channel:
+          type: string
+        language_profile:
+          type: string
+        transaction_id_analyzed:
+          type: string
+          nullable: true
+          description: Preenchido quando um transaction_id foi correlacionado
+
+    # --- BB Decision — Request ---
+    BBDecisionRequest:
+      type: object
+      required: [question]
+      properties:
+        question:
+          type: string
+          minLength: 5
+          maxLength: 1000
+          example: "E se eu parcelar essa compra de R$ 1200 em 12 vezes?"
+        user_id:
+          type: string
+          maxLength: 20
+          pattern: "^[A-Za-z0-9_-]*$"
+          default: ""
+        language_profile:
+          type: string
+          enum: [standard, low]
+          default: standard
+        simulation_consent:
+          type: boolean
+          default: true
+
+    # --- BB Decision — Response ---
+    PathSummary:
+      type: object
+      properties:
+        label:
+          type: string
+          example: "Situação atual"
+        data:
+          type: object
+          additionalProperties: true
+
+    BBDecisionResponse:
+      type: object
+      properties:
+        scenario_type:
+          type: string
+          enum: [parcelamento, perda_renda, mudanca_emprego, compra_casa, desconhecido]
+        question_understood:
+          type: string
+        current_path:
+          $ref: "#/components/schemas/PathSummary"
+        alternative_path:
+          $ref: "#/components/schemas/PathSummary"
+        delta:
+          type: object
+          additionalProperties: true
+        warnings:
+          type: array
+          items:
+            type: string
+        assumptions:
+          type: array
+          items:
+            type: string
+        narrative:
+          type: string
+          description: Narrativa em linguagem natural (LLM ou fallback determinístico)
+        disclaimer:
+          type: string
+          description: "Aviso obrigatório RF-D-10 — SEMPRE presente na resposta"
+          example: "Estimativa educacional. Não constitui garantia de resultado nem recomendação de investimento ou crédito."
+        clarification_needed:
+          type: boolean
+          default: false
+        clarification_question:
+          type: string
+          nullable: true
+
+    # --- Erros ---
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+        code:
+          type: string
+          enum:
+            - INPUT_VALIDATION_ERROR
+            - CALCULATION_ERROR
+            - INTERNAL_ERROR
+      required: [error, code]

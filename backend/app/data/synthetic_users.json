@@ -1,0 +1,54 @@
+[
+  {
+    "user_id": "U001",
+    "name": "Maria S.",
+    "age_group": "55-64",
+    "tech_profile": "low",
+    "usual_pix_contacts": ["João S.", "Supermercado Boa Compra", "Farmácia Popular"],
+    "monthly_income": 3500.00,
+    "monthly_expenses": 2800.00,
+    "emergency_reserve": 5000.00,
+    "financial_goals": [
+      {"name": "viagem de férias", "target": 3000.00, "deadline_months": 12, "saved": 800.00}
+    ],
+    "avg_pix_amount": 150.00,
+    "pix_frequency_per_month": 3,
+    "known_contacts": ["João S.", "Ana S.", "Pedro S.", "Farmácia Popular", "Supermercado Boa Compra"],
+    "notes": "Perfil sintético — usuária com baixa familiaridade tecnológica, usada nos testes do golpe do número novo."
+  },
+  {
+    "user_id": "U002",
+    "name": "Carlos M.",
+    "age_group": "35-44",
+    "tech_profile": "standard",
+    "usual_pix_contacts": ["Luciana M.", "Academia FitLife", "Condomínio Res. Aurora"],
+    "monthly_income": 8500.00,
+    "monthly_expenses": 6200.00,
+    "emergency_reserve": 25000.00,
+    "financial_goals": [
+      {"name": "entrada apartamento", "target": 60000.00, "deadline_months": 36, "saved": 18000.00},
+      {"name": "reserva emergência 6 meses", "target": 51000.00, "deadline_months": 24, "saved": 25000.00}
+    ],
+    "avg_pix_amount": 420.00,
+    "pix_frequency_per_month": 8,
+    "known_contacts": ["Luciana M.", "Academia FitLife", "Condomínio Res. Aurora", "BB Investimentos"],
+    "notes": "Perfil sintético — usado nos testes do BB Decision (parcelamento, compra de imóvel)."
+  },
+  {
+    "user_id": "U003",
+    "name": "Roberto A.",
+    "age_group": "25-34",
+    "tech_profile": "standard",
+    "usual_pix_contacts": ["Beatriz A.", "Aluguel Imóveis SC"],
+    "monthly_income": 4800.00,
+    "monthly_expenses": 4100.00,
+    "emergency_reserve": 3000.00,
+    "financial_goals": [
+      {"name": "fundo de emergência", "target": 14400.00, "deadline_months": 18, "saved": 3000.00}
+    ],
+    "avg_pix_amount": 200.00,
+    "pix_frequency_per_month": 5,
+    "known_contacts": ["Beatriz A.", "Aluguel Imóveis SC", "Academia Move"],
+    "notes": "Perfil sintético — usado nos testes de perda de renda e mudança de emprego."
+  }
+]

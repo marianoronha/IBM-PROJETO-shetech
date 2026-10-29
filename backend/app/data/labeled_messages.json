@@ -1,0 +1,1831 @@
+{
+  "metadata": {
+    "version": "1.0",
+    "total_messages": 201,
+    "scam_count": 109,
+    "legitimate_count": 92,
+    "dev_count": 161,
+    "test_count": 40,
+    "generation_method": "manual_by_domain_expert",
+    "language": "pt-BR",
+    "limitations": [
+      "Mensagens são sintéticas — não coletadas de golpes reais.",
+      "Podem não cobrir variações regionais ou gírias não previstas.",
+      "O conjunto test NÃO deve ser usado para ajustar regras ou limiares.",
+      "Números de telefone e links são ficcionais.",
+      "Distribuição de dificuldade é estimada, não baseada em dados reais.",
+      "Números de fraude citados foram marcados 'a validar' — sem fonte verificada."
+    ]
+  },
+  "messages": [
+    {
+      "id": "MSG-001",
+      "text": "Oi mãe, troquei o número. Precisa fazer um Pix de R$ 800 pra mim agora.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Caso base RF-G-10. Combina troca de número + urgência + pedido de Pix."
+    },
+    {
+      "id": "MSG-002",
+      "text": "Oi pai! Mudei de chip. Esse é meu novo número. Pode me mandar R$ 300? Tô sem crédito.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Variação: pedido menor, sem urgência explícita."
+    },
+    {
+      "id": "MSG-003",
+      "text": "Oi vó, sou eu a Ana. Troquei o celular e perdi os contatos. Me manda Pix de R$ 500 urgente?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Fingindo ser neta. Urgência + perda de contatos."
+    },
+    {
+      "id": "MSG-004",
+      "text": "Oi! Número novo aqui. Precisava falar com você. Você pode me fazer uma transferência de R$1200 agora? Depois explico.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Não identifica o 'familiar'. Pedido de transferência sem justificativa."
+    },
+    {
+      "id": "MSG-005",
+      "text": "Mãe, sou eu o Pedro. Mudei de número semana passada. Preciso que você faça um Pix de R$650 pra mim. É pra pagar uma conta.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Identifica familiar pelo nome. Justificativa genérica."
+    },
+    {
+      "id": "MSG-006",
+      "text": "Oi mãe! Estou no hospital, troquei o chip ontem. Preciso de R$400 urgente para o remédio. Por favor!",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Adiciona contexto emocional (hospital). Alta pressão psicológica."
+    },
+    {
+      "id": "MSG-007",
+      "text": "Ei, sou o Carlos, mudei de numero. Pode me mandar R$200? To sem acesso ao app do banco.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Justificativa: sem acesso ao banco."
+    },
+    {
+      "id": "MSG-008",
+      "text": "Oi! Esse é meu número novo. Meu celular quebrou. Preciso que você faça um Pix de R$1000 agora, depois devolvo.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Promessa de devolução."
+    },
+    {
+      "id": "MSG-009",
+      "text": "Mãe, número novo. Preciso do seu Pix pra pagar o aluguel. O prazo é hoje.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Urgência por prazo de aluguel."
+    },
+    {
+      "id": "MSG-010",
+      "text": "Oi, sou o Lucas. Mudei o WhatsApp. Pode me ajudar com R$750? Tô numa situação difícil.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Sem urgência explícita, apenas 'situação difícil'."
+    },
+    {
+      "id": "MSG-011",
+      "text": "Oi mãe tudo bom? Esse é meu número novo. Eu precisava de um dinheiro emprestado, você poderia me ajudar agora?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Tom casual, pedido de empréstimo."
+    },
+    {
+      "id": "MSG-012",
+      "text": "Oi! Mudei de celular e de número. Me manda um Pix de R$1500? É pra fechar um negócio hoje.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Valor alto, prazo hoje."
+    },
+    {
+      "id": "MSG-020",
+      "text": "BANCO DO BRASIL: Detectamos acesso suspeito na sua conta. Para desbloquear, acesse: http://bb-seguranca-update.xyz/verificar e informe seu token.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Caso base RF-G-11. Link falso + pedido de token."
+    },
+    {
+      "id": "MSG-021",
+      "text": "Atenção cliente BB: sua conta foi temporariamente bloqueada. Acesse http://atualizar-bb.com para regularizar.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Link suspeito. Alarme de bloqueio."
+    },
+    {
+      "id": "MSG-022",
+      "text": "Prezado cliente, identificamos movimentação irregular na sua conta. Ligue para 0800-xxx-xxxx para verificar.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Número falso, sem link. Mais difícil de detectar."
+    },
+    {
+      "id": "MSG-023",
+      "text": "BB Segurança: sua senha será bloqueada em 24h. Confirme seus dados em http://bb-acesso-rapido.net agora.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Urgência de 24h + link falso."
+    },
+    {
+      "id": "MSG-024",
+      "text": "Sou do suporte do Banco do Brasil. Detectamos uma tentativa de fraude na sua conta. Preciso que você confirme seu CPF e token para garantir a segurança.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Sem link, pedido direto de CPF e token."
+    },
+    {
+      "id": "MSG-025",
+      "text": "AVISO URGENTE: Sua conta BB foi comprometida. Para evitar perdas, acesse imediatamente: https://seguranca-banco.br.com/verificacao",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Link muito suspeito."
+    },
+    {
+      "id": "MSG-026",
+      "text": "Central de Segurança BB: identificamos acesso de dispositivo não reconhecido. Confirme sua identidade em http://bb-cliente.info",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Domínio .info suspeito."
+    },
+    {
+      "id": "MSG-027",
+      "text": "Seu aplicativo BB precisa ser atualizado. Baixe a nova versão em: http://play-bb-atualiza.com para manter a segurança.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Falso update de app. Engenharia social clássica."
+    },
+    {
+      "id": "MSG-028",
+      "text": "BB: detectamos tentativa de login às 03:47 em São Paulo. Se não foi você, acesse http://confirmar-acesso-bb.com urgente.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Adiciona contexto específico (horário, cidade) para parecer legítimo."
+    },
+    {
+      "id": "MSG-040",
+      "text": "Olá, sou do suporte BB. Vi que você tem uma cobrança indevida de R$350. Para estornar, confirme seu CPF e senha.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Pedido de CPF + senha sob pretexto de estorno."
+    },
+    {
+      "id": "MSG-041",
+      "text": "Sua conta tem um crédito de R$500 disponível. Para liberar, informe seu número de cartão e senha no nosso sistema.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Oferta de crédito + pedido de dados do cartão."
+    },
+    {
+      "id": "MSG-042",
+      "text": "Para confirmar sua identidade e evitar bloqueio, responda a esta mensagem com seu CPF e data de nascimento.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Sem impersonation explícita. Apenas pedido de dados pessoais."
+    },
+    {
+      "id": "MSG-043",
+      "text": "Sou da equipe de segurança do banco. Para cancelar a compra suspeita de R$1200, preciso do código de verificação que acabou de chegar no seu celular.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Pedido de código OTP/token enviado ao celular. Alta sofisticação."
+    },
+    {
+      "id": "MSG-044",
+      "text": "BB Cobrança: detectamos um débito automático indevido. Para estornar, acesse http://bb-estorno.net e confirme seus dados bancários.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Combina link suspeito e pedido de dados."
+    },
+    {
+      "id": "MSG-045",
+      "text": "Prezado, sua conta será encerrada se não confirmar seus dados em 48h. Envie CPF, senha e código de segurança para este número.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste. Ameaça de encerramento."
+    },
+    {
+      "id": "MSG-046",
+      "text": "Para cadastrar sua nova chave Pix, precisamos validar sua identidade. Informe seu CPF e senha de 6 dígitos.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Contexto de cadastro Pix. Difícil: não menciona banco."
+    },
+    {
+      "id": "MSG-060",
+      "text": "Parabéns! Você foi selecionado para receber R$1.500 do programa BB Premiação. Para liberar, faça um Pix de R$50 como taxa para premios@bb-pagamentos.com",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Caso base. Prêmio fictício + taxa de liberação."
+    },
+    {
+      "id": "MSG-061",
+      "text": "Você ganhou um iPhone 15! Para retirar seu prêmio, pague a taxa de entrega de R$89,90 via Pix para taxa-entrega-premio@mail.com",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Taxa de entrega como isca."
+    },
+    {
+      "id": "MSG-062",
+      "text": "SORTEIO BB: Seu número foi sorteado! Você recebeu R$2.000. Para liberar o prêmio, clique aqui: http://premio-bb-2024.com/retirar",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Sorteio falso + link."
+    },
+    {
+      "id": "MSG-063",
+      "text": "Você foi contemplado em nossa campanha de aniversário! Prêmio de R$3.000 aguarda liberação. Taxa de confirmação: R$120 via Pix.",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-064",
+      "text": "BB Premiações: parabéns, sua conta foi selecionada para o programa de cashback premium. Faça um pix de R$30 para confirmar participação.",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Usa 'cashback' como isca. Tom mais formal."
+    },
+    {
+      "id": "MSG-080",
+      "text": "Segue o QR Code atualizado para o pagamento do boleto. O anterior venceu ontem. Pague hoje para evitar juros.",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "QR adulterado enviado como urgente. Difícil detectar sem ver o QR."
+    },
+    {
+      "id": "MSG-081",
+      "text": "Oi, aqui é a Maria da loja. Segue o link para o boleto da sua compra: http://pag-rapido-boleto.com/123456",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Boleto com link suspeito."
+    },
+    {
+      "id": "MSG-082",
+      "text": "Seu boleto de R$1.250 referente ao condomínio de outubro venceu. Pague pelo código atualizado (QR em anexo) para não acumular multa.",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Menciona condomínio (credível). Altíssima dificuldade."
+    },
+    {
+      "id": "MSG-083",
+      "text": "Segue boleto atualizado da sua fatura. Código de barras: http://boleto-digital.net/fatura99",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste. Link suspeito."
+    },
+    {
+      "id": "MSG-090",
+      "text": "Tenho seu filho aqui. Não ligue pra polícia. Se quiser ele de volta, faça um Pix de R$5.000 agora para a chave que vou te mandar.",
+      "label": "scam",
+      "category": "falso_sequestro",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Extorsão direta. Alta urgência."
+    },
+    {
+      "id": "MSG-091",
+      "text": "Mãe, to aqui com um pessoal. Me ajuda com R$3.000 no Pix agora? Não conta nada pra ninguém. Tô bem mas precisa ser agora.",
+      "label": "scam",
+      "category": "falso_sequestro",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Tom de filho em perigo. Difícil: pode ser mensagem real de alguém em dificuldade."
+    },
+    {
+      "id": "MSG-092",
+      "text": "Estamos com sua filha. Ela está bem por enquanto. Pix de R$8.000 em 30 minutos ou o acordo muda.",
+      "label": "scam",
+      "category": "falso_sequestro",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Ameaça explícita."
+    },
+    {
+      "id": "MSG-100",
+      "text": "Central de segurança do cartão. Identificamos uma compra suspeita de R$2.300 na sua conta. Para cancelar, confirme a senha de 4 dígitos do seu cartão.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Pedido de senha do cartão sob pretexto de cancelamento."
+    },
+    {
+      "id": "MSG-101",
+      "text": "Aqui é a central do seu cartão BB. Alguém tentou fazer uma compra de R$4.500 em seu nome. Para bloquear, preciso que você informe o número do cartão completo.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Pedido de número do cartão."
+    },
+    {
+      "id": "MSG-102",
+      "text": "Alerta de segurança: compra de R$890 aprovada às 14h em loja desconhecida. Se não reconhece, responda CANCELAR para bloquear.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Engenharia social por resposta de SMS."
+    },
+    {
+      "id": "MSG-103",
+      "text": "Central BB Cartão: sua fatura tem cobrança indevida de R$1.100. Um motoboy vai buscar seu cartão para substituição. Por favor, não destrua.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste. Golpe do motoboy."
+    },
+    {
+      "id": "MSG-120",
+      "text": "Oi mãe, tudo bem? Você conseguiu fazer o Pix pro mercado? Me avisa quando puder.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Caso base legítimo. Sem pedido de dinheiro."
+    },
+    {
+      "id": "MSG-121",
+      "text": "Oi! Vou chegar mais tarde hoje. Pode deixar o jantar no forno? Beijos.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Mensagem cotidiana sem qualquer conteúdo financeiro."
+    },
+    {
+      "id": "MSG-122",
+      "text": "Pai, pode me mandar o endereço da casa nova? Vou visitar sábado.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Pedido de informação cotidiana."
+    },
+    {
+      "id": "MSG-123",
+      "text": "Mãe, o João me pediu R$150 pra comprar o presente da vó. Você pode me ajudar a dividir?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Legítima difícil: pedido de dinheiro real de familiar, sem contexto de golpe."
+    },
+    {
+      "id": "MSG-124",
+      "text": "Oi tia, tudo bem? Sou a Camila. Meu número mudou semana passada por conta da portabilidade. Pode salvar o novo?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Legítima difícil: troca de número real. Não há pedido de dinheiro."
+    },
+    {
+      "id": "MSG-125",
+      "text": "Vó, posso te ligar mais tarde? Quero pedir um conselho.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Sem conteúdo suspeito."
+    },
+    {
+      "id": "MSG-126",
+      "text": "Mãe, esqueci a carteira em casa. Pode me mandar R$30 pelo Pix pra pagar o almoço? Te pago quando chegar.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Legítima difícil: pedido pequeno de familiar, carteira esquecida. Caso real comum."
+    },
+    {
+      "id": "MSG-127",
+      "text": "Oi! Sou o Pedro, filho da dona Maria. Meu número é esse mesmo, pode checar no WhatsApp dela. Só queria avisar que hoje não vou poder ir.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Confirmação de identidade por outra pessoa."
+    },
+    {
+      "id": "MSG-128",
+      "text": "Pai, eu e a Ana precisamos de R$200 pra cobrir a parte do aluguel de julho. Posso passar na quarta te pagar de volta.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "test",
+      "notes": "Conjunto de teste. Legítima difícil: pedido de valor mais alto de familiar real."
+    },
+    {
+      "id": "MSG-129",
+      "text": "Oi mãe! Tô no supermercado, acabou o dinheiro. Pode me mandar R$80 pelo Pix agora? O caixa tá esperando.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "test",
+      "notes": "Conjunto de teste. Urgência real + familiar. Alta confusão com golpe."
+    },
+    {
+      "id": "MSG-140",
+      "text": "Prezado cliente, seu extrato do mês de maio está disponível no aplicativo BB. Acesse pelo app oficial ou pelo site bb.com.br.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Comunicado oficial. Sem link externo."
+    },
+    {
+      "id": "MSG-141",
+      "text": "BB: Seu Pix de R$120,00 para Farmácia Popular foi realizado com sucesso em 01/05 às 14:32.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Confirmação de transação. Sem pedido de ação."
+    },
+    {
+      "id": "MSG-142",
+      "text": "Lembrete: sua fatura BB Ourocard vence em 3 dias. Pague pelo app BB ou no site bb.com.br.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Lembrete de fatura sem link externo."
+    },
+    {
+      "id": "MSG-143",
+      "text": "BB Investimentos: seu CDB venceu. O valor de R$5.430,00 foi creditado em sua conta corrente. Acesse o app para reinvestir.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Comunicado de investimento sem pedido de dados."
+    },
+    {
+      "id": "MSG-144",
+      "text": "Saque de R$200,00 realizado no terminal 1234 em 15/05. Se não foi você, acesse o app BB ou ligue para 4004-0001.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Legítima difícil: alerta real de saque suspeito, mas com canais oficiais legítimos."
+    },
+    {
+      "id": "MSG-145",
+      "text": "BB: sua chave Pix (CPF) foi cadastrada com sucesso. Caso não tenha solicitado, ligue para 4004-0001.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Confirmação de cadastro. Tom semelhante a golpes mas sem link externo."
+    },
+    {
+      "id": "MSG-146",
+      "text": "Sua proposta de crédito pessoal foi aprovada. Acesse o app BB para contratar. Validade: 5 dias.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-160",
+      "text": "Carlos, é a Luciana. Você pode me mandar R$200 pra pagar a pizza de sexta? Já temos feito isso várias vezes.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Pedido entre conhecidos para divisão de conta."
+    },
+    {
+      "id": "MSG-161",
+      "text": "Olá! Loja Beleza e Mais aqui. Seu pedido #4521 está pronto para retirada. Horário: 9h às 18h.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Notificação de loja sem pedido de ação financeira."
+    },
+    {
+      "id": "MSG-162",
+      "text": "Oi! Sou do condomínio Residencial Aurora. A assembleia de amanhã foi adiada para quinta-feira às 19h.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Aviso de condomínio sem pedido financeiro."
+    },
+    {
+      "id": "MSG-163",
+      "text": "Seu delivery chegou! Pedido #7823 — Hamburguer + fritas. Avalie nossa entrega no app.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Notificação de entrega."
+    },
+    {
+      "id": "MSG-164",
+      "text": "Academia FitLife: sua mensalidade vence dia 10. Pague no balcão ou pelo link do nosso site oficial: fitlife.com.br/pagamento",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Contém link, mas de domínio da própria empresa. Médio por ter link."
+    },
+    {
+      "id": "MSG-165",
+      "text": "Olá! Aqui é o Dr. Carlos do Consultório Saúde Plena. Confirmo sua consulta para amanhã às 14h. Responda S para confirmar.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-180",
+      "text": "Oi, sou a Carla, amiga da sua filha Ana. Ela me pediu pra te avisar que vai chegar tarde hoje e o celular dela tá sem bateria.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Terceiro transmitindo mensagem. Pode parecer golpe intermediário."
+    },
+    {
+      "id": "MSG-181",
+      "text": "Preciso urgente de R$500. Tô internado. Número novo porque perdi o celular no hospital. Me manda o Pix pelo nome João Silva.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Difícil de classificar. Combina hospital + urgência + número novo. É golpe."
+    },
+    {
+      "id": "MSG-182",
+      "text": "Filho, precisa me ajudar com R$1.000 para pagar a cirurgia da vó. Depósita na conta que te mandei.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Alta carga emocional. Conta desconhecida."
+    },
+    {
+      "id": "MSG-183",
+      "text": "Oi mãe, sou eu o Rafael. Não estou conseguindo falar pelo meu número. Pode me ligar aqui?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Troca de número sem pedido de dinheiro. Pode ser legítimo."
+    },
+    {
+      "id": "MSG-184",
+      "text": "Boa tarde! Sou atendente do BB, estou ligando para informar sobre um produto de investimento com rentabilidade de 120% do CDI. Posso continuar?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Ligação bancária comercial legítima. Não há pedido de credencial."
+    },
+    {
+      "id": "MSG-185",
+      "text": "Detectamos acesso à sua conta de um IP diferente. Por segurança, entre no app BB e confirme seus dados de acesso.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Não tem link. Instrução para 'entrar no app' pode confundir."
+    },
+    {
+      "id": "MSG-186",
+      "text": "Olá! Aqui é o João da mercearia. Você ainda quer os 5kg de arroz? Pode pagar no Pix se quiser.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Pedido de Pix para compra real. Não é golpe."
+    },
+    {
+      "id": "MSG-187",
+      "text": "Oi, aqui é o síndico do condomínio. A cota de outubro subiu para R$620. Segue o QR Code para pagamento.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "test",
+      "notes": "Conjunto de teste. QR real de condomínio. Muito difícil: QR não verificável por texto."
+    },
+    {
+      "id": "MSG-188",
+      "text": "Prezado cliente, identificamos uma tentativa de Pix suspeita em sua conta. Acesse o app BB e verifique suas transações pendentes.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Alerta legítimo do banco. Semelhante a golpe mas sem link ou pedido de credencial."
+    },
+    {
+      "id": "MSG-189",
+      "text": "Oi, é o Roberto. Lembra que você me devia aqueles R$150 do churrasco? Pode mandar quando puder?",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Cobrança legítima entre conhecidos."
+    },
+    {
+      "id": "MSG-190",
+      "text": "BB: Pix de R$800,00 de número desconhecido aguardando confirmação. Para aceitar, abra o app BB.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Notificação de Pix recebido. Legítimo, mas pode parecer isca."
+    },
+    {
+      "id": "MSG-191",
+      "text": "Mãe, to precisando de dinheiro. Não to conseguindo pagar o aluguel esse mês. Você pode me ajudar com R$500? Sei que é muito pedir.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "test",
+      "notes": "Conjunto de teste. Pedido legítimo de ajuda de familiar."
+    },
+    {
+      "id": "MSG-192",
+      "text": "Central de cobranças: sua fatura de R$1.200 vence amanhã. Para negociar, ligue 0800-730-0001 (horário comercial).",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Cobrança legítima. Número começa com 0800 — pode confundir."
+    },
+    {
+      "id": "MSG-200",
+      "text": "Oi mãe, esse é meu número novo. Fiz a portabilidade. Me manda R$400 pra pagar uma conta de luz?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Portabilidade como justificativa."
+    },
+    {
+      "id": "MSG-201",
+      "text": "Oi! Meu WhatsApp caiu e tive que reinstalar. Estou num número provisório. Você pode me ajudar com R$300?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "WhatsApp reinstalado como justificativa."
+    },
+    {
+      "id": "MSG-202",
+      "text": "Filha, sou eu o papai. Mudei de celular. Pode me mandar R$600? Vou te explicar depois.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Pai pedindo dinheiro à filha."
+    },
+    {
+      "id": "MSG-203",
+      "text": "Oi vô! Troquei o chip. Preciso de R$200 agora pra pagar o Uber. Tô preso no aeroporto.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Contexto aeroporto + urgência."
+    },
+    {
+      "id": "MSG-204",
+      "text": "Sou eu irmão. Novo número. Me faz um Pix de R$500? Tô sem dinheiro pra pagar o hospital.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste. Irmão + hospital."
+    },
+    {
+      "id": "MSG-205",
+      "text": "Mãe! Troquei de operadora. Número novo: este aqui. Pode me mandar R$150 pra eu almoçar hoje?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Troca de operadora + pedido de valor baixo."
+    },
+    {
+      "id": "MSG-206",
+      "text": "Pai, esse é meu número novo. Precisava de um favor de R$800. Paga meu aluguel agora, depois acerto.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-210",
+      "text": "BB ALERTA: Sua conta está em análise por atividade suspeita. Regularize em http://bb-regularizar.com em até 2h.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Prazo de 2h + link suspeito."
+    },
+    {
+      "id": "MSG-211",
+      "text": "Seu token BB está prestes a expirar. Renove agora em http://bb-token-renova.net para evitar bloqueio.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Falsa renovação de token."
+    },
+    {
+      "id": "MSG-212",
+      "text": "Suporte BB aqui. Identificamos que seu Pix de R$3.500 foi interceptado. Para reaver, confirme a senha pelo nosso sistema.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Alega Pix interceptado para criar urgência."
+    },
+    {
+      "id": "MSG-213",
+      "text": "URGENTE BB: Sua conta será bloqueada por 72h por suspeita de fraude. Acesse http://seguro-bb.io para contestar.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Bloqueio de 72h + link com TLD incomum (.io)."
+    },
+    {
+      "id": "MSG-214",
+      "text": "BB: Detectamos acesso de outro estado à sua conta. Confirme se foi você respondendo SIM ou NÃO.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Sem link. Engenharia social por resposta simples."
+    },
+    {
+      "id": "MSG-215",
+      "text": "Atenção, cliente. Seu Internet Banking será descontinuado. Migre para o BB Online em http://bb-online-novo.com até amanhã.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-220",
+      "text": "Para verificar sua identidade no cadastro do Pix, informe seu CPF e os últimos 4 dígitos do cartão.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Contexto Pix para solicitar CPF + cartão."
+    },
+    {
+      "id": "MSG-221",
+      "text": "Seu cadastro no BB está desatualizado. Para regularizar, informe CPF, data de nascimento e senha de acesso.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Atualização de cadastro como pretexto."
+    },
+    {
+      "id": "MSG-222",
+      "text": "Para concluir o estorno de R$890, precisamos confirmar o token enviado ao seu celular. Qual é o código?",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Pedido de OTP/código enviado ao celular. Difícil: contexto de estorno."
+    },
+    {
+      "id": "MSG-223",
+      "text": "Equipe BB: para desbloquear sua conta, informe sua senha de 6 dígitos e o código no verso do cartão.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-230",
+      "text": "Você ganhou um voucher de R$500 do supermercado parceiro BB. Pague a taxa de R$20 para liberar em http://voucher-bb.net",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Voucher falso com link."
+    },
+    {
+      "id": "MSG-231",
+      "text": "PARABÉNS! Sorteio de aniversário BB. Você ganhou R$1.000 de cashback. Para receber, informe CPF e chave Pix.",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Pede CPF e chave Pix para 'receber o prêmio'."
+    },
+    {
+      "id": "MSG-232",
+      "text": "Você foi sorteado entre os clientes BB mais ativos! Prêmio: R$2.500. Taxa de liberação: R$75. Pague pelo Pix abaixo.",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-240",
+      "text": "Olá, aqui é do cartório. O boleto para registro do contrato venceu. Segue o novo código para pagamento urgente.",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Contexto de cartório. Difícil: pode ser real."
+    },
+    {
+      "id": "MSG-241",
+      "text": "Seu IPTU 2024 está com desconto até amanhã. Pague pelo link: http://iptu-rapido.com.br/2024",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "IPTU falso com link. Urgência por desconto."
+    },
+    {
+      "id": "MSG-242",
+      "text": "Seu boleto de R$450 da clínica vence hoje. Código: http://clinica-boleto.net/pagar",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-250",
+      "text": "Temos sua esposa aqui. Ela está bem. Quer que continue assim? R$10.000 no Pix agora. Não ligue pra polícia.",
+      "label": "scam",
+      "category": "falso_sequestro",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Extorsão com esposa."
+    },
+    {
+      "id": "MSG-251",
+      "text": "Papai, to com uns caras aqui. Fizeram uma coisa comigo no bar. Manda R$2.000 agora e não fala nada pra mãe.",
+      "label": "scam",
+      "category": "falso_sequestro",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Tom de filho em perigo. Altíssima confusão com golpe real."
+    },
+    {
+      "id": "MSG-252",
+      "text": "Temos seu pai. Ele está com a gente. Faça R$6.000 em Pix agora em 15 minutos.",
+      "label": "scam",
+      "category": "falso_sequestro",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-260",
+      "text": "Central do cartão: compra de R$3.200 na França aprovada. Se não reconhece, ligue 4002-8922 agora.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Número falso de central. Compra internacional."
+    },
+    {
+      "id": "MSG-261",
+      "text": "Atenção: cartão BB bloqueado por tentativa de compra não autorizada. Desbloqueie informando a senha de 6 dígitos.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Bloqueio falso para obter senha."
+    },
+    {
+      "id": "MSG-262",
+      "text": "Central de cartões: identificamos 3 tentativas de compra negadas. Para liberar seu cartão, confirme o CVV.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Pedido de CVV."
+    },
+    {
+      "id": "MSG-270",
+      "text": "Oi querida, tudo bem? Quando você vier me visitar na semana que vem, pode trazer aquele bolo de chocolate?",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Conversa familiar cotidiana."
+    },
+    {
+      "id": "MSG-271",
+      "text": "BB: novo limite do cartão de crédito aprovado: R$15.000. Acesse o app para verificar.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Comunicado de limite sem pedido de ação suspeita."
+    },
+    {
+      "id": "MSG-272",
+      "text": "Oi tia! Sei que é tarde pra pedir, mas você pode me ajudar com R$80 pra pagar o transporte? To stranded.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Legítima difícil: pedido pequeno de sobrinho. Urgência real."
+    },
+    {
+      "id": "MSG-273",
+      "text": "Farinha Integral: seu pedido foi enviado. Previsão de entrega: amanhã até 18h. Rastreie em mercadolivre.com.br.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Notificação de entrega com link legítimo."
+    },
+    {
+      "id": "MSG-274",
+      "text": "BB: transação Pix de R$350,00 para Academia FitLife realizada com sucesso.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Confirmação de Pix sem alerta."
+    },
+    {
+      "id": "MSG-275",
+      "text": "Oi filho! Fui ao médico hoje, tá tudo bem. Me liga quando puder, preciso contar uma coisa.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Mensagem cotidiana de mãe."
+    },
+    {
+      "id": "MSG-276",
+      "text": "Lembrete: reunião de pais e mestres na escola do Luca amanhã às 19h. Confirme presença pelo grupo.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Aviso escolar sem conteúdo financeiro."
+    },
+    {
+      "id": "MSG-277",
+      "text": "Oi mãe, posso usar o cartão de vocês pra comprar o material escolar? São R$120 no total. Te mostro a nota.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Pedido de uso de cartão de familiar. Legítimo."
+    },
+    {
+      "id": "MSG-278",
+      "text": "BB: sua chave Pix CPF recebeu R$500,00 de Carlos M. Valor disponível na conta corrente.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Confirmação de Pix recebido."
+    },
+    {
+      "id": "MSG-279",
+      "text": "Prezado Carlos, sua proposta de financiamento imobiliário foi analisada. Acesse o app BB Imóveis para ver o resultado.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Comunicado de crédito imobiliário sem link externo."
+    },
+    {
+      "id": "MSG-280",
+      "text": "Oi! É o Marcos da padaria. Você fez um pedido de pão na chave Pix errada. Pode me mandar R$25,00 no número correto?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Correção de Pix errado. Legítima muito difícil: parece golpe."
+    },
+    {
+      "id": "MSG-281",
+      "text": "Sou professor particular do seu filho João. A mensalidade de novembro são R$400. Pode depositar na mesma chave de sempre?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Cobança de professor. Sem contexto de fraude."
+    },
+    {
+      "id": "MSG-282",
+      "text": "BB Notificação: saldo insuficiente para débito agendado de R$1.200,00 amanhã. Verifique no app.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Alerta de saldo sem pedido de ação suspeita."
+    },
+    {
+      "id": "MSG-283",
+      "text": "Oi tudo bem? Sou seu vizinho do 503. Você pode me emprestar R$50 até semana que vem? Preciso pagar o entregador.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "test",
+      "notes": "Conjunto de teste. Vizinho pedindo empréstimo. Legítimo."
+    },
+    {
+      "id": "MSG-284",
+      "text": "Olá, aqui é da imobiliária. Segue o boleto do aluguel de novembro: R$1.800. Vencimento dia 5.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Cobrança de aluguel por mensagem. Legítimo sem link suspeito."
+    },
+    {
+      "id": "MSG-285",
+      "text": "BB: Pix agendado de R$650,00 para Condomínio Res. Aurora processado.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Confirmação de Pix agendado."
+    },
+    {
+      "id": "MSG-286",
+      "text": "Oi mãe, sou eu a Bia. Cheguei bem em Lisboa. A ligação internacional ta cara, mas to bem. Beijo!",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Familiar no exterior. Sem pedido financeiro."
+    },
+    {
+      "id": "MSG-287",
+      "text": "Oi! Aqui é do salão de beleza. Sua consulta é amanhã às 14h. Confirma?",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Agendamento de serviço."
+    },
+    {
+      "id": "MSG-288",
+      "text": "Prezado cliente, a taxa Selic foi ajustada. Seus investimentos em CDB serão impactados. Acesse o app BB para revisar.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Comunicado sobre taxas. Sem link externo."
+    },
+    {
+      "id": "MSG-289",
+      "text": "Oi, é a Sandra da cooperativa. Sua cota de participação este ano ficou em R$320. Pode pagar quando vier à reunião.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Cobrança de cooperativa. Prazo flexível."
+    },
+    {
+      "id": "MSG-290",
+      "text": "BB: investimento em Tesouro Selic de R$500,00 realizado com sucesso. Rendimento estimado: SELIC a.a.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Confirmação de investimento."
+    },
+    {
+      "id": "MSG-291",
+      "text": "Oi pai! Tudo bem? Queria saber se você pode me ajudar a pagar o ENEM. São R$85 a inscrição. Já pesquisei tudo.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Pedido de pagamento de inscrição de exame. Legítimo."
+    },
+    {
+      "id": "MSG-292",
+      "text": "Atenção: amanhã haverá manutenção no app BB das 02h às 05h. O internet banking ficará indisponível.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Comunicado de manutenção sem pedido de ação."
+    },
+    {
+      "id": "MSG-293",
+      "text": "Seguro residencial BB: sua apólice vence em 30 dias. Renove pelo app ou ligue 0800-729-0123.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Renovação de seguro com canal oficial."
+    },
+    {
+      "id": "MSG-294",
+      "text": "Oi, é a Beatriz do grupo de teatro. O dinheiro da fantasia ficou em R$150 por pessoa. Pode mandar no Pix quando puder?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Divisão de custos de grupo. Legítimo."
+    },
+    {
+      "id": "MSG-295",
+      "text": "BB: Cartão de crédito com fatura de R$2.340,00. Vencimento: 15/11. Pague pelo app ou agência.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Aviso de fatura sem link externo."
+    },
+    {
+      "id": "MSG-300",
+      "text": "Mãe, esse é meu número novo! Precisava muito de R$700 pra resolver uma situação. Me ajuda?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Variação simples."
+    },
+    {
+      "id": "MSG-301",
+      "text": "Oi! Mudei de número semana passada. Você pode me fazer um Pix de R$450 agora?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Sem identificar familiar."
+    },
+    {
+      "id": "MSG-302",
+      "text": "Sou eu o Thiago, filho da dona Cleonice. Troquei de número. Me manda R$250?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-303",
+      "text": "BANCO DO BRASIL — SEGURANÇA: Bloqueamos seu acesso. Regularize em http://bb-acesso-seg.com",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Bloqueio + link suspeito."
+    },
+    {
+      "id": "MSG-304",
+      "text": "BB: tentativa de transferência de R$8.000 bloqueada. Confirme em http://bb-confirma.net",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Transferência bloqueada."
+    },
+    {
+      "id": "MSG-305",
+      "text": "Olá, equipe antifraude BB. Seu token foi comprometido. Ligue agora: 4001-2233",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Número falso de antifraude."
+    },
+    {
+      "id": "MSG-306",
+      "text": "Para manter sua conta ativa, atualize seus dados em http://atualizar-dados-bb.com em 24h.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-307",
+      "text": "Confirme sua identidade para usar o Pix: informe CPF, senha e código de segurança.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Tríade de dados sensíveis."
+    },
+    {
+      "id": "MSG-308",
+      "text": "Sua chave Pix foi contestada. Para manter ativa, confirme CPF e data de nascimento.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Contestação de chave Pix."
+    },
+    {
+      "id": "MSG-309",
+      "text": "BB: para liberar limite de crédito aprovado, confirme número do cartão e CVV.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-310",
+      "text": "Parabéns, cliente fidelidade BB! Você ganhou R$800. Taxa de saque: R$40. Pague antes de receber.",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Taxa de saque falsa."
+    },
+    {
+      "id": "MSG-311",
+      "text": "BB Prêmios: você foi selecionado! Clique aqui para resgatar R$1.200: http://bb-premios2024.com",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Link de resgate falso."
+    },
+    {
+      "id": "MSG-312",
+      "text": "Você ganhou uma viagem! Taxa de confirmação R$99. Pague pelo Pix na chave viagem@bb-travel.com",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-313",
+      "text": "Seu boleto do DETRAN foi atualizado. Novo código de pagamento: http://detran-boleto.net/sp/123",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "DETRAN como pretexto."
+    },
+    {
+      "id": "MSG-314",
+      "text": "Atenção: boleto do financiamento vence amanhã. Código atualizado em: http://financ-boleto.com",
+      "label": "scam",
+      "category": "falso_boleto_qr",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Financiamento + link."
+    },
+    {
+      "id": "MSG-315",
+      "text": "QR Code da mensalidade da escola enviado abaixo. Prazo: 5 dias. Contato: escola@mail.com (legítimo)",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "QR Code legítimo de escola."
+    },
+    {
+      "id": "MSG-316",
+      "text": "Filha! Temos seu marido aqui. Ele está bem. R$15.000 no Pix agora. Não avise ninguém.",
+      "label": "scam",
+      "category": "falso_sequestro",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Extorsão de cônjuge."
+    },
+    {
+      "id": "MSG-317",
+      "text": "Central do cartão BB: detectamos fraude. Um motoboy irá recolher seu cartão para análise. Não use até lá.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Golpe do motoboy."
+    },
+    {
+      "id": "MSG-318",
+      "text": "Central: compra de R$5.500 aprovada em São Paulo. Se não reconhece, confirme seu token agora.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-319",
+      "text": "Oi mãe! Feliz aniversário! Te amo muito. Vai ser incrível te ver no final de semana!",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Mensagem de aniversário."
+    },
+    {
+      "id": "MSG-320",
+      "text": "BB: conta conjunta com R$3.200 disponível. Extrato no app.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Confirmação de saldo."
+    },
+    {
+      "id": "MSG-321",
+      "text": "Oi! Aqui é a enfermeira do posto. Seu exame ficou pronto. Pode passar para retirar.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Aviso de exame."
+    },
+    {
+      "id": "MSG-322",
+      "text": "Pai, posso te ligar depois? Preciso de um conselho sobre o emprego novo.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Sem conteúdo financeiro."
+    },
+    {
+      "id": "MSG-323",
+      "text": "BB: débito automático de R$189,00 para plano de saúde realizado em 01/11.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Débito automático."
+    },
+    {
+      "id": "MSG-324",
+      "text": "Oi vó! To passando bem. Quando posso te visitar? Saudades!",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Mensagem afetiva simples."
+    },
+    {
+      "id": "MSG-325",
+      "text": "Supermercado BomPreço: promoção de hoje — desconto de 20% em hortifruti. Válido até 20h.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Oferta comercial legítima."
+    },
+    {
+      "id": "MSG-326",
+      "text": "BB: seu empréstimo pessoal de R$5.000 foi creditado na conta. Vencimento da 1ª parcela: 15/12.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Crédito aprovado."
+    },
+    {
+      "id": "MSG-327",
+      "text": "Mãe, preciso de R$500 emprestado. Estou sem salário esse mês porque mudei de empresa. Te devolvo em janeiro.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Filho adulto pedindo empréstimo. Legítimo."
+    },
+    {
+      "id": "MSG-328",
+      "text": "Oi! Eu sou a Joana, professora do curso de inglês. A mensalidade de novembro ficou em R$280.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Professor cobrando mensalidade."
+    },
+    {
+      "id": "MSG-329",
+      "text": "BB Notificação: Pix para chave desconhecida (R$2.000) aguarda sua autorização no app.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Notificação real de Pix aguardando autorização. Legítimo mas parece alarme."
+    },
+    {
+      "id": "MSG-330",
+      "text": "Oi! Aqui é do condomínio. A taxa extra de pintura ficou R$380 por apartamento. Pagamento até 30/11.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Taxa de condomínio extra. Legítimo."
+    },
+    {
+      "id": "MSG-331",
+      "text": "BB: Sua solicitação de portabilidade de salário foi registrada. Prazo: 1 dia útil.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Confirmação de portabilidade."
+    },
+    {
+      "id": "MSG-332",
+      "text": "Oi, sou o Lucas da academia. Venceu sua mensalidade (R$120). Pode renovar quando vier.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Lembrete de mensalidade."
+    },
+    {
+      "id": "MSG-333",
+      "text": "Filho, consegui vender o carro por R$28.000. Vou depositar sua parte (R$14.000) amanhã.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Transferência entre familiares."
+    },
+    {
+      "id": "MSG-334",
+      "text": "Sou eu, pai. Mudei o número porque aquele antigo era pré-pago. Esse é o definitivo. Pode salvar.",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Troca de número real de pai. Legítimo: sem pedido financeiro."
+    },
+    {
+      "id": "MSG-335",
+      "text": "BB: comprovante de Pix enviado. Chave: 11.111.111/0001-11 — Empresa XYZ. Valor: R$1.500,00.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Comprovante de Pix para empresa."
+    },
+    {
+      "id": "MSG-336",
+      "text": "Cuidado! Estamos com sua mãe. R$20.000 ou ela não volta. Não acione a polícia.",
+      "label": "scam",
+      "category": "falso_sequestro",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Extorsão."
+    },
+    {
+      "id": "MSG-337",
+      "text": "BB: Detectamos compra de R$1.980 às 23h47. Reconhece? Responda N para bloquear.",
+      "label": "scam",
+      "category": "falsa_central_cartao",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Alerta falso de compra noturna. Difícil: formato parece legítimo."
+    },
+    {
+      "id": "MSG-338",
+      "text": "Oi filha! Esse é o whats da vovó Terezinha. Me manda R$150 pra comprar remédio? Tô mal.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Fingindo ser avó doente. Difícil."
+    },
+    {
+      "id": "MSG-339",
+      "text": "BB Seguro: seu carro foi envolvido em sinistro. Acesse http://bb-seguros-sinistro.com para abrir chamado.",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Seguro falso + link."
+    },
+    {
+      "id": "MSG-340",
+      "text": "Olá Maria! Aqui é a Gislaine da farmácia. Seu remédio chegou. R$89,50. Pode vir buscar hoje.",
+      "label": "legitimate",
+      "category": "legitima_comercial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Aviso de farmácia."
+    },
+    {
+      "id": "MSG-341",
+      "text": "BB: Pix reverso de R$250,00 solicitado por erro. Aprovação necessária no app.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "hard",
+      "split": "test",
+      "notes": "Conjunto de teste. Pix reverso legítimo. Confuso."
+    },
+    {
+      "id": "MSG-342",
+      "text": "Aqui é o mecânico. O carro ficou R$1.200. Pode me mandar pelo Pix no número (11) 9xxxx-xxxx?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Cobrança de serviço por Pix direto. Legítimo."
+    },
+    {
+      "id": "MSG-343",
+      "text": "Oi! Novo número aqui. Mudei pq quebrei o celular. Preciso de R$1.000 emprestado até 6ª.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "medium",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-344",
+      "text": "BB: Programa de pontos — você acumulou 12.450 pontos. Resgate no app BB.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Programa de pontos legítimo."
+    },
+    {
+      "id": "MSG-345",
+      "text": "Para concluir seu cadastro no sistema BB, precisamos do código que acabou de chegar no seu celular.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Phishing por código SMS. Difícil."
+    },
+    {
+      "id": "MSG-346",
+      "text": "Oi! Numero mudou, tô em apuros. Preciso de R$2.000 urgente. Me manda pelo Pix.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Apuros + urgência."
+    },
+    {
+      "id": "MSG-347",
+      "text": "BB: alerta de segurança. Alguém tentou alterar sua senha. Confirme em http://bb-senha-confirma.com",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Alterar senha."
+    },
+    {
+      "id": "MSG-348",
+      "text": "Oi, sou a Renata da turma. Vamos dividir a conta do jantar: R$65 por pessoa. Manda quando puder.",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Divisão de conta entre amigos."
+    },
+    {
+      "id": "MSG-349",
+      "text": "BB: agendamento de Pix de R$1.500 para amanhã às 8h confirmado.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Agendamento de Pix."
+    },
+    {
+      "id": "MSG-350",
+      "text": "Seu filho precisa de R$3.000 para cirurgia urgente. Número novo porque estava internado. Me ajuda?",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Filho + cirurgia. Alta dificuldade."
+    },
+    {
+      "id": "MSG-351",
+      "text": "BB: aprovamos sua proposta de consórcio. Primeira parcela de R$820 em 10/12.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Consórcio aprovado."
+    },
+    {
+      "id": "MSG-352",
+      "text": "Aqui é do suporte técnico. Sua senha foi vazada. Para proteger, confirme seus dados de acesso agora.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Suporte genérico + dados de acesso."
+    },
+    {
+      "id": "MSG-353",
+      "text": "Mãe, consegui o emprego novo! Começo na segunda. Você toparia me emprestar R$200 pra eu pagar o uniforme?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Emprego novo + pedido legítimo de valor pequeno."
+    },
+    {
+      "id": "MSG-354",
+      "text": "BB PREMIAÇÃO: Você foi sorteado! Para receber R$5.000, faça um Pix de R$100 como garantia.",
+      "label": "scam",
+      "category": "falso_premio",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Garantia falsa."
+    },
+    {
+      "id": "MSG-355",
+      "text": "Oi! Aqui é o técnico da TV a cabo. Sua conta vence amanhã: R$199. Pode pagar pelo Pix (11) 9xxxx-xxxx?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Técnico cobrando mensalidade. Legítimo."
+    },
+    {
+      "id": "MSG-356",
+      "text": "BB: limite do cheque especial reduzido para R$500. Acesse o app para mais detalhes.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Comunicado de limite."
+    },
+    {
+      "id": "MSG-357",
+      "text": "Detectamos R$4.200 saindo da sua conta por Pix suspeito. Para reverter, confirme sua senha.",
+      "label": "scam",
+      "category": "phishing_credencial",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Pix suspeito inventado para pedir senha."
+    },
+    {
+      "id": "MSG-358",
+      "text": "Vó, sou eu o Gustavo. Meu número mudou. Pode me ajudar com R$350? Tô precisando.",
+      "label": "scam",
+      "category": "golpe_numero_novo",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste."
+    },
+    {
+      "id": "MSG-359",
+      "text": "BB: portabilidade de crédito aprovada. Parcela mensal: R$312. Início: 1º de dezembro.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Portabilidade de crédito."
+    },
+    {
+      "id": "MSG-360",
+      "text": "Oi pai! É a Mariana. Tô bem, tô em Floripa. Vou ligar no fim de semana. Saudades!",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Filha viajando."
+    },
+    {
+      "id": "MSG-361",
+      "text": "Mãe, troquei de celular e perdi os contatos. Esse é meu novo número. Pode me ligar?",
+      "label": "legitimate",
+      "category": "legitima_dificil",
+      "difficulty": "hard",
+      "split": "dev",
+      "notes": "Troca de celular SEM pedido de dinheiro. Legítima."
+    },
+    {
+      "id": "MSG-362",
+      "text": "Detectamos tentativa de acesso não autorizado. Para bloquear, informe seu CPF e senha no link: http://bb-bloquear.co",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "easy",
+      "split": "dev",
+      "notes": "Acesso não autorizado + link com TLD incomum."
+    },
+    {
+      "id": "MSG-363",
+      "text": "Oi Carlos! Aqui é a Luciana. Você pode me pagar os R$200 do aluguel dividido que ficou pendente do mês passado?",
+      "label": "legitimate",
+      "category": "legitima_familiar",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Cobrança legítima entre conhecidos de dívida anterior."
+    },
+    {
+      "id": "MSG-364",
+      "text": "BB: pagamento de R$3.200 para Construtora Alfa aprovado. Comprovante disponível no app.",
+      "label": "legitimate",
+      "category": "legitima_banco_oficial",
+      "difficulty": "easy",
+      "split": "test",
+      "notes": "Conjunto de teste. Pagamento para empresa."
+    },
+    {
+      "id": "MSG-365",
+      "text": "Central de cobranças: seu CPF foi negativado por débito de R$890. Regularize em http://negativado-bb.com",
+      "label": "scam",
+      "category": "falso_suporte_tecnico",
+      "difficulty": "medium",
+      "split": "dev",
+      "notes": "Negativação falsa + link."
+    }
+  ]
+}
