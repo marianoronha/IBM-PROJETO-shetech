@@ -451,3 +451,9 @@ body {
         font-size: 15px;
     }
 }
+
+.card-monitoramento {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
