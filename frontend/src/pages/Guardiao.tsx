@@ -76,21 +76,38 @@ export function GuardiaoPage() {
   const hasPix = !!result?.transaction_id_analyzed
 
   return (
-    <main className="page">
-      <div className="page__inner">
-        <header className="page__header">
-          <h1 className="page__title">🛡️ Guardião</h1>
-          <p className="page__subtitle">
-            IA agêntica contra golpes de engenharia social
-          </p>
-        </header>
+    <main className="gd-page">
+      <header className="gd-hero">
+        <div className="gd-hero__in">
+          <a href="/src/pages/monitoramentoGuardiao.html" className="gd-back" aria-label="Voltar para a apresentação do Guardião">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5" /><path d="m12 19-7-7 7-7" /></svg>
+          </a>
+          <div className="gd-shield" aria-hidden="true">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="#fcd116" />
+              <path d="m8.5 12 2.6 2.6L16 9.7" stroke="#002a63" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+          <div>
+            <h1 className="gd-title">Guardião</h1>
+            <p className="gd-sub">IA agêntica contra golpes de engenharia social</p>
+          </div>
+        </div>
+      </header>
 
+      <div className="gd-wrap">
         {/* Controle de monitoramento — LGPD */}
-        <section className="monitoring-control" aria-label="Controle de monitoramento">
-          <div className="monitoring-control__row">
-            <label htmlFor="monitoring-toggle" className="monitoring-control__label">
-              <strong>Monitoramento ativo</strong>
-              <span className="monitoring-control__note">
+        <section
+          className={`gd-card${monitoringActive ? '' : ' gd-off'}`}
+          aria-label="Controle de monitoramento"
+        >
+          <div className="gd-status">
+            <label htmlFor="monitoring-toggle">
+              <span className="gd-status__h">
+                <span className="gd-dot" aria-hidden="true" />
+                <strong>{monitoringActive ? 'Monitoramento ativo' : 'Monitoramento pausado'}</strong>
+              </span>
+              <span className="gd-status__d" style={{ display: 'block' }}>
                 {monitoringActive
                   ? 'Análise usa seu perfil financeiro sintético para detectar anomalias.'
                   : 'Análise somente da mensagem, sem cruzamento de perfil.'}
@@ -98,30 +115,30 @@ export function GuardiaoPage() {
             </label>
             <button
               id="monitoring-toggle"
+              type="button"
               role="switch"
               aria-checked={monitoringActive}
               onClick={() => setMonitoringActive(v => !v)}
-              className={`toggle-btn${monitoringActive ? ' toggle-btn--on' : ''}`}
+              className="gd-pill"
             >
               {monitoringActive ? 'Pausar' : 'Ativar'}
             </button>
           </div>
-          <p className="monitoring-control__lgpd">
+          <p className="gd-privacy">
             <strong>Dados usados:</strong> ID do usuário (sintético), padrão de transações simulado
             e sinais da análise (score, rótulos, timestamp). O texto da mensagem <strong>não é
             registrado</strong> em nenhum log.{' '}
             <em>
-              Base legal: legítimo interesse para proteção contra fraude — LGPD art.&nbsp;7º,
-              IX.{' '}
-              <strong>⚠️ Texto jurídico a validar por profissional antes de uso em produção.</strong>
+              Base legal: legítimo interesse para proteção contra fraude — LGPD art.&nbsp;7º, IX.
             </em>
+            <strong className="gd-legal">⚠️ Texto jurídico a validar por profissional antes de uso em produção.</strong>
           </p>
         </section>
 
         {/* Formulário de entrada */}
-        <form onSubmit={handleSubmit} className="form" noValidate>
-          <div className="form__group">
-            <label htmlFor="message-input" className="form__label">
+        <form onSubmit={handleSubmit} className="gd-card" noValidate>
+          <div>
+            <label htmlFor="message-input" className="gd-label">
               Cole aqui o link, mensagem ou descrição que você recebeu
             </label>
             <textarea
@@ -130,23 +147,23 @@ export function GuardiaoPage() {
               onChange={e => setMessage(e.target.value)}
               maxLength={MAX_LENGTH}
               rows={5}
-              placeholder="Ex: &quot;Oi mãe, troquei o número, precisa me mandar R$ 800 agora&quot;"
-              className="form__textarea"
+              placeholder="Ex: “Oi mãe, troquei o número, precisa me mandar R$ 800 agora”"
+              className="gd-textarea"
               aria-describedby="message-hint"
               aria-required="true"
               disabled={loading}
               // Segurança: não persiste nem loga o conteúdo
             />
-            <span id="message-hint" className="form__hint">
+            <span id="message-hint" className="gd-hint">
               {message.length}/{MAX_LENGTH} caracteres. O texto da mensagem nunca é registrado em logs.
             </span>
           </div>
 
           {/* Seletor de perfil */}
-          <fieldset className="form__fieldset">
-            <legend className="form__legend">Perfil de explicação</legend>
-            <div className="radio-group">
-              <label className="radio-group__option">
+          <fieldset className="gd-fieldset">
+            <legend className="gd-legend">Perfil de explicação</legend>
+            <div className="gd-opts">
+              <label className="gd-opt">
                 <input
                   type="radio"
                   name="profile"
@@ -155,12 +172,12 @@ export function GuardiaoPage() {
                   onChange={() => setProfile('standard')}
                   aria-describedby="profile-standard-desc"
                 />
-                <span>Padrão</span>
-                <span id="profile-standard-desc" className="radio-group__desc">
-                  Explicação técnica completa
+                <span className="gd-opt__box">
+                  <strong>Padrão</strong>
+                  <small id="profile-standard-desc">Explicação técnica completa</small>
                 </span>
               </label>
-              <label className="radio-group__option">
+              <label className="gd-opt">
                 <input
                   type="radio"
                   name="profile"
@@ -169,24 +186,24 @@ export function GuardiaoPage() {
                   onChange={() => setProfile('low')}
                   aria-describedby="profile-low-desc"
                 />
-                <span>Linguagem simples</span>
-                <span id="profile-low-desc" className="radio-group__desc">
-                  Explicação direta, sem termos técnicos
+                <span className="gd-opt__box">
+                  <strong>Linguagem simples</strong>
+                  <small id="profile-low-desc">Explicação direta, sem termos técnicos</small>
                 </span>
               </label>
             </div>
           </fieldset>
 
           {/* ID do usuário (demo) */}
-          <div className="form__group form__group--inline">
-            <label htmlFor="user-id" className="form__label">
+          <fieldset className="gd-fieldset">
+            <label htmlFor="user-id" className="gd-legend">
               Perfil sintético (demo)
             </label>
             <select
               id="user-id"
               value={userId}
               onChange={e => setUserId(e.target.value)}
-              className="form__select"
+              className="gd-select"
               disabled={!monitoringActive}
             >
               <option value="U001">U001 — Maria S. (baixa familiaridade tech)</option>
@@ -194,12 +211,12 @@ export function GuardiaoPage() {
               <option value="U003">U003 — Roberto A. (jovem adulto)</option>
               <option value="">Sem perfil</option>
             </select>
-          </div>
+          </fieldset>
 
-          <div className="form__actions">
+          <div className="gd-actions">
             <button
               type="submit"
-              className="btn btn--primary"
+              className="gd-btn gd-btn--primary"
               disabled={loading || !message.trim()}
               aria-busy={loading}
             >
@@ -207,7 +224,7 @@ export function GuardiaoPage() {
             </button>
             <button
               type="button"
-              className="btn btn--secondary"
+              className="gd-btn gd-btn--ghost"
               onClick={handleClear}
               disabled={loading}
             >
@@ -237,16 +254,16 @@ export function GuardiaoPage() {
             ref={resultRef}
             tabIndex={-1}
             aria-label="Resultado da análise"
-            className="result"
+            className="result gd-result"
             data-testid="result-section"
           >
             {/* Gauge de risco */}
             <RiskGauge
               score={result.risk_score}
-              label={riskLabel as 'baixo' | 'médio' | 'alto' | 'crítico'}
+              label={riskLabel as "baixo" | "médio" | "alto" | "crítico"}
             />
 
-            {/* Revisão humana */}
+            {/* Revisão humanaSSSSSSSSSSs */}
             {result.requires_human_review && (
               <div role="alert" className="human-review-flag" data-testid="human-review-flag">
                 <strong>Revisão humana recomendada.</strong> Este caso apresenta risco
@@ -338,7 +355,7 @@ export function GuardiaoPage() {
                     </p>
                     <a
                       href="tel:40040001"
-                      className="btn btn--danger"
+                      className="gd-btn gd-btn--danger"
                       data-testid="btn-attendant"
                     >
                       Falar com atendente BB (4004-0001)

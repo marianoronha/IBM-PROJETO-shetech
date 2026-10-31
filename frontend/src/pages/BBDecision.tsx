@@ -90,28 +90,35 @@ export function BBDecisionPage() {
   const scenarioLabel = result ? (SCENARIO_LABELS[result.scenario_type] ?? result.scenario_type) : ''
 
   return (
-    <main className="page">
-      <div className="page__inner">
+    <main className="gd-page bb-page">
+      <header className="gd-hero">
+        <div className="gd-hero__in">
+          <div className="gd-shield" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fcd116" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M9 18h6" /><path d="M10 21h4" />
+              <path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.2 1 2V16h5v-.1c0-.8.4-1.5 1-2A6 6 0 0 0 12 3Z" />
+            </svg>
+          </div>
+          <div>
+            <h1 className="gd-title">BB Decision</h1>
+            <p className="gd-sub">Simule decisões financeiras antes de tomá-las</p>
+          </div>
+        </div>
+      </header>
 
+      <div className="gd-wrap">
         {/* Disclaimer SEMPRE visível no topo — RF-D-10 */}
         <DisclaimerBanner />
 
-        <header className="page__header">
-          <h1 className="page__title">💡 BB Decision</h1>
-          <p className="page__subtitle">
-            Simule decisões financeiras antes de tomá-las
-          </p>
-        </header>
-
         {/* Exemplos clicáveis dos 4 cenários do PDF */}
-        <nav aria-label="Exemplos de perguntas" className="examples">
-          <p className="examples__label">Experimente:</p>
-          <div className="examples__grid">
+        <nav aria-label="Exemplos de perguntas" className="gd-card bb-examples">
+          <p className="bb-examples__label">Experimente:</p>
+          <div className="bb-examples__grid">
             {EXAMPLE_QUESTIONS.map(ex => (
               <button
                 key={ex.label}
                 type="button"
-                className="examples__btn"
+                className="bb-chip"
                 onClick={() => applyExample(ex)}
                 aria-label={`Usar exemplo: ${ex.text}`}
               >
@@ -122,9 +129,9 @@ export function BBDecisionPage() {
         </nav>
 
         {/* Formulário */}
-        <form onSubmit={handleSubmit} className="form" noValidate>
-          <div className="form__group">
-            <label htmlFor="question-input" className="form__label">
+        <form onSubmit={handleSubmit} className="gd-card" noValidate>
+          <div>
+            <label htmlFor="question-input" className="gd-label">
               Faça sua pergunta como faria em uma conversa
             </label>
             <textarea
@@ -133,27 +140,27 @@ export function BBDecisionPage() {
               onChange={e => setQuestion(e.target.value)}
               maxLength={1000}
               rows={3}
-              placeholder='Ex: "E se eu parcelar essa compra em 12x?"'
-              className="form__textarea"
+              placeholder="Ex: “E se eu parcelar essa compra em 12x?”"
+              className="gd-textarea"
               aria-describedby="question-hint"
               aria-required="true"
               disabled={loading}
             />
-            <span id="question-hint" className="form__hint">
+            <span id="question-hint" className="gd-hint">
               {question.length}/1000 caracteres
             </span>
           </div>
 
-          <div className="form__row">
-            <div className="form__group form__group--inline">
-              <label htmlFor="bb-user-id" className="form__label">
+          <div className="bb-row">
+            <div>
+              <label htmlFor="bb-user-id" className="gd-legend">
                 Perfil sintético (demo)
               </label>
               <select
                 id="bb-user-id"
                 value={userId}
                 onChange={e => setUserId(e.target.value)}
-                className="form__select"
+                className="gd-select"
               >
                 <option value="U001">U001 — Maria S. (renda R$ 3.500)</option>
                 <option value="U002">U002 — Carlos M. (renda R$ 8.500)</option>
@@ -162,13 +169,13 @@ export function BBDecisionPage() {
               </select>
             </div>
 
-            <div className="form__group form__group--inline">
-              <label htmlFor="bb-profile" className="form__label">Linguagem</label>
+            <div>
+              <label htmlFor="bb-profile" className="gd-legend">Linguagem</label>
               <select
                 id="bb-profile"
                 value={profile}
                 onChange={e => setProfile(e.target.value as 'standard' | 'low')}
-                className="form__select"
+                className="gd-select"
               >
                 <option value="standard">Padrão</option>
                 <option value="low">Linguagem simples</option>
@@ -176,10 +183,10 @@ export function BBDecisionPage() {
             </div>
           </div>
 
-          <div className="form__actions">
+          <div className="gd-actions">
             <button
               type="submit"
-              className="btn btn--primary"
+              className="gd-btn gd-btn--primary"
               disabled={loading || !question.trim()}
               aria-busy={loading}
             >
@@ -187,7 +194,7 @@ export function BBDecisionPage() {
             </button>
             <button
               type="button"
-              className="btn btn--secondary"
+              className="gd-btn gd-btn--ghost"
               onClick={() => { setQuestion(''); setResult(null); setError(null) }}
               disabled={loading}
             >
@@ -233,18 +240,20 @@ export function BBDecisionPage() {
             ref={resultRef}
             tabIndex={-1}
             aria-label="Resultado da simulação"
-            className="result"
+            className="result gd-result"
             data-testid="result-section"
           >
-            <h2 className="result__scenario-title">
-              Simulação: {scenarioLabel}
-            </h2>
-            <p className="result__question-understood">
-              Entendi: <em>{result.question_understood}</em>
-            </p>
+            <div className="gd-card bb-head">
+              <h2 className="result__scenario-title">
+                Simulação: {scenarioLabel}
+              </h2>
+              <p className="result__question-understood">
+                Entendi: <em>{result.question_understood}</em>
+              </p>
+            </div>
 
             {/* Narrativa da IA */}
-            <div className="result__narrative" data-testid="narrative">
+            <div className="gd-card result__narrative" data-testid="narrative">
               <h3>Resumo</h3>
               <SafeText text={result.narrative} className="result__narrative-text" />
             </div>
@@ -295,7 +304,6 @@ export function BBDecisionPage() {
             Faça uma pergunta acima ou clique em um dos exemplos para começar.
           </div>
         )}
-
       </div>
     </main>
   )

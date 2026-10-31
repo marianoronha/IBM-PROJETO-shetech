@@ -1,0 +1,50 @@
+/* =========================================================
+   BB Decision — visual atualizado (usa gd-* de guardiao.css
+   e as variáveis --gd-* de menu.css). Escopo: .bb-page
+   ========================================================= */
+
+/* aviso obrigatório (sempre visível, logo abaixo do hero) */
+.bb-page .disclaimer-banner{margin:0;background:var(--gd-warn-bg);border:1px solid #f1c27a;border-left:6px solid var(--gd-warn);border-radius:14px;padding:14px 18px;color:#7a3d06;font-size:.9rem;font-weight:600;box-shadow:var(--gd-shadow)}
+
+/* exemplos */
+.bb-examples__label{margin:0 0 12px;font-weight:700}
+.bb-examples__grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.bb-chip{padding:14px 16px;border:1.5px solid var(--gd-line);border-radius:14px;background:var(--gd-surface-2);font:700 .95rem var(--gd-font);color:var(--gd-text);text-align:left;cursor:pointer;transition:border-color .15s,background .15s,transform .15s}
+.bb-chip:hover{border-color:var(--gd-blue);background:#eaf1fd;transform:translateY(-2px)}
+
+/* linha de selects */
+.bb-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:26px}
+
+/* aviso de esclarecimento */
+.bb-page .clarification{background:#eaf1fd;border:1px solid #9bbcf0;border-left:6px solid var(--gd-blue);border-radius:14px;padding:18px 20px;margin:0}
+.bb-page .clarification__title{margin:0 0 6px;font-weight:800}
+
+/* resultado */
+.bb-head{padding:20px 24px}
+.bb-page .result__scenario-title{margin:0 0 4px;font-size:1.3rem;font-weight:800;letter-spacing:-.01em}
+.bb-page .result__question-understood{margin:0;color:var(--gd-muted);font-size:.95rem}
+.bb-page .result__narrative h3{margin:0 0 8px;font-size:1.05rem}
+.bb-page .comparison{margin:0}
+.bb-page .comparison__title{margin:0 0 12px;font-size:1.1rem;font-weight:800}
+.bb-page .comparison__grid{gap:16px}
+
+.bb-page .scenario-card{position:relative;background:var(--gd-surface);border:1.5px solid var(--gd-line);border-radius:18px;padding:22px;box-shadow:var(--gd-shadow)}
+.bb-page .scenario-card__title{margin:0 0 14px;font-size:1rem;font-weight:800}
+.bb-page .scenario-card__list{gap:0}
+.bb-page .scenario-card__row{padding:9px 0;border-bottom:1px solid var(--gd-line);align-items:baseline}
+.bb-page .scenario-card__row:last-child{border-bottom:0}
+.bb-page .scenario-card__key{color:var(--gd-muted)}
+.bb-page .scenario-card__value{color:var(--gd-text);font-weight:800}
+.bb-page .scenario-card--highlight{border-color:var(--gd-blue);background:linear-gradient(180deg,#eaf1fd 0%,var(--gd-surface) 60%);box-shadow:0 0 0 3px rgba(26,95,208,.12),var(--gd-shadow)}
+.bb-page .scenario-card--highlight::before{content:"Alternativa";position:absolute;top:-11px;right:18px;background:var(--gd-blue);color:#fff;font-size:.72rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;padding:3px 12px;border-radius:999px}
+
+.bb-page .warnings{background:var(--gd-warn-bg);border:1px solid #f1c27a;border-left:6px solid var(--gd-warn);border-radius:14px;padding:18px 20px;margin:0}
+.bb-page .warnings h3{margin:0 0 6px;color:var(--gd-warn)}
+.bb-page .warnings li{margin-bottom:4px}
+.bb-page .assumptions{background:var(--gd-surface);border:1px solid var(--gd-line);border-radius:14px;padding:14px 18px;margin:0}
+.bb-page .assumptions summary{cursor:pointer;font-weight:700}
+.bb-page .assumptions ul{margin-top:10px;padding-left:1.2rem;color:var(--gd-muted);font-size:.9rem}
+
+@media (max-width:640px){
+  .bb-examples__grid,.bb-row,.bb-page .comparison__grid{grid-template-columns:1fr}
+}

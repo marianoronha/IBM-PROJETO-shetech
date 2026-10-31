@@ -8,13 +8,14 @@
  */
 interface RiskGaugeProps {
   score: number          // 0–100
-  label: 'baixo' | 'médio' | 'alto'
+  label: 'baixo' | 'médio' | 'alto' | 'crítico'
 }
 
 const CONFIG = {
-  baixo: { color: '#1a7f37', bg: '#dcfce7', icon: '🟢', text: 'Baixo', border: '#1a7f37' },
-  médio: { color: '#9a6700', bg: '#fef9c3', icon: '🟡', text: 'Médio', border: '#9a6700' },
-  alto:  { color: '#b91c1c', bg: '#fee2e2', icon: '🔴', text: 'Alto',  border: '#b91c1c' },
+  baixo:   { color: '#1a7f37', bg: '#dcfce7', icon: '🟢', text: 'Baixo',   border: '#1a7f37' },
+  médio:   { color: '#9a6700', bg: '#fef9c3', icon: '🟡', text: 'Médio',   border: '#9a6700' },
+  alto:    { color: '#b91c1c', bg: '#fee2e2', icon: '🔴', text: 'Alto',    border: '#b91c1c' },
+  crítico: { color: '#7f1d1d', bg: '#fecaca', icon: '🚨', text: 'Crítico', border: '#7f1d1d' },
 }
 
 export function RiskGauge({ score, label }: RiskGaugeProps) {

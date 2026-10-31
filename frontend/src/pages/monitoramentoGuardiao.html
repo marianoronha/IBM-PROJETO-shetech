@@ -1,173 +1,100 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Monitoramento - Guardião</title>
+    <title>Guardião — Apresentação</title>
+    <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/monitoramentoGuardiao.css">
 </head>
 <body>
 
-    <div class="container">
+<div class="gd-app">
 
-        <!-- MENU LATERAL -->
-        <aside class="sidebar">
+    <!-- MENU LATERAL (mesmo bloco em todas as páginas; estilo em styles/menu.css) -->
+    <aside class="gd-side">
+        <button type="button" class="gd-collapse" id="gd-col" aria-label="Recolher menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+        </button>
 
-            <div class="logo">
-                Guardião<span class="logo-detail">✳</span>
+        <div class="gd-logo">
+            <svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="#fcd116"/><path d="m8.5 12 2.6 2.6L16 9.7" stroke="#002a63" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="gd-wm">Guardião<i></i></span>
+        </div>
+
+        <nav class="gd-nav" aria-label="Menu principal">
+            <a class="gd-item" href="inicialguardiao.html" title="Início"><svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg><span class="gd-lbl">Início</span></a>
+            <a class="gd-item" href="aprender.html" title="Aprender"><svg viewBox="0 0 24 24"><path d="M12 6v14"/><path d="M3 5h6a3 3 0 0 1 3 3v12a2.5 2.5 0 0 0-2.5-2.5H3z"/><path d="M21 5h-6a3 3 0 0 0-3 3v12a2.5 2.5 0 0 1 2.5-2.5H21z"/></svg><span class="gd-lbl">Aprender</span></a>
+            <a class="gd-item" href="monitoramentoGuardiao.html" title="Guardião" aria-current="page"><svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.2 7 10 4-1.8 7-5.5 7-10V6z"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg><span class="gd-lbl">Guardião</span></a>
+            <a class="gd-item" href="/bbdecision" title="Decision"><svg viewBox="0 0 24 24"><path d="M5 20V12"/><path d="M12 20V5"/><path d="M19 20v-9"/></svg><span class="gd-lbl">Decision</span></a>
+            <a class="gd-item" href="#" title="Chat"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg><span class="gd-lbl">Chat</span></a>
+            <a class="gd-item" href="#" title="Perfil"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg><span class="gd-lbl">Perfil</span></a>
+            <a class="gd-item gd-out" href="#" title="Sair"><svg viewBox="0 0 24 24"><path d="M10 4H5v16h5"/><path d="M9 12h11"/><path d="m16 8 4 4-4 4"/></svg><span class="gd-lbl">Sair</span></a>
+        </nav>
+    </aside>
+
+    <!-- CONTEÚDO -->
+    <div class="gd-content">
+
+        <!-- APRESENTAÇÃO -->
+        <header class="ap-hero">
+            <div class="ap-hero__in">
+                <a href="inicialguardiao.html" class="ap-back" aria-label="Voltar para o início">
+                    <svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+                </a>
+                <div class="ap-hero__text">
+                    <span class="ap-chip"><span class="ap-dot"></span> Monitoramento ativo 24h</span>
+                    <h1>Guardião</h1>
+                    <p>Sua proteção contra golpes de engenharia social. Cole uma mensagem, link ou descrição e a IA mostra se há sinais de fraude.</p>
+                    <!-- BOTÃO PRINCIPAL: abre a tela de análise (rota React /guardiao) -->
+                    <a href="/guardiao" class="ap-cta">Testar mensagem
+                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+                    </a>
+                </div>
+                <img class="ap-mascote" src="../img/Amascote.png" alt="Mascote Guardião">
             </div>
+        </header>
 
-            <nav class="menu">
+        <main class="ap-main">
 
-                <a href="inicialguardiao.html" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 10L12 3L21 10V21H14V14H10V21H3Z"/>
-                    </svg>
-                    <span>Início</span>
-                </a>
-
-                <a href="aprender.html" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 5.5C3 4.1 4.1 3 5.5 3H12V21H5.5A2.5 2.5 0 0 0 3 23V5.5Z"/>
-                        <path d="M21 5.5C21 4.1 19.9 3 18.5 3H12V21H18.5A2.5 2.5 0 0 1 21 23V5.5Z"/>
-                    </svg>
-                    <span>Aprender</span>
-                </a>
-
-                <a href="monitoramentoGuardiao.html" class="menu-item active">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"/>
-                        <path d="M8.5 12L11 14.5L16 9"/>
-                    </svg>
-                    <span>Guardião</span>
-                </a>
-
-                <a href="#" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 20H21"/>
-                        <path d="M5 20V14H9V20"/>
-                        <path d="M11 20V9H15V20"/>
-                        <path d="M17 20V3H21V20"/>
-                    </svg>
-                    <span>Decision</span>
-                </a>
-
-                <a href="#" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 11.5A8.5 8.5 0 0 1 12.5 20A8.5 8.5 0 0 1 8 18.7L3 21L4.5 16A8.5 8.5 0 1 1 21 11.5Z"/>
-                        <path d="M8 11H8.01M12 11H12.01M16 11H16.01"/>
-                    </svg>
-                    <span>Chat</span>
-                </a>
-
-                <a href="#" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="7" r="4"/>
-                        <path d="M4 21V19C4 15 7 13 12 13C17 13 20 15 20 19V21Z"/>
-                    </svg>
-                    <span>Perfil</span>
-                </a>
-
-            </nav>
-
-            <a href="#" class="menu-item sair">
-                <svg viewBox="0 0 24 24">
-                    <path d="M10 17L15 12L10 7"/>
-                    <path d="M15 12H3"/>
-                    <path d="M12 3H19C20 3 21 4 21 5V19C21 20 20 21 19 21H12"/>
-                </svg>
-                <span>Sair</span>
-            </a>
-
-        </aside>
-
-
-        <!-- CONTEÚDO PRINCIPAL -->
-        <main class="conteudo">
-
-            <!-- CABEÇALHO -->
-            <header class="cabecalho-pagina">
-
-                <a href="inicialguardiao.html" class="voltar" aria-label="Voltar">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M19 12H5"/>
-                        <path d="M12 19L5 12L12 5"/>
-                    </svg>
-                </a>
-
-                <h1>Monitoramento</h1>
-
-            </header>
-
-
-            <!-- STATUS DO MONITORAMENTO -->
-            <section class="status-monitoramento">
-
-                <div class="icone-status">
-                    <img src="../img/escudo.png" alt="Escudo de proteção">
+            <section aria-labelledby="t-como">
+                <h2 id="t-como" class="ap-h2">Como o Guardião protege você</h2>
+                <div class="ap-steps">
+                    <article class="ap-step"><span class="ap-num">1</span><h3>Você compartilha</h3><p>Cole a mensagem, o link ou descreva o que recebeu.</p></article>
+                    <article class="ap-step"><span class="ap-num">2</span><h3>A IA analisa</h3><p>Procura sinais de golpe e cruza com o seu perfil financeiro sintético.</p></article>
+                    <article class="ap-step"><span class="ap-num">3</span><h3>Você decide</h3><p>Recebe o nível de risco, o motivo e o que fazer agora, com explicação simples.</p></article>
                 </div>
-
-                <div class="texto-status">
-                    <h2>Status de monitoramento</h2>
-                    <p>
-                        Analisando mensagens, links e transações 24h por dia.
-                    </p>
-                </div>
-
-                <div class="mascote-monitoramento">
-                    <img src="../img/Amascote.png" alt="Mascote Guardião">
-                </div>
-
             </section>
 
-
-            <!-- CATEGORIAS MONITORADAS -->
-            <section class="secao-monitoramento">
-
-                <h2>O que estamos monitorando?</h2>
-
-                <div class="grade-monitoramento">
-
-                    <a href="testegolpemensagem.html" class="card-monitoramento">
-
-                <div class="icone-card">
-                    <img src="../img/carta.png" alt="Ícone de mensagens">
+            <section aria-labelledby="t-mon">
+                <h2 id="t-mon" class="ap-h2">O que estamos monitorando?</h2>
+                <div class="ap-grid">
+                    <a href="/guardiao" class="ap-card ap-card--main">
+                        <span class="ap-ico"><img src="../img/carta.png" alt=""></span>
+                        <h3>Mensagens</h3>
+                        <small>Testar agora</small>
+                    </a>
+                    <a href="testelink.html" class="ap-card">
+                        <span class="ap-ico"><img src="../img/link.png" alt=""></span>
+                        <h3>Links</h3>
+                    </a>
+                    <a href="testetransacoes.html" class="ap-card">
+                        <span class="ap-ico"><img src="../img/transacao.png" alt=""></span>
+                        <h3>Transações</h3>
+                    </a>
+                    <a href="testeaplicativos.html" class="ap-card">
+                        <span class="ap-ico"><img src="../img/celular.png" alt=""></span>
+                        <h3>Aplicativos</h3>
+                    </a>
                 </div>
-
-                <h3>Mensagens</h3>
-
-            </a>
-
-<a href="testelink.html" class="card-monitoramento">
-    <div class="icone-card">
-        <img src="../img/link.png" alt="Ícone de links">
-    </div>
-    <h3>Links</h3>
-</a>
-
-<a href="testetransacoes.html" class="card-monitoramento">
-    <div class="icone-card">
-        <img src="../img/transacao.png" alt="Ícone de transações">
-    </div>
-    <h3>Transações</h3>
-</a>
-
-
-                    <a href="testeaplicativos.html" class="card-monitoramento">
-    <div class="icone-card">
-        <img src="../img/celular.png" alt="Ícone de aplicativos">
-    </div>
-    <h3>Aplicativos</h3>
-</a>
-
-                </div>
-
+                <p class="ap-extra">Quer treinar o olhar? <a href="testegolpemensagem.html">Faça o quiz “Essa mensagem é um golpe?”</a></p>
             </section>
 
+            <p class="ap-priv">🔒 O texto da mensagem não é registrado em nenhum log. Base legal: legítimo interesse para proteção contra fraude (LGPD art. 7º, IX).</p>
         </main>
-
     </div>
+</div>
 
+<script src="../js/menu.js"></script>
 </body>
 </html>
