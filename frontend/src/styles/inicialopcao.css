@@ -1,0 +1,430 @@
+
+/* =====================================
+   CONFIGURAÇÕES GERAIS
+===================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', serif;
+    background-color: #ffffff;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* =====================================
+   MENU LATERAL PADRÃO
+===================================== */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 278px;
+    height: 100vh;
+    background-color: #001869;
+    display: flex;
+    flex-direction: column;
+    padding: 27px 13px;
+    overflow: hidden;
+    flex-shrink: 0;
+    z-index: 100;
+}
+
+.logo {
+    color: #ffffff;
+    font-size: 45px;
+    font-weight: bold;
+    margin-left: 2px;
+    margin-bottom: 35px;
+    white-space: nowrap;
+}
+
+.logo-detail {
+    color: #00d6ad;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    width: 100%;
+    min-height: 70px;
+    height: 70px;
+    padding: 0 10px;
+    border-radius: 16px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 23px;
+    flex-shrink: 0;
+    transition: background-color 0.2s ease;
+}
+
+.menu-item svg {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    fill: currentColor;
+    stroke: currentColor;
+    stroke-width: 1.2;
+    color: #ffffff;
+}
+
+.menu-item:hover {
+    background-color: #073b9b;
+}
+
+.menu-item.active {
+    background-color: #0758c8;
+}
+
+.sair {
+    margin-top: auto;
+}
+
+
+/* =====================================
+   CONTEÚDO
+===================================== */
+
+.conteudo {
+    width: calc(100% - 278px);
+    min-height: 100vh;
+    margin-left: 278px;
+    padding: 40px 35px 50px;
+    background-color: #ffffff;
+}
+
+
+/* =====================================
+   SAUDAÇÃO
+===================================== */
+
+.cabecalho {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.saudacao h1 {
+    color: #092f5c;
+    font-size: 34px;
+    margin-bottom: 7px;
+}
+
+.saudacao p {
+    color: #71849a;
+    font-size: 19px;
+}
+
+
+/* =====================================
+   BANNER
+===================================== */
+
+.banner {
+    width: 100%;
+    min-height: 155px;
+    background-color: #e3f2ff;
+    border-radius: 22px;
+    display: flex;
+    align-items: center;
+    padding: 15px 30px;
+    margin-bottom: 35px;
+    overflow: hidden;
+}
+
+.imagem-banner {
+    width: 180px;
+    height: 125px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.imagem-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.texto-banner {
+    margin-left: 20px;
+}
+
+.texto-banner h2 {
+    color: #073b82;
+    font-size: 28px;
+    margin-bottom: 10px;
+}
+
+.texto-banner p {
+    color: #4776a7;
+    font-size: 19px;
+}
+
+
+/* =====================================
+   CARTÕES PRINCIPAIS
+===================================== */
+
+.opcoes-principais {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+    width: 100%;
+}
+
+.card-opcao {
+    min-height: 325px;
+    padding: 25px 22px;
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: flex-start;
+}
+
+.card-guardiao {
+    background: linear-gradient(145deg, #0759bd, #0877df);
+    color: #ffffff;
+}
+
+.card-decision {
+    background-color: #ffdf35;
+    color: #092f5c;
+}
+
+
+/* ÍCONES DOS CARTÕES */
+
+.icone-opcao {
+    width: 85px;
+    height: 85px;
+    border-radius: 23px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.card-guardiao .icone-opcao {
+    background-color: #e4f3ff;
+}
+
+.card-decision .icone-opcao {
+    background-color: #073b82;
+}
+
+.icone-opcao img {
+    width: 65%;
+    height: 65%;
+    object-fit: contain;
+}
+
+
+/* TEXTOS DOS CARTÕES */
+
+.card-opcao h2 {
+    font-size: 27px;
+    margin-bottom: 12px;
+}
+
+.card-opcao p {
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.card-decision p {
+    color: #695b08;
+}
+
+
+/* BOTÕES */
+
+.botao-acessar {
+    width: 100%;
+    max-width: 280px;
+    min-height: 48px;
+    border-radius: 15px;
+    background-color: #ffffff;
+    color: #073b82;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: auto;
+    transition: 0.2s ease;
+}
+
+.botao-acessar:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+
+/* =====================================
+   RESPONSIVIDADE
+===================================== */
+
+@media (max-width: 1150px) {
+
+    .sidebar {
+        width: 250px;
+    }
+
+    .conteudo {
+        width: calc(100% - 250px);
+        margin-left: 250px;
+        padding: 30px 20px 50px;
+    }
+
+    .logo {
+        font-size: 37px;
+    }
+
+    .menu-item {
+        font-size: 20px;
+        gap: 17px;
+    }
+
+    .card-opcao {
+        min-height: 300px;
+    }
+
+    .texto-banner h2 {
+        font-size: 24px;
+    }
+}
+
+
+@media (max-width: 760px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+        min-height: auto;
+        padding: 15px;
+        overflow: visible;
+    }
+
+    .logo {
+        font-size: 30px;
+        margin: 0 0 15px 10px;
+    }
+
+    .menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+
+    .menu-item {
+        width: auto;
+        min-height: 48px;
+        height: 48px;
+        padding: 0 12px;
+        gap: 8px;
+        font-size: 16px;
+    }
+
+    .menu-item svg {
+        width: 24px;
+        height: 24px;
+    }
+
+    .sair {
+        margin-top: 5px;
+    }
+
+    .conteudo {
+        width: 100%;
+        margin-left: 0;
+        padding: 25px 18px 45px;
+    }
+
+    .banner {
+        min-height: 130px;
+        padding: 12px;
+    }
+
+    .imagem-banner {
+        width: 115px;
+        height: 105px;
+    }
+
+    .texto-banner {
+        margin-left: 10px;
+    }
+
+    .texto-banner h2 {
+        font-size: 20px;
+    }
+
+    .texto-banner p {
+        font-size: 15px;
+    }
+
+    .opcoes-principais {
+        grid-template-columns: 1fr;
+    }
+
+    .card-opcao {
+        min-height: 290px;
+    }
+}
+
+
+@media (max-width: 420px) {
+
+    .menu-item {
+        font-size: 14px;
+        padding: 0 8px;
+        gap: 5px;
+    }
+
+    .menu-item svg {
+        width: 20px;
+        height: 20px;
+    }
+
+    .saudacao h1 {
+        font-size: 28px;
+    }
+
+    .banner {
+        flex-direction: column;
+        text-align: center;
+        padding: 15px;
+    }
+
+    .texto-banner {
+        margin: 5px 0;
+    }
+}
