@@ -1,0 +1,193 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Histórico de testes - Guardião</title>
+
+    <link rel="stylesheet" href="../styles/historicotestes.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- MENU LATERAL -->
+        <aside class="sidebar">
+
+            <div class="logo">
+                Guardião<span class="logo-detail">✳</span>
+            </div>
+
+            <nav class="menu">
+
+                <a href="inicialguardiao.html" class="menu-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 10L12 3L21 10V21H14V14H10V21H3Z"/>
+                    </svg>
+                    <span>Início</span>
+                </a>
+
+                <a href="aprender.html" class="menu-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 5.5C3 4.1 4.1 3 5.5 3H12V21H5.5A2.5 2.5 0 0 0 3 23V5.5Z"/>
+                        <path d="M21 5.5C21 4.1 19.9 3 18.5 3H12V21H18.5A2.5 2.5 0 0 1 21 23V5.5Z"/>
+                    </svg>
+                    <span>Aprender</span>
+                </a>
+
+                <a href="monitoramentoGuardiao.html" class="menu-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"/>
+                        <path d="M8.5 12L11 14.5L16 9"/>
+                    </svg>
+                    <span>Guardião</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M3 20H21"/>
+                        <path d="M5 20V14H9V20"/>
+                        <path d="M11 20V9H15V20"/>
+                        <path d="M17 20V3H21V20"/>
+                    </svg>
+                    <span>Decision</span>
+                </a>
+
+                <a href="testegolpemensagem.html" class="menu-item active">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21 11.5A8.5 8.5 0 0 1 12.5 20A8.5 8.5 0 0 1 8 18.7L3 21L4.5 16A8.5 8.5 0 1 1 21 11.5Z"/>
+                        <path d="M8 11H8.01M12 11H12.01M16 11H16.01"/>
+                    </svg>
+                    <span>Chat</span>
+                </a>
+
+                <a href="#" class="menu-item">
+                    <svg viewBox="0 0 24 24">
+                        <circle cx="12" cy="7" r="4"/>
+                        <path d="M4 21V19C4 15 7 13 12 13C17 13 20 15 20 19V21Z"/>
+                    </svg>
+                    <span>Perfil</span>
+                </a>
+
+            </nav>
+
+            <a href="#" class="menu-item sair">
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 17L15 12L10 7"/>
+                    <path d="M15 12H3"/>
+                    <path d="M12 3H19C20 3 21 4 21 5V19C21 20 20 21 19 21H12"/>
+                </svg>
+                <span>Sair</span>
+            </a>
+
+        </aside>
+
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="conteudo">
+
+            <!-- CABEÇALHO -->
+            <header class="cabecalho-pagina">
+
+                <a href="testegolpemensagem.html" class="voltar" aria-label="Voltar">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 12H5"/>
+                        <path d="M12 19L5 12L12 5"/>
+                    </svg>
+                </a>
+
+                <h1>Histórico de testes</h1>
+
+            </header>
+
+
+            <!-- LISTA DO HISTÓRICO -->
+            <section class="lista-historico">
+
+                <!-- TESTE 1 -->
+                <article class="item-historico">
+
+                    <div class="icone-historico icone-golpe">
+                        <img src="../img/prancheta.png" alt="Mensagem suspeita">
+                    </div>
+
+                    <div class="informacoes-teste">
+                        <h2>Mensagem sobre prêmio</h2>
+                        <p>25/10/2025 - 14:52</p>
+                    </div>
+
+                    <span class="classificacao golpe">
+                        + Golpe
+                    </span>
+
+                </article>
+
+
+                <!-- TESTE 2 -->
+                <article class="item-historico">
+
+                    <div class="icone-historico icone-seguro">
+                        <img src="../img/banco.png" alt="Banco">
+                    </div>
+
+                    <div class="informacoes-teste">
+                        <h2>Link de atualização de conta</h2>
+                        <p>24/10/2025 - 11:28</p>
+                    </div>
+
+                    <span class="classificacao seguro">
+                        É Seguro
+                    </span>
+
+                </article>
+
+
+                <!-- TESTE 3 -->
+                <article class="item-historico">
+
+                    <div class="icone-historico icone-golpe">
+                        <img src="../img/link.png" alt="Link suspeito">
+                    </div>
+
+                    <div class="informacoes-teste">
+                        <h2>Falso suporte de banco</h2>
+                        <p>20/10/2025 - 09:12</p>
+                    </div>
+
+                    <span class="classificacao golpe">
+                        Golpe
+                    </span>
+
+                </article>
+
+
+                <!-- TESTE 4 -->
+                <article class="item-historico">
+
+                    <div class="icone-historico icone-seguro">
+                        <img src="../img/mensagem.png" alt="Mensagem">
+                    </div>
+
+                    <div class="informacoes-teste">
+                        <h2>Promoção imperdível</h2>
+                        <p>18/10/2025 - 16:45</p>
+                    </div>
+
+                    <span class="classificacao seguro">
+                        É Seguro
+                    </span>
+
+                </article>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
