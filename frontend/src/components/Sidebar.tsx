@@ -16,7 +16,7 @@ const icon = (children: ReactNode) => (
 )
 
 const ITEMS: { key: MenuKey; label: string; href: string; router?: boolean; icon: ReactNode }[] = [
-  { key: 'inicio', label: 'Início', href: `${PAGES}inicialguardiao.html`,
+  { key: 'inicio', label: 'Início', href: `${PAGES}monitoramentoGuardiao.html`,
     icon: icon(<><path d="M3 11 12 3l9 8" /><path d="M5 10v10h14V10" /><path d="M10 20v-6h4v6" /></>) },
   { key: 'aprender', label: 'Aprender', href: `${PAGES}aprender.html`,
     icon: icon(<><path d="M12 6v14" /><path d="M3 5h6a3 3 0 0 1 3 3v12a2.5 2.5 0 0 0-2.5-2.5H3z" /><path d="M21 5h-6a3 3 0 0 0-3 3v12a2.5 2.5 0 0 1 2.5-2.5H21z" /></>) },
