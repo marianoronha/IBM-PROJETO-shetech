@@ -1,0 +1,426 @@
+/* ===== Tela de Cadastro — Guardião ===== */
+:root {
+  --azul:         #1f4fd8;
+  --azul-escuro:  #14369b;
+  --amarelo:      #ffd21f;
+  --branco:       #ffffff;
+  --texto:        #1c2540;
+  --texto-suave:  #5d6a8a;
+  --cinza-input:  #f0f2f8;
+  --borda-input:  #d1d8ee;
+  --raio-card:    22px;
+  --sombra-card:  0 16px 48px rgba(20, 54, 155, 0.22), 0 2px 8px rgba(0,0,0,.10);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+  /* gradiente suave azul-amarelo no fundo */
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 50%, rgba(31, 79, 216, .07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 90% 80%, rgba(255, 210, 31, .13) 0%, transparent 65%),
+    #f5f7ff;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* ─── DECORAÇÕES DE FUNDO ─────────────────────────────── */
+.bg-deco {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.deco-superior {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.deco-inferior {
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.deco-lateral {
+  position: absolute;
+  top: 0; right: 0;
+  height: 100%;
+  width: auto;
+  display: block;
+  opacity: .95;
+}
+
+/* ─── LAYOUT PRINCIPAL ────────────────────────────────── */
+.pagina {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* padding-right generoso para o mascote não sobrepor o card */
+  padding: 40px 360px 40px 24px;
+}
+
+/* ─── COLUNA CENTRAL DO FORMULÁRIO ───────────────────── */
+.lado-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  width: 100%;
+  max-width: 560px;
+}
+
+/* ─── MASCOTE: fora do fluxo, colado à direita ────────── */
+.lado-mascote {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  pointer-events: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+}
+
+.mascote-img {
+  height: 90vh;
+  max-height: 510px;
+  width: auto;
+  display: block;
+  image-rendering: high-quality;
+  filter: drop-shadow(-8px 0 24px rgba(20, 54, 155, .15));
+}
+
+/* ─── BADGE + TÍTULO FORA DO CARD ────────────────────── */
+.titulo-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding-left: 19px;
+}
+
+.badge-guardiao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 216, 54, 0.521);
+  color: rgba(126, 108, 10, 0.521);
+  font-size: .75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(104, 85, 23, 0.2);
+  width: fit-content;
+}
+
+.badge-guardiao svg {
+  flex-shrink: 0;
+}
+
+.titulo-guardiao {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--azul-escuro);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+/* acento amarelo embaixo da primeira letra */
+.titulo-guardiao em {
+  font-style: normal;
+  position: relative;
+  bottom: 6px;
+}
+.titulo-guardiao em::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -1px;
+  width: 100%;
+  height: 4px;
+  background: var(--amarelo);
+  border-radius: 2px;
+}
+
+/* ─── CARD PRINCIPAL ──────────────────────────────────── */
+.card-principal {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border-radius: var(--raio-card);
+  box-shadow: var(--sombra-card);
+  border-top: 4px solid var(--azul);
+  padding: 32px 36px 28px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ─── SUBTÍTULO ───────────────────────────────────────── */
+.card-subtitulo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.subtitulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.4;
+}
+
+.subtitulo span {
+  color: var(--texto-suave);
+  font-weight: 600;
+  font-size: .92rem;
+}
+
+/* ─── LINHA DIVISÓRIA ─────────────────────────────────── */
+.divisor {
+  border: none;
+  border-top: 1.5px solid var(--borda-input);
+  margin: 0;
+}
+
+/* ─── SEÇÃO COM ÍCONE ────────────────────────────────── */
+.secao-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: .78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--azul);
+  margin-bottom: -0.5px;
+}
+
+.secao-label svg {
+  color: var(--azul);
+  flex-shrink: 0;
+}
+
+/* ─── GRUPOS DE CAMPO ─────────────────────────────────── */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.campo.full {
+  grid-column: 1 / -1;
+}
+
+.campo label {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+.campo input,
+.campo select {
+  background: var(--cinza-input);
+  border: 1.5px solid var(--borda-input);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: .93rem;
+  font-weight: 600;
+  color: var(--texto);
+  outline: none;
+  transition: border-color .18s, box-shadow .18s, background .18s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.campo input::placeholder {
+  color: #aab2cc;
+  font-weight: 600;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(31, 79, 216, .13);
+  background: #fff;
+}
+
+/* select custom arrow */
+.campo select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235d6a8a' stroke-width='1.8' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  padding-right: 38px;
+  cursor: pointer;
+}
+
+/* ─── FORÇA DA SENHA ──────────────────────────────────── */
+.senha-wrap {
+  position: relative;
+}
+
+.senha-wrap input {
+  width: 100%;
+  padding-right: 42px;
+}
+
+.senha-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: var(--texto-suave);
+  transition: color .15s;
+}
+.senha-toggle:hover { color: var(--azul); }
+
+.forca-senha {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 5px;
+}
+
+.forca-barras {
+  display: flex;
+  gap: 4px;
+  flex: 1;
+}
+
+.forca-barra {
+  flex: 1;
+  height: 4px;
+  border-radius: 99px;
+  background: var(--borda-input);
+  transition: background .3s;
+}
+
+.forca-barra.fraca  { background: #e53e3e; }
+.forca-barra.media  { background: #f6ad55; }
+.forca-barra.forte  { background: #38a169; }
+
+.forca-label {
+  font-size: .73rem;
+  font-weight: 800;
+  color: var(--texto-suave);
+  min-width: 36px;
+}
+
+/* ─── TERMOS ──────────────────────────────────────────── */
+.termos {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--texto-suave);
+  line-height: 1.45;
+  background: rgba(31, 79, 216, .04);
+  border: 1px solid rgba(31, 79, 216, .12);
+  border-radius: 10px;
+  padding: 10px 12px;
+}
+
+.termos input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin-top: 2px;
+  accent-color: var(--azul);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.termos a {
+  color: var(--azul);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.termos a:hover { text-decoration: underline; }
+
+/* ─── BOTÃO PRINCIPAL ─────────────────────────────────── */
+.btn-cadastrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-escuro) 100%);
+  color: var(--branco);
+  border: none;
+  border-radius: 14px;
+  padding: 15px 18px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform .15s, box-shadow .15s, filter .15s;
+  box-shadow: 0 6px 18px rgba(20, 54, 155, .32);
+  width: 100%;
+  letter-spacing: .02em;
+}
+
+.btn-cadastrar:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 10px 26px rgba(20, 54, 155, .42);
+}
+
+.btn-cadastrar svg { flex-shrink: 0; }
+
+/* ─── RODAPÉ DO CARD ──────────────────────────────────── */
+.rodape-card {
+  text-align: center;
+  font-size: .87rem;
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+
+.rodape-card a {
+  color: var(--azul);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.rodape-card a:hover { text-decoration: underline; }
+
+/* ─── RESPONSIVIDADE ──────────────────────────────────── */
+@media (max-width: 960px) {
+  .pagina { padding: 40px 24px; }
+  .lado-mascote { display: none; }
+}
+
+@media (max-width: 640px) {
+  body { overflow: auto; }
+  .pagina { padding: 60px 16px 48px; }
+  .lado-form { max-width: 100%; }
+  .titulo-guardiao { font-size: 2.4rem; }
+  .form-row { grid-template-columns: 1fr; }
+  .campo.full { grid-column: 1; }
+}
