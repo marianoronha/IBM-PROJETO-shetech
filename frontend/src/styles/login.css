@@ -1,0 +1,375 @@
+/* ===== Tela de Login — Guardião ===== */
+:root {
+  --azul:         #1f4fd8;
+  --azul-escuro:  #14369b;
+  --amarelo:      #ffd21f;
+  --branco:       #ffffff;
+  --texto:        #1c2540;
+  --texto-suave:  #5d6a8a;
+  --cinza-input:  #f0f2f8;
+  --borda-input:  #d1d8ee;
+  --raio-card:    22px;
+  --sombra-card:  0 16px 48px rgba(20, 54, 155, 0.22), 0 2px 8px rgba(0,0,0,.10);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+  background:
+    radial-gradient(ellipse 70% 60% at 15% 50%, rgba(31, 79, 216, .07) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 90% 80%, rgba(255, 210, 31, .13) 0%, transparent 65%),
+    #f5f7ff;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+
+/* ─── DECORAÇÕES DE FUNDO ─────────────────────────────── */
+.bg-deco {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.deco-esquerda {
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+.deco-direita {
+  position: absolute;
+  top: 0; right: 0;
+  height: 100%;
+  width: auto;
+  display: block;
+}
+
+/* ─── LAYOUT PRINCIPAL ────────────────────────────────── */
+.pagina {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+/* ─── COLUNA DO FORMULÁRIO ────────────────────────────── */
+.lado-form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* ─── MASCOTES TOPO DO CARD ───────────────────────────── */
+.mascotes-topo {
+  display: flex;
+  justify-content: center;
+  /* puxa a imagem para cima do card, saindo pela borda */
+  margin-top: -133px;
+  margin-right: -170px;
+  margin-bottom: 4px;
+  pointer-events: none;
+}
+
+.mascotes-topo img {
+  height: 130px;
+  width: auto;
+  image-rendering: high-quality;
+  filter: drop-shadow(0 -4px 12px rgba(20, 54, 155, .12));
+}
+
+/* ─── BADGE + TÍTULO ──────────────────────────────────── */
+.titulo-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-left: 4px;
+}
+
+.badge-guardiao {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(245, 216, 54, 0.521);
+  color: rgba(126, 108, 10, 0.521);
+  font-size: .75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 4px 10px;
+  border-radius: 99px;
+  border: 1px solid rgba(104, 85, 23, 0.2);
+  width: fit-content;
+}
+
+
+.badge-guardiao svg { flex-shrink: 0; }
+
+.titulo-guardiao {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--azul-escuro);
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.titulo-guardiao em {
+  font-style: normal;
+  position: relative;
+}
+.titulo-guardiao em::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -3px;
+  width: 100%;
+  height: 4px;
+  background: var(--amarelo);
+  border-radius: 2px;
+}
+
+/* ─── CARD ────────────────────────────────────────────── */
+.card-principal {
+  background: rgba(255, 255, 255, 0.96);
+  backdrop-filter: blur(8px);
+  border-radius: var(--raio-card);
+  box-shadow: var(--sombra-card);
+  border-top: 4px solid var(--azul);
+  /* padding-top reduzido pois os mascotes já ocupam espaço */
+  padding: 8px 34px 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  /* precisa de overflow visible para os mascotes saírem pelo topo */
+  overflow: visible;
+}
+
+/* ─── SUBTÍTULO ───────────────────────────────────────── */
+.card-subtitulo { margin-bottom: 12px; }
+
+.subtitulo {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--texto);
+  line-height: 1.4;
+}
+
+.subtitulo span {
+  color: var(--texto-suave);
+  font-weight: 600;
+  font-size: .92rem;
+}
+
+/* ─── LINHA DIVISÓRIA ─────────────────────────────────── */
+.divisor {
+  border: none;
+  border-top: 1.5px solid var(--borda-input);
+  margin-bottom: 14px;
+}
+
+/* ─── CAMPOS ──────────────────────────────────────────── */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.campo label {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: .04em;
+}
+
+/* linha com label + link "esqueci" */
+.label-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.link-esqueci {
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--azul);
+  text-decoration: none;
+}
+.link-esqueci:hover { text-decoration: underline; }
+
+.campo input {
+  background: var(--cinza-input);
+  border: 1.5px solid var(--borda-input);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: .95rem;
+  font-weight: 600;
+  color: var(--texto);
+  outline: none;
+  transition: border-color .18s, box-shadow .18s, background .18s;
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+}
+
+.campo input::placeholder { color: #aab2cc; }
+
+.campo input:focus {
+  border-color: var(--azul);
+  box-shadow: 0 0 0 3px rgba(31, 79, 216, .13);
+  background: #fff;
+}
+
+/* ─── OLHINHO SENHA ───────────────────────────────────── */
+.senha-wrap { position: relative; }
+
+.senha-wrap input { padding-right: 44px; }
+
+.senha-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: var(--texto-suave);
+  transition: color .15s;
+}
+.senha-toggle:hover { color: var(--azul); }
+
+/* ─── LEMBRAR ─────────────────────────────────────────── */
+.lembrar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--texto-suave);
+  cursor: pointer;
+}
+.lembrar input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: var(--azul);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ─── BOTÃO ENTRAR ────────────────────────────────────── */
+.btn-entrar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--azul) 0%, var(--azul-escuro) 100%);
+  color: var(--branco);
+  border: none;
+  border-radius: 14px;
+  padding: 13px 18px;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  width: 100%;
+  letter-spacing: .02em;
+  transition: transform .15s, box-shadow .15s, filter .15s;
+  box-shadow: 0 6px 18px rgba(20, 54, 155, .32);
+}
+.btn-entrar:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.08);
+  box-shadow: 0 10px 26px rgba(20, 54, 155, .42);
+}
+.btn-entrar svg { flex-shrink: 0; }
+
+/* ─── DIVISOR "OU" ────────────────────────────────────── */
+.divisor-ou {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 4px;
+}
+.divisor-ou hr {
+  flex: 1;
+  border: none;
+  border-top: 1.5px solid var(--borda-input);
+  margin: 0;
+}
+.divisor-ou span {
+  font-size: .78rem;
+  font-weight: 800;
+  color: var(--texto-suave);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  white-space: nowrap;
+}
+
+/* ─── BOTÃO BB ────────────────────────────────────────── */
+.btn-bb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  background: transparent;
+  color: var(--azul-escuro);
+  border: 1.5px solid var(--borda-input);
+  border-radius: 14px;
+  padding: 11px 18px;
+  font-family: inherit;
+  font-size: .93rem;
+  font-weight: 800;
+  text-decoration: none;
+  width: 100%;
+  margin-bottom: 12px;
+  transition: border-color .15s, background .15s, box-shadow .15s;
+}
+.btn-bb:hover {
+  border-color: var(--azul);
+  background: rgba(31, 79, 216, .04);
+  box-shadow: 0 0 0 3px rgba(31, 79, 216, .1);
+}
+.btn-bb svg { flex-shrink: 0; }
+
+/* ─── RODAPÉ DO CARD ──────────────────────────────────── */
+.rodape-card {
+  text-align: center;
+  font-size: .87rem;
+  color: var(--texto-suave);
+  font-weight: 600;
+}
+.rodape-card a {
+  color: var(--azul);
+  font-weight: 800;
+  text-decoration: none;
+}
+.rodape-card a:hover { text-decoration: underline; }
+
+/* ─── RESPONSIVIDADE ──────────────────────────────────── */
+@media (max-width: 640px) {
+  body { overflow-y: auto; }
+  .pagina {
+    height: auto;
+    min-height: 100vh;
+    overflow: visible;
+    padding: 80px 16px 40px;
+  }
+  .lado-form { max-width: 100%; }
+  .titulo-guardiao { font-size: 2.2rem; }
+  .mascotes-topo img { height: 80px; }
+  .mascotes-topo { margin-top: -56px; }
+}
