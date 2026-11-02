@@ -30,6 +30,9 @@ body{background:var(--gd-bg)}
 .ap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
 .ap-card{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:var(--gd-surface);border:1.5px solid var(--gd-line);border-radius:18px;padding:24px 12px;color:var(--gd-text);text-decoration:none;box-shadow:var(--gd-shadow);transition:transform .15s,border-color .15s}
 .ap-card:hover{transform:translateY(-3px);border-color:var(--gd-blue)}
+.ap-card--no-click{cursor:default}
+.ap-card--no-click:hover{transform:none;border-color:var(--gd-line)}
+.ap-card--no-click:focus-visible{outline:none}
 .ap-card--main{border-color:var(--gd-blue);background:#eaf1fd}
 .ap-card h3{margin:0;font-size:1.05rem}
 .ap-card small{color:var(--gd-blue);font-weight:800}

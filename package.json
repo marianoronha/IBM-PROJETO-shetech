@@ -1,0 +1,25 @@
+{
+  "name": "ibm-projeto-shetech",
+  "version": "1.0.0",
+  "description": "Protótipo funcional das soluções **Guardião** (IA contra golpes de engenharia social) e **BB Decision** (simulador de decisões financeiras), desenvolvido para o projeto IBM × Banco do Brasil.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marianoronha/IBM-PROJETO-shetech.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/marianoronha/IBM-PROJETO-shetech/issues"
+  },
+  "homepage": "https://github.com/marianoronha/IBM-PROJETO-shetech#readme"
+}
