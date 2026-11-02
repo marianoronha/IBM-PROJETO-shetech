@@ -14,25 +14,34 @@ import type { BBDecisionResponse } from '../types/api'
 import { DisclaimerBanner } from '../components/DisclaimerBanner'
 import { ScenarioCard } from '../components/ScenarioCard'
 import { SafeText } from '../components/SafeText'
+import '../styles/bbdecision.css'
 
 const EXAMPLE_QUESTIONS = [
   {
-    label: '📦 Parcelamento',
+    icon: '📦',
+    title: 'Parcelamento',
+    desc: 'Quanto pesa dividir uma compra no mês',
     text: 'E se eu parcelar em 12x no valor de R$ 1200?',
     userId: 'U002',
   },
   {
-    label: '📉 Perda de renda',
+    icon: '📉',
+    title: 'Perda de renda',
+    desc: 'Por quanto tempo a reserva aguenta',
     text: 'E se eu perder minha renda por 3 meses?',
     userId: 'U003',
   },
   {
-    label: '💼 Mudar de emprego',
+    icon: '💼',
+    title: 'Mudar de emprego',
+    desc: 'Compare a renda atual com a nova',
     text: 'E se eu mudar de emprego e ganhar R$ 6000?',
     userId: 'U003',
   },
   {
-    label: '🏠 Comprar uma casa',
+    icon: '🏠',
+    title: 'Comprar uma casa',
+    desc: 'Veja entrada, prestação e custo total',
     text: 'E se eu comprar uma casa de R$ 300000 com entrada de R$ 60000?',
     userId: 'U002',
   },
@@ -45,6 +54,11 @@ const SCENARIO_LABELS: Record<string, string> = {
   compra_casa: 'Compra de Casa',
   ambiguous: 'Cenário não identificado',
 }
+
+const PROFILE_OPTIONS: { value: 'standard' | 'low'; label: string }[] = [
+  { value: 'standard', label: 'Padrão' },
+  { value: 'low', label: 'Linguagem simples' },
+]
 
 export function BBDecisionPage() {
   const [question, setQuestion] = useState('')
@@ -112,24 +126,30 @@ export function BBDecisionPage() {
 
         {/* Exemplos clicáveis dos 4 cenários do PDF */}
         <nav aria-label="Exemplos de perguntas" className="gd-card bb-examples">
-          <p className="bb-examples__label">Experimente:</p>
+          <p className="bb-examples__label">Comece por um exemplo</p>
+          <p className="bb-examples__sub">Clique em um cenário para preencher a pergunta.</p>
           <div className="bb-examples__grid">
             {EXAMPLE_QUESTIONS.map(ex => (
               <button
-                key={ex.label}
+                key={ex.title}
                 type="button"
                 className="bb-chip"
                 onClick={() => applyExample(ex)}
-                aria-label={`Usar exemplo: ${ex.text}`}
+                aria-pressed={question === ex.text}
+                aria-label={`Usar exemplo ${ex.title}: ${ex.text}`}
               >
-                {ex.label}
+                <span className="bb-chip__icon" aria-hidden="true">{ex.icon}</span>
+                <span className="bb-chip__body">
+                  <span className="bb-chip__title">{ex.title}</span>
+                  <span className="bb-chip__text">{ex.desc}</span>
+                </span>
               </button>
             ))}
           </div>
         </nav>
 
         {/* Formulário */}
-        <form onSubmit={handleSubmit} className="gd-card" noValidate>
+        <form onSubmit={handleSubmit} className="gd-card bb-form" noValidate>
           <div>
             <label htmlFor="question-input" className="gd-label">
               Faça sua pergunta como faria em uma conversa
@@ -161,6 +181,7 @@ export function BBDecisionPage() {
                 value={userId}
                 onChange={e => setUserId(e.target.value)}
                 className="gd-select"
+                disabled={loading}
               >
                 <option value="U001">U001 — Maria S. (renda R$ 3.500)</option>
                 <option value="U002">U002 — Carlos M. (renda R$ 8.500)</option>
@@ -169,18 +190,24 @@ export function BBDecisionPage() {
               </select>
             </div>
 
-            <div>
-              <label htmlFor="bb-profile" className="gd-legend">Linguagem</label>
-              <select
-                id="bb-profile"
-                value={profile}
-                onChange={e => setProfile(e.target.value as 'standard' | 'low')}
-                className="gd-select"
-              >
-                <option value="standard">Padrão</option>
-                <option value="low">Linguagem simples</option>
-              </select>
-            </div>
+            <fieldset style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}>
+              <legend className="gd-legend" style={{ padding: 0 }}>Linguagem</legend>
+              <div className="bb-seg" role="radiogroup" aria-label="Linguagem da resposta">
+                {PROFILE_OPTIONS.map(opt => (
+                  <label key={opt.value} className="bb-seg__opt">
+                    <input
+                      type="radio"
+                      name="bb-profile"
+                      value={opt.value}
+                      checked={profile === opt.value}
+                      onChange={() => setProfile(opt.value)}
+                      disabled={loading}
+                    />
+                    <span>{opt.label}</span>
+                  </label>
+                ))}
+              </div>
+            </fieldset>
           </div>
 
           <div className="gd-actions">

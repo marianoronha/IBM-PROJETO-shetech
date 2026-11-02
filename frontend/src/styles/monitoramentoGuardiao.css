@@ -17,7 +17,7 @@ body{background:var(--gd-bg)}
 .ap-cta:hover{transform:translateY(-2px)}
 .ap-cta:focus-visible,.ap-card:focus-visible,.ap-back:focus-visible{outline:3px solid var(--gd-yellow);outline-offset:3px}
 .ap-cta svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.ap-mascote{flex:none;width:min(240px,26vw);height:auto;filter:drop-shadow(0 14px 24px rgba(0,0,0,.35))}
+.ap-mascote{flex:none;width:min(20em,26vw);height:auto;filter:drop-shadow(0 14px 24px rgba(0,0,0,.35))}
 
 .ap-main{max-width:980px;margin:-56px auto 0;padding:0 28px 56px;display:grid;gap:32px}
 .ap-h2{margin:0 0 14px;font-size:1.25rem;font-weight:800;letter-spacing:-.01em;color:var(--gd-text)}
