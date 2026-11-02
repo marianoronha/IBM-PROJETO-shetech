@@ -1,0 +1,48 @@
+/* Apresentação do BB Decision — depende de menu.css (variáveis e menu lateral) */
+html,body{margin:0;padding:0}
+body{background:var(--gd-bg)}
+.ap-hero{background:linear-gradient(160deg,var(--gd-navy) 0%,var(--gd-navy-2) 100%);color:#fff;padding:36px 28px 96px;overflow:hidden}
+.ap-hero__in{max-width:980px;margin:0 auto;display:flex;align-items:center;gap:24px}
+.ap-back{flex:none;align-self:flex-start;width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18)}
+.ap-back:hover{background:rgba(255,255,255,.2)}
+.ap-back svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.ap-hero__text{flex:1;min-width:0}
+.ap-chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);padding:6px 14px;border-radius:999px;font-size:.85rem;font-weight:700}
+.ap-dot{width:9px;height:9px;border-radius:50%;background:#4cd68b;animation:ap-pulse 2s infinite}
+@keyframes ap-pulse{0%{box-shadow:0 0 0 0 rgba(76,214,139,.6)}70%{box-shadow:0 0 0 9px rgba(76,214,139,0)}100%{box-shadow:0 0 0 0 rgba(76,214,139,0)}}
+@media (prefers-reduced-motion:reduce){.ap-dot{animation:none}}
+.ap-hero h1{margin:14px 0 8px;font-size:clamp(2.2rem,5vw,3.2rem);line-height:1.05;letter-spacing:-.03em;font-weight:800;color:#fff}
+.ap-hero p{margin:0 0 24px;max-width:520px;color:#c9d7f2;font-size:1.1rem;line-height:1.55}
+.ap-cta{display:inline-flex;align-items:center;gap:10px;background:var(--gd-yellow);color:#002a63;font-weight:800;font-size:1.05rem;padding:15px 28px;border-radius:14px;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.28);transition:transform .15s}
+.ap-cta:hover{transform:translateY(-2px)}
+.ap-cta:focus-visible,.ap-card:focus-visible,.ap-back:focus-visible{outline:3px solid var(--gd-yellow);outline-offset:3px}
+.ap-cta svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.ap-mascote{flex:none;width:min(20em,26vw);height:auto;filter:drop-shadow(0 14px 24px rgba(0,0,0,.35))}
+
+.ap-main{max-width:980px;margin:-56px auto 0;padding:0 28px 56px;display:grid;gap:32px}
+.ap-h2{margin:0 0 14px;font-size:1.25rem;font-weight:800;letter-spacing:-.01em;color:var(--gd-text)}
+.ap-main section:first-child .ap-h2{color:#fff}
+.ap-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ap-step{background:var(--gd-surface);border:1px solid var(--gd-line);border-radius:18px;box-shadow:var(--gd-shadow);padding:22px}
+.ap-num{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--gd-navy-2);color:#fff;font-weight:800;margin-bottom:12px}
+.ap-step h3{margin:0 0 4px;font-size:1.05rem}
+.ap-step p{margin:0;color:var(--gd-muted);font-size:.95rem}
+.ap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.ap-card{display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center;background:var(--gd-surface);border:1.5px solid var(--gd-line);border-radius:18px;padding:24px 12px;color:var(--gd-text);text-decoration:none;box-shadow:var(--gd-shadow);transition:transform .15s,border-color .15s}
+.ap-card:hover{transform:translateY(-3px);border-color:var(--gd-blue)}
+.ap-card--main{border-color:var(--gd-blue);background:#eaf1fd}
+.ap-card h3{margin:0;font-size:1.05rem}
+.ap-card small{color:var(--gd-blue);font-weight:800}
+.ap-ico{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:var(--gd-surface-2);border:1px solid var(--gd-line)}
+.ap-ico--emoji{font-size:2rem;line-height:1}
+.ap-ico img{width:38px;height:38px;object-fit:contain}
+.ap-extra{margin:16px 0 0;color:var(--gd-muted)}
+.ap-extra a{color:var(--gd-blue);font-weight:700}
+.ap-priv{margin:0;padding:14px 18px;background:var(--gd-surface);border:1px solid var(--gd-line);border-radius:14px;color:var(--gd-muted);font-size:.85rem}
+
+@media (max-width:900px){
+  .ap-hero__in{flex-wrap:wrap}.ap-mascote{display:none}
+  .ap-grid{grid-template-columns:repeat(2,1fr)}.ap-steps{grid-template-columns:1fr}
+  .ap-main section:first-child .ap-h2{color:#fff}
+}
+@media (max-width:560px){.ap-hero{padding:24px 16px 88px}.ap-main{padding:0 16px 40px}}

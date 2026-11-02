@@ -17,7 +17,14 @@
   --bb-surface:var(--gd-surface,#fff);
   --bb-surface-2:var(--gd-surface-2,#f6f8fb);
   --bb-shadow:var(--gd-shadow,0 6px 24px rgba(20,33,61,.08));
+
+  /* quanto o azul desce além do padrão (ajuste este número) */
+  --bb-hero-extra:110px;
 }
+
+/* faixa azul estendida: o conteúdo fica no lugar, só o azul desce */
+.bb-page .gd-hero{padding-bottom:calc(96px + var(--bb-hero-extra))}
+.bb-page .gd-wrap{margin-top:calc(-64px - var(--bb-hero-extra))}
 
 /* ritmo vertical consistente entre os blocos da página */
 .bb-page .gd-wrap{display:flex;flex-direction:column;gap:22px}
