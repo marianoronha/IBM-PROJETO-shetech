@@ -29,14 +29,32 @@
     <!-- LADO DIREITO: card branco -->
     <div class="lado-card">
 
-      <!-- Título fora do card -->
-      <h1 class="titulo-guardiao">Guardião</h1>
+     <h1 class="titulo-guardiao" aria-label="Guardião. Juntos contra golpes.">
+  <svg viewBox="0 0 400 150" class="titulo-svg" aria-hidden="true">
+    <defs>
+      <path id="curva-titulo"  d="M 10,100 Q 200,0 390,100" />
+      <path id="curva-slogan"  d="M 40,130 Q 200,40 360,130" />
+    </defs>
+
+    <text class="t-titulo">
+      <textPath href="#curva-titulo" startOffset="50%" text-anchor="middle">
+        Guardião
+      </textPath>
+    </text>
+
+    <text class="t-slogan">
+      <textPath href="#curva-slogan" startOffset="50%" text-anchor="middle">
+        Juntos contra golpes.
+      </textPath>
+    </text>
+  </svg>
+</h1>
 
       <div class="card-principal">
 
         <!-- Subtítulo -->
         <div class="card-titulo">
-          <p class="subtitulo">Sua segurança, em boas mãos.<br><span>Juntos contra golpes.</span></p>
+          <p class="subtitulo">Sua segurança, em boas mãos.
         </div>
 
         <!-- Botão 1: Acessar o Guardião -->

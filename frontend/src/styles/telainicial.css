@@ -105,7 +105,7 @@ body {
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  gap: 30px;
+  gap: 0px;
   margin-left: 60px;
   margin-right: 110px;   
 }
@@ -126,12 +126,31 @@ body {
 
 /* ─── TÍTULO (fora do card) ───────────────────────────── */
 .titulo-guardiao {
-  font-size: 2.8rem;
-  font-weight: 900;
-  color: var(--azul-escuro);
+  width: 450px;       
+  max-width: 90vw;
+  margin-left: -40px;   
   line-height: 1;
+}
+.titulo-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.t-titulo {
+  font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+  font-size: 64px;
+  font-weight: 900;
+  fill: var(--azul-escuro);
   letter-spacing: -1px;
-  padding-left: 4px;
+}
+
+.t-slogan {
+  font-family: "Nunito", "Segoe UI", system-ui, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  fill: var(--azul);
 }
 
 /* ─── SUBTÍTULO DENTRO DO CARD ────────────────────────── */
@@ -146,11 +165,6 @@ body {
   line-height: 1.4;
 }
 
-.subtitulo span {
-  color: var(--texto-suave);
-  font-weight: 600;
-  font-size: .92rem;
-}
 
 /* ─── BOTÕES DE ACESSO ────────────────────────────────── */
 .btn-acesso {
