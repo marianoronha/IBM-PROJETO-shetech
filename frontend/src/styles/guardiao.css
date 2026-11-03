@@ -89,3 +89,45 @@
   .gd-opts{grid-template-columns:1fr}.gd-card{padding:18px}
   .gd-status{flex-direction:column}.gd-actions{flex-direction:column-reverse}
 }
+
+/* ── Anexo ───────────────────────────────────────────────────────────────── */
+/* Linha que contém o hint de caracteres e o botão Anexo */
+.gd-hint-row{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:8px}
+.gd-hint-row .gd-hint{margin-top:0;flex:1;min-width:0}
+
+/* Input oculto do seletor de arquivo */
+.gd-attach-input-hidden{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* Container posicionado para o dropdown */
+.gd-attach-wrap{position:relative;flex:none}
+
+/* Botão "Anexo" — texto ciano, borda cinza, fundo transparente */
+.gd-btn-attach{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1.5px solid var(--gd-line);border-radius:10px;background:transparent;color:#06b6d4;font:600 .82rem var(--gd-font);cursor:pointer;white-space:nowrap;transition:border-color .15s,background .15s}
+.gd-btn-attach:hover:not(:disabled){border-color:#06b6d4;background:rgba(6,182,212,.06)}
+.gd-btn-attach:focus-visible{outline:3px solid var(--gd-yellow);outline-offset:2px;border-radius:10px}
+.gd-btn-attach:disabled{opacity:.4;cursor:not-allowed}
+.gd-attach-icon{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Dropdown do tipo de arquivo */
+.gd-attach-menu{position:absolute;right:0;top:calc(100% + 6px);background:var(--gd-surface);border:1.5px solid var(--gd-line);border-radius:12px;box-shadow:var(--gd-shadow);min-width:210px;z-index:20;overflow:hidden;padding:4px 0}
+.gd-attach-menu__item{display:block;width:100%;padding:10px 16px;background:none;border:0;text-align:left;font:500 .9rem var(--gd-font);color:var(--gd-text);cursor:pointer;transition:background .12s}
+.gd-attach-menu__item:hover{background:var(--gd-surface-2)}
+.gd-attach-menu__item:focus-visible{outline:3px solid var(--gd-yellow);outline-offset:-2px}
+
+/* Preview do arquivo selecionado */
+.gd-attach-preview{display:flex;align-items:center;gap:8px;margin-top:8px;padding:8px 12px;background:var(--gd-surface-2);border:1.5px solid var(--gd-line);border-radius:10px;font-size:.85rem}
+.gd-attach-preview__icon{flex:none;font-size:1rem}
+.gd-attach-preview__name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--gd-text)}
+.gd-attach-preview__remove{flex:none;background:none;border:0;padding:0 4px;cursor:pointer;color:var(--gd-muted);font-size:1rem;line-height:1;transition:color .12s}
+.gd-attach-preview__remove:hover{color:var(--gd-bad)}
+.gd-attach-preview__remove:focus-visible{outline:3px solid var(--gd-yellow);outline-offset:2px;border-radius:4px}
+
+/* Mensagem de erro de validação do anexo */
+.gd-attach-error{margin-top:8px;padding:8px 12px;background:var(--gd-bad-bg);border:1px solid var(--gd-bad);border-radius:10px;font-size:.85rem;color:var(--gd-bad)}
+
+@media (max-width:560px){
+  .gd-hint-row{flex-direction:column;align-items:flex-start}
+  .gd-btn-attach{align-self:flex-end}
+  .gd-attach-menu{right:auto;left:0}
+}
+/* ── fim Anexo ────────────────────────────────────────────────────────────── */

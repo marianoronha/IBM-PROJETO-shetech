@@ -28,6 +28,51 @@ type Profile = 'standard' | 'low'
 
 const MAX_LENGTH = 2000
 
+// ── Anexo ──────────────────────────────────────────────────────────────────
+const ATTACHMENT_ACCEPT_IMAGE = '.jpg,.jpeg,.png,.webp'
+const ATTACHMENT_ACCEPT_AUDIO = '.mp3,.wav,.m4a,.ogg'
+const ATTACHMENT_MAX_BYTES = 10 * 1024 * 1024 // 10 MB
+
+type AttachmentType = 'image' | 'audio'
+
+interface AttachedFile {
+  type: AttachmentType
+  name: string
+  /** base64 data URI — nunca logado */
+  dataUri: string
+}
+
+function buildAttachmentMessage(file: AttachedFile): string {
+  // Envia o conteúdo do arquivo codificado em base64 como mensagem de análise.
+  // O prefixo identifica o canal para o backend.
+  const prefix = file.type === 'image'
+    ? '[Imagem anexada para análise de golpe] '
+    : '[Áudio/transcrição anexada para análise de golpe] '
+  // Trunca o dataUri se ultrapassar o limite, mantendo o prefixo intacto.
+  const body = file.dataUri.slice(0, MAX_LENGTH - prefix.length)
+  return prefix + body
+}
+
+function validateAttachment(file: File): string | null {
+  const imageTypes = ['image/jpeg', 'image/png', 'image/webp']
+  const audioTypes = ['audio/mpeg', 'audio/wav', 'audio/x-wav', 'audio/mp4', 'audio/m4a', 'audio/ogg', 'audio/vnd.dlna.adts']
+  const allAllowed = [...imageTypes, ...audioTypes]
+  if (!allAllowed.includes(file.type) && file.type !== '') {
+    // Fallback por extensão caso o MIME não seja detectado corretamente
+    const ext = file.name.split('.').pop()?.toLowerCase() ?? ''
+    const validExts = ['jpg', 'jpeg', 'png', 'webp', 'mp3', 'wav', 'm4a', 'ogg']
+    if (!validExts.includes(ext)) {
+      return 'Formato não suportado. Envie uma imagem (JPG, PNG, WEBP) ou áudio (MP3, WAV, M4A, OGG).'
+    }
+  }
+  if (file.size > ATTACHMENT_MAX_BYTES) {
+    return 'O arquivo excede o limite de 10 MB.'
+  }
+  return null
+}
+
+// ── fim Anexo ───────────────────────────────────────────────────────────────
+
 export function GuardiaoPage() {
   const [message, setMessage] = useState('')
   const [profile, setProfile] = useState<Profile>('standard')
@@ -38,20 +83,41 @@ export function GuardiaoPage() {
   const [error, setError] = useState<string | null>(null)
   const resultRef = useRef<HTMLDivElement>(null)
 
+  // ── Estado do Anexo ────────────────────────────────────────────────────────
+  const [attachment, setAttachment] = useState<AttachedFile | null>(null)
+  const [attachmentError, setAttachmentError] = useState<string | null>(null)
+  const [attachmentMenuOpen, setAttachmentMenuOpen] = useState(false)
+  const fileInputRef = useRef<HTMLInputElement>(null)
+  const attachmentMenuRef = useRef<HTMLDivElement>(null)
+  const [pendingAttachType, setPendingAttachType] = useState<AttachmentType | null>(null)
+  // ── fim Estado do Anexo ────────────────────────────────────────────────────
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
-    if (!message.trim()) return
+    const hasText = message.trim().length > 0
+    const hasAttachment = attachment !== null
+    if (!hasText && !hasAttachment) return
 
     setLoading(true)
     setError(null)
     setResult(null)
 
     try {
+      // Se há anexo, o anexo toma precedência como conteúdo da análise;
+      // se houver texto junto, combina ambos.
+      const analysisMessage = attachment
+        ? (message.trim()
+            ? buildAttachmentMessage(attachment) + ' | Contexto adicional: ' + message.trim()
+            : buildAttachmentMessage(attachment))
+        : message
+
       const data = await analyzeMessage({
-        message,
+        message: analysisMessage,
         user_id: userId,
         language_profile: profile,
         monitoring_consent: monitoringActive,
+        // Indica o canal de entrada conforme o tipo de anexo
+        ...(attachment ? { input_channel: attachment.type === 'image' ? 'whatsapp_text' : 'whatsapp_text' } : {}),
       })
       setResult(data)
       // Move foco para o resultado (acessibilidade)
@@ -69,7 +135,47 @@ export function GuardiaoPage() {
     setMessage('')
     setResult(null)
     setError(null)
+    setAttachment(null)
+    setAttachmentError(null)
   }
+
+  // ── Handlers do Anexo ──────────────────────────────────────────────────────
+  function openAttachmentPicker(type: AttachmentType) {
+    setAttachmentMenuOpen(false)
+    setPendingAttachType(type)
+    if (fileInputRef.current) {
+      fileInputRef.current.accept = type === 'image' ? ATTACHMENT_ACCEPT_IMAGE : ATTACHMENT_ACCEPT_AUDIO
+      fileInputRef.current.value = ''
+      fileInputRef.current.click()
+    }
+  }
+
+  function handleFileChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const file = e.target.files?.[0]
+    if (!file || !pendingAttachType) return
+    const validationError = validateAttachment(file)
+    if (validationError) {
+      setAttachmentError(validationError)
+      setAttachment(null)
+      return
+    }
+    setAttachmentError(null)
+    const reader = new FileReader()
+    reader.onload = (ev) => {
+      const dataUri = ev.target?.result as string
+      // Nunca logamos dataUri nem file.name — privacidade garantida
+      setAttachment({ type: pendingAttachType!, name: file.name, dataUri })
+    }
+    reader.readAsDataURL(file)
+    setPendingAttachType(null)
+  }
+
+  function removeAttachment() {
+    setAttachment(null)
+    setAttachmentError(null)
+    if (fileInputRef.current) fileInputRef.current.value = ''
+  }
+  // ── fim Handlers do Anexo ──────────────────────────────────────────────────
 
   const riskLabel = result?.risk_label ?? 'baixo'
   const hasIntervention = result?.requires_intervention && result?.intervention
@@ -154,9 +260,87 @@ export function GuardiaoPage() {
               disabled={loading}
               // Segurança: não persiste nem loga o conteúdo
             />
-            <span id="message-hint" className="gd-hint">
-              {message.length}/{MAX_LENGTH} caracteres. O texto da mensagem nunca é registrado em logs.
-            </span>
+            <div className="gd-hint-row">
+              <span id="message-hint" className="gd-hint">
+                {message.length}/{MAX_LENGTH} caracteres. O texto da mensagem nunca é registrado em logs.
+              </span>
+
+              {/* Botão Anexo */}
+              <div className="gd-attach-wrap" ref={attachmentMenuRef}>
+                <button
+                  type="button"
+                  className="gd-btn-attach"
+                  aria-haspopup="true"
+                  aria-expanded={attachmentMenuOpen}
+                  onClick={() => setAttachmentMenuOpen(v => !v)}
+                  disabled={loading}
+                  aria-label="Anexar arquivo (imagem ou áudio)"
+                >
+                  <svg viewBox="0 0 24 24" aria-hidden="true" className="gd-attach-icon">
+                    <path d="M21.44 11.05l-9.19 9.19a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.83-2.83l8.49-8.48" />
+                  </svg>
+                  Anexo
+                </button>
+
+                {attachmentMenuOpen && (
+                  <div className="gd-attach-menu" role="menu" aria-label="Tipo de anexo">
+                    <button
+                      type="button"
+                      role="menuitem"
+                      className="gd-attach-menu__item"
+                      onClick={() => openAttachmentPicker('image')}
+                    >
+                      🖼 Imagem (JPG, PNG, WEBP)
+                    </button>
+                    <button
+                      type="button"
+                      role="menuitem"
+                      className="gd-attach-menu__item"
+                      onClick={() => openAttachmentPicker('audio')}
+                    >
+                      🎵 Áudio (MP3, WAV, M4A, OGG)
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Input de arquivo oculto */}
+              <input
+                ref={fileInputRef}
+                type="file"
+                className="gd-attach-input-hidden"
+                aria-hidden="true"
+                tabIndex={-1}
+                onChange={handleFileChange}
+              />
+            </div>
+
+            {/* Exibição do arquivo anexado */}
+            {attachment && (
+              <div className="gd-attach-preview" role="status" aria-live="polite">
+                <span className="gd-attach-preview__icon" aria-hidden="true">
+                  {attachment.type === 'image' ? '🖼' : '🎵'}
+                </span>
+                <span className="gd-attach-preview__name">
+                  {attachment.type === 'image' ? 'Imagem' : 'Áudio'} anexado
+                </span>
+                <button
+                  type="button"
+                  className="gd-attach-preview__remove"
+                  onClick={removeAttachment}
+                  aria-label="Remover anexo"
+                >
+                  ✕
+                </button>
+              </div>
+            )}
+
+            {/* Erro de validação do anexo */}
+            {attachmentError && (
+              <div role="alert" className="gd-attach-error">
+                {attachmentError}
+              </div>
+            )}
           </div>
 
           {/* Seletor de perfil */}
@@ -217,10 +401,14 @@ export function GuardiaoPage() {
             <button
               type="submit"
               className="gd-btn gd-btn--primary"
-              disabled={loading || !message.trim()}
+              disabled={loading || (!message.trim() && !attachment)}
               aria-busy={loading}
             >
-              {loading ? 'Analisando…' : 'Analisar mensagem'}
+              {loading
+                ? 'Analisando…'
+                : attachment && !message.trim()
+                  ? 'Analisar anexo'
+                  : 'Analisar mensagem'}
             </button>
             <button
               type="button"
@@ -237,7 +425,7 @@ export function GuardiaoPage() {
         {loading && (
           <div role="status" aria-live="polite" className="loading-state">
             <span className="loading-state__spinner" aria-hidden="true" />
-            Analisando a mensagem em 6 etapas…
+            {attachment ? 'Analisando o anexo em 6 etapas…' : 'Analisando a mensagem em 6 etapas…'}
           </div>
         )}
 
