@@ -1,5 +1,6 @@
 /* 
-   GUARDIÃO */
+   GUARDIÃO — HOME  (depende de menu.css para variáveis e fonte)
+ */
 
 :root {
   --azul:          #1f4fd8;
@@ -108,7 +109,7 @@ img { max-width: 100%; display: block; }
 .hero {
   background: var(--azul-clarinho);
   color: var(--azul-escuro);
-  padding: 36px 0 88px;
+  padding: 2px 0 60px;
   overflow: hidden;
 }
 
@@ -136,8 +137,8 @@ img { max-width: 100%; display: block; }
 
 .hero h1 {
   margin: 0 0 10px;
-  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
-  line-height: 1.1;
+  font-size: clamp(2rem, 7.1vw, 2.8rem);
+  line-height: 1;
   font-weight: 800;
   letter-spacing: -.03em;
   color: var(--azul-escuro);
@@ -149,7 +150,7 @@ img { max-width: 100%; display: block; }
   color: var(--azul-escuro);
   border-radius: 8px;
   padding: 0 5px;
-  transform: rotate(-1.5deg);
+  transform: rotate(-1.3deg);
 }
 
 .hero__lead {
@@ -181,7 +182,7 @@ img { max-width: 100%; display: block; }
 
 .visual__arco {
   position: absolute;
-  top: 0; left: 0;
+  top: 48px; left: 0;
   width: 100%;
   height: auto;
   overflow: visible;
@@ -199,6 +200,7 @@ img { max-width: 100%; display: block; }
   overflow: hidden;
   aspect-ratio: 9 / 16;   /* formato de celular em pé */
   display: flex;
+  margin-top: 48px;
 }
 
 .celular__tela {
