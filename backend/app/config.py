@@ -24,9 +24,11 @@ class Settings(BaseSettings):
     watsonx_url: str = "https://us-south.ml.cloud.ibm.com"
     watsonx_model_id: str = "ibm/granite-13b-chat-v2"
 
-    # OpenAI (fallback)
+    # OpenAI (fallback + multimodal)
     openai_api_key: str = ""
     openai_model_id: str = "gpt-4o"
+    # Modelo com suporte a visão, usado para análise de imagens (multimodal)
+    openai_vision_model_id: str = "gpt-4o"
 
     # Aplicação
     app_env: str = "development"

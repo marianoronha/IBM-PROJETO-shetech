@@ -19,7 +19,7 @@
  */
 
 import { useState, useRef } from 'react'
-import { analyzeMessage } from '../api/client'
+import { analyzeMessage, analyzeFile } from '../api/client'
 import type { GuardiaoResponse } from '../types/api'
 import { RiskGauge } from '../components/RiskGauge'
 import { SafeText } from '../components/SafeText'
@@ -37,20 +37,8 @@ type AttachmentType = 'image' | 'audio'
 
 interface AttachedFile {
   type: AttachmentType
-  name: string
-  /** base64 data URI — nunca logado */
-  dataUri: string
-}
-
-function buildAttachmentMessage(file: AttachedFile): string {
-  // Envia o conteúdo do arquivo codificado em base64 como mensagem de análise.
-  // O prefixo identifica o canal para o backend.
-  const prefix = file.type === 'image'
-    ? '[Imagem anexada para análise de golpe] '
-    : '[Áudio/transcrição anexada para análise de golpe] '
-  // Trunca o dataUri se ultrapassar o limite, mantendo o prefixo intacto.
-  const body = file.dataUri.slice(0, MAX_LENGTH - prefix.length)
-  return prefix + body
+  /** Referência ao File original para envio via FormData — nunca logado */
+  rawFile: File
 }
 
 function validateAttachment(file: File): string | null {
@@ -103,22 +91,26 @@ export function GuardiaoPage() {
     setResult(null)
 
     try {
-      // Se há anexo, o anexo toma precedência como conteúdo da análise;
-      // se houver texto junto, combina ambos.
-      const analysisMessage = attachment
-        ? (message.trim()
-            ? buildAttachmentMessage(attachment) + ' | Contexto adicional: ' + message.trim()
-            : buildAttachmentMessage(attachment))
-        : message
-
-      const data = await analyzeMessage({
-        message: analysisMessage,
-        user_id: userId,
-        language_profile: profile,
-        monitoring_consent: monitoringActive,
-        // Indica o canal de entrada conforme o tipo de anexo
-        ...(attachment ? { input_channel: attachment.type === 'image' ? 'whatsapp_text' : 'whatsapp_text' } : {}),
-      })
+      let data: GuardiaoResponse
+      if (attachment) {
+        // Envia o arquivo bruto via FormData — o backend extrai o conteúdo
+        // com GPT-4o Vision (imagem) ou Whisper (áudio) antes de analisar.
+        // O texto livre do usuário vai como contexto adicional.
+        data = await analyzeFile({
+          file: attachment.rawFile,
+          userId,
+          languageProfile: profile,
+          monitoringConsent: monitoringActive,
+          contextText: message.trim(),
+        })
+      } else {
+        data = await analyzeMessage({
+          message,
+          user_id: userId,
+          language_profile: profile,
+          monitoring_consent: monitoringActive,
+        })
+      }
       setResult(data)
       // Move foco para o resultado (acessibilidade)
       setTimeout(() => resultRef.current?.focus(), 100)
@@ -157,16 +149,13 @@ export function GuardiaoPage() {
     if (validationError) {
       setAttachmentError(validationError)
       setAttachment(null)
+      setPendingAttachType(null)
       return
     }
     setAttachmentError(null)
-    const reader = new FileReader()
-    reader.onload = (ev) => {
-      const dataUri = ev.target?.result as string
-      // Nunca logamos dataUri nem file.name — privacidade garantida
-      setAttachment({ type: pendingAttachType!, name: file.name, dataUri })
-    }
-    reader.readAsDataURL(file)
+    // Armazena apenas a referência ao File — sem ler o conteúdo no frontend
+    // (privacidade: o conteúdo é processado exclusivamente no backend)
+    setAttachment({ type: pendingAttachType, rawFile: file })
     setPendingAttachType(null)
   }
 
