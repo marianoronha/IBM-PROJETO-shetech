@@ -38,6 +38,7 @@ body{background:var(--gd-bg)}
 .ap-card small{color:var(--gd-blue);font-weight:800}
 .ap-ico{display:grid;place-items:center;width:64px;height:64px;border-radius:18px;background:var(--gd-surface-2);border:1px solid var(--gd-line)}
 .ap-ico img{width:38px;height:38px;object-fit:contain}
+.ap-ico--emoji{font-size:2rem;line-height:1}
 .ap-extra{margin:16px 0 0;color:var(--gd-muted)}
 .ap-extra a{color:var(--gd-blue);font-weight:700}
 .ap-priv{margin:0;padding:14px 18px;background:var(--gd-surface);border:1px solid var(--gd-line);border-radius:14px;color:var(--gd-muted);font-size:.85rem}

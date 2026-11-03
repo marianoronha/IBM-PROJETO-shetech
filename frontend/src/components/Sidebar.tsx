@@ -23,7 +23,7 @@ const ITEMS: { key: MenuKey; label: string; href: string; router?: boolean; icon
   // "Guardião" leva à tela de apresentação (monitoramentoGuardiao.html)
   { key: 'guardiao', label: 'Guardião', href: `${PAGES}monitoramentoGuardiao.html`,
     icon: icon(<><path d="M12 3 5 6v5c0 4.5 3 8.2 7 10 4-1.8 7-5.5 7-10V6z" /><path d="M12 8v5" /><path d="M12 16h.01" /></>) },
-  { key: 'decision', label: 'Decision', href: '/bbdecision', router: true,
+  { key: 'decision', label: 'Decision', href: `${PAGES}apresentacaoDecision.html`,
     icon: icon(<><path d="M5 20V12" /><path d="M12 20V5" /><path d="M19 20v-9" /></>) },
   { key: 'chat', label: 'Chat', href: '#',
     icon: icon(<path d="M4 5h16v11H9l-5 4z" />) },
