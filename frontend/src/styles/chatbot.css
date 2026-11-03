@@ -1,0 +1,229 @@
+/* Chatbot*/
+
+.gdbot {
+  --b-blue:   var(--gd-blue, #1a5fd0);
+  --b-navy:   var(--gd-navy, #002a63);
+  --b-navy-2: var(--gd-navy-2, #003a8a);
+  --b-yellow: var(--gd-yellow, #fcd116);
+  --b-line:   var(--gd-line, #dfe6f1);
+  --b-text:   var(--gd-text, #0f1b33);
+  --b-muted:  var(--gd-muted, #5a6882);
+  --b-bg:     var(--gd-surface-2, #f7f9fd);
+
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 9999;
+  font-family: var(--gd-font, Manrope, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif);
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--b-text);
+}
+.gdbot *, .gdbot *::before, .gdbot *::after { box-sizing: border-box; }
+.gdbot button, .gdbot input { font-family: inherit; }
+.gdbot [hidden] { display: none !important; }
+
+/* ─── BOTÃO FLUTUANTE ─────────────────────────────────── */
+.gdbot-launcher {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--b-yellow);
+  color: var(--b-navy);
+  cursor: pointer;
+  box-shadow: 0 10px 24px rgba(0, 20, 70, .30), 0 2px 6px rgba(0, 20, 70, .18);
+  transition: transform .15s;
+}
+.gdbot-launcher:hover { transform: translateY(-2px); }
+.gdbot-launcher:focus-visible,
+.gdbot-close:focus-visible,
+.gdbot-send:focus-visible,
+.gdbot-chip:focus-visible,
+.gdbot-log:focus-visible { outline: 3px solid var(--b-navy); outline-offset: 3px; }
+.gdbot-launcher svg {
+  width: 28px; height: 28px;
+  fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round;
+}
+.gdbot-ico-x { display: none; }
+.gdbot-launcher.is-open .gdbot-ico-chat { display: none; }
+.gdbot-launcher.is-open .gdbot-ico-x { display: block; }
+
+/* ─── PAINEL ──────────────────────────────────────────── */
+.gdbot-panel {
+  position: absolute;
+  right: 0;
+  bottom: 76px;
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  max-width: calc(100vw - 32px);
+  height: min(540px, calc(100vh - 120px));
+  background: #fff;
+  border: 1px solid var(--b-line);
+  border-radius: 18px;
+  box-shadow: 0 20px 50px rgba(10, 30, 70, .28), 0 2px 6px rgba(10, 30, 70, .12);
+  overflow: hidden;
+  animation: gdbot-in .18s ease-out;
+}
+@keyframes gdbot-in { from { opacity: 0; transform: translateY(10px) scale(.98); } to { opacity: 1; transform: none; } }
+
+/* cabeçalho */
+.gdbot-head {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+  background: var(--b-blue);
+  color: #fff;
+}
+.gdbot-title { flex: 1; min-width: 0; }
+.gdbot-name { display: block; font-size: 1.05rem; font-weight: 800; letter-spacing: -.01em; }
+.gdbot-status { display: flex; align-items: center; gap: 6px; font-size: .78rem; font-weight: 600; }
+.gdbot-status i { width: 8px; height: 8px; border-radius: 50%; background: #4cd68b; }
+
+.gdbot-close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .16);
+  color: #fff;
+  cursor: pointer;
+}
+.gdbot-close:hover { background: rgba(255, 255, 255, .28); }
+.gdbot-close:focus-visible { outline-color: #fff; }
+.gdbot-close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+
+/* avatar */
+.gdbot-av {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--b-line);
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+}
+.gdbot-av img, .gdbot-av svg { width: 100%; height: 100%; object-fit: contain; display: block; }
+.gdbot-av svg { padding: 5px; }
+.gdbot-av--head { width: 40px; height: 40px; border-color: transparent; }
+
+/* ─── CONVERSA ────────────────────────────────────────── */
+.gdbot-log {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px 14px;
+  background: var(--b-bg);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.gdbot-row { display: flex; align-items: flex-end; gap: 8px; }
+.gdbot-row--user { justify-content: flex-end; }
+
+.gdbot-bubble {
+  max-width: 80%;
+  padding: 10px 12px 6px;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+}
+.gdbot-row--bot .gdbot-bubble { background: #eaf1fd; color: var(--b-text); border-bottom-left-radius: 4px; }
+.gdbot-row--user .gdbot-bubble { background: var(--b-blue); color: #fff; border-bottom-right-radius: 4px; }
+
+.gdbot-txt { display: block; white-space: pre-line; font-weight: 500; }
+.gdbot-bubble time { display: block; margin-top: 2px; text-align: right; font-size: .68rem; opacity: .7; }
+
+/* digitando... */
+.gdbot-typing { display: flex; gap: 4px; padding: 14px 14px; }
+.gdbot-typing i {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--b-muted);
+  animation: gdbot-pulse 1s infinite ease-in-out;
+}
+.gdbot-typing i:nth-child(2) { animation-delay: .15s; }
+.gdbot-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes gdbot-pulse { 0%, 80%, 100% { opacity: .3; transform: scale(.8); } 40% { opacity: 1; transform: scale(1); } }
+
+/* perguntas frequentes */
+.gdbot-chips { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 38px; }
+.gdbot-chip {
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1.5px solid var(--b-blue);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--b-blue);
+  font-size: .84rem;
+  font-weight: 700;
+  text-align: left;
+  cursor: pointer;
+  transition: background .15s, color .15s;
+}
+.gdbot-chip:hover { background: var(--b-blue); color: #fff; }
+
+/* ─── CAMPO DE MENSAGEM ───────────────────────────────── */
+.gdbot-form {
+  flex: none;
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid var(--b-line);
+  background: #fff;
+}
+.gdbot-input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  padding: 0 16px;
+  border: 1.5px solid var(--b-line);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--b-text);
+  font-size: .95rem;
+  outline: 0;
+}
+.gdbot-input::placeholder { color: var(--b-muted); }
+.gdbot-input:focus { border-color: var(--b-blue); box-shadow: 0 0 0 3px rgba(26, 95, 208, .18); }
+
+.gdbot-send {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--b-blue);
+  color: #fff;
+  cursor: pointer;
+}
+.gdbot-send:hover { background: var(--b-navy-2); }
+.gdbot-send svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ─── CELULAR ─────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .gdbot { right: 12px; bottom: 12px; }
+  .gdbot-launcher { width: 56px; height: 56px; }
+  .gdbot-panel { bottom: 68px; width: calc(100vw - 24px); max-width: none; height: min(560px, calc(100vh - 96px)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gdbot-panel, .gdbot-typing i { animation: none; }
+  .gdbot-launcher { transition: none; }
+}
+
+@media print { .gdbot { display: none; } }

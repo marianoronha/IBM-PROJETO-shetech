@@ -1,3 +1,6 @@
+// Restaura tema salvo antes de pintar a página
+(function(){var t=localStorage.getItem('gd-theme');if(t)document.documentElement.setAttribute('data-theme',t);})();
+
 // Recolher/expandir o menu lateral (páginas HTML). No React, isso está em components/Sidebar.tsx.
 (function () {
   var side = document.querySelector('.gd-side');

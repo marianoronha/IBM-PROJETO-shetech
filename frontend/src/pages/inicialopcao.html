@@ -1,172 +1,453 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Início - Guardião</title>
-
+    <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/inicialopcao.css">
 </head>
 
 <body>
 
-    <div class="container">
+<div class="gd-app">
 
-        <!-- MENU LATERAL -->
-        <aside class="sidebar">
-
-            <div class="logo">
-                Guardião<span class="logo-detail">✳</span>
-            </div>
-
-            <nav class="menu">
-
-                <a href="inicialopcao.html" class="menu-item active">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 10L12 3L21 10V21H14V14H10V21H3Z"/>
-                    </svg>
-                    <span>Início</span>
-                </a>
-
-                <a href="aprender.html" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 5.5C3 4.1 4.1 3 5.5 3H12V21H5.5A2.5 2.5 0 0 0 3 23V5.5Z"/>
-                        <path d="M21 5.5C21 4.1 19.9 3 18.5 3H12V21H18.5A2.5 2.5 0 0 1 21 23V5.5Z"/>
-                    </svg>
-                    <span>Aprender</span>
-                </a>
-
-                <a href="monitoramentoGuardiao.html" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M12 22S20 18 20 11V5L12 2L4 5V11C4 18 12 22 12 22Z"/>
-                        <path d="M8.5 12L11 14.5L16 9"/>
-                    </svg>
-                    <span>Guardião</span>
-                </a>
-
-                <a href="#" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M3 20H21"/>
-                        <path d="M5 20V14H9V20"/>
-                        <path d="M11 20V9H15V20"/>
-                        <path d="M17 20V3H21V20"/>
-                    </svg>
-                    <span>Decision</span>
-                </a>
-
-                <a href="testegolpemensagem.html" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M21 11.5A8.5 8.5 0 0 1 12.5 20A8.5 8.5 0 0 1 8 18.7L3 21L4.5 16A8.5 8.5 0 1 1 21 11.5Z"/>
-                        <path d="M8 11H8.01M12 11H12.01M16 11H16.01"/>
-                    </svg>
-                    <span>Chat</span>
-                </a>
-
-                <a href="#" class="menu-item">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="7" r="4"/>
-                        <path d="M4 21V19C4 15 7 13 12 13C17 13 20 15 20 19V21Z"/>
-                    </svg>
-                    <span>Perfil</span>
-                </a>
-
-            </nav>
-
-            <a href="#" class="menu-item sair">
-                <svg viewBox="0 0 24 24">
-                    <path d="M10 17L15 12L10 7"/>
-                    <path d="M15 12H3"/>
-                    <path d="M12 3H19C20 3 21 4 21 5V19C21 20 20 21 19 21H12"/>
-                </svg>
-                <span>Sair</span>
+    <!-- MENU LATERAL -->
+    <aside class="gd-side" id="gd-side">
+        <button type="button" class="gd-collapse" id="gd-col" aria-label="Recolher menu">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+        </button>
+        <div class="gd-logo">
+            <svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="#fcd116"/><path d="m8.5 12 2.6 2.6L16 9.7" stroke="#002a63" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="gd-wm">Guardião<i></i></span>
+        </div>
+        <nav class="gd-nav" aria-label="Menu principal">
+            <a class="gd-item" href="inicialopcao.html" title="Início" aria-current="page">
+                <svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+                <span class="gd-lbl">Início</span>
             </a>
+            <a class="gd-item" href="monitoramentoGuardiao.html" title="Guardião">
+                <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.2 7 10 4-1.8 7-5.5 7-10V6z"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+                <span class="gd-lbl">Guardião</span>
+            </a>
+            <a class="gd-item" href="BBDecision.html" title="Decision">
+                <svg viewBox="0 0 24 24"><path d="M5 20V12"/><path d="M12 20V5"/><path d="M19 20v-9"/></svg>
+                <span class="gd-lbl">Decision</span>
+            </a>
+            <a class="gd-item" href="perfil.html" title="Perfil">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>
+                <span class="gd-lbl">Perfil</span>
+            </a>
+            <a class="gd-item gd-out" href="telainicial.html" title="Sair">
+                <svg viewBox="0 0 24 24"><path d="M10 4H5v16h5"/><path d="M9 12h11"/><path d="m16 8 4 4-4 4"/></svg>
+                <span class="gd-lbl">Sair</span>
+            </a>
+        </nav>
+    </aside>
 
-        </aside>
+    <!-- CONTEÚDO (ao lado do menu) -->
+    <div class="gd-content">
+    <main>
 
-
-        <!-- CONTEÚDO PRINCIPAL -->
-        <main class="conteudo">
-
-            <!-- SAUDAÇÃO -->
-            <header class="cabecalho">
-
-                <div class="saudacao">
-                    <h1>Olá, Usuario!</h1>
-                    <p>Que bom ter você por aqui!</p>
+     <!-- HERO (o comecinho da pagina)  -->
+    <section class="hero">
+      <div class="container hero__inner">
+ 
+        <div class="hero__texto">
+          <span class="pill">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M12 2 L20 5 V11 C20 16 16.5 20 12 22 C7.5 20 4 16 4 11 V5 Z" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"/>
+            </svg>
+            Olá, Que bom ter você por aqui!
+          </span>
+ 
+          <h1>Sua segurança, em <span class="destaque">boas mãos.</span></h1>
+ 
+          <p class="hero__lead">Aprenda, analise e se proteja. Verifique mensagens suspeitas, treine decisões e proteja quem você ama.</p>
+ 
+          <div class="hero__botoes">
+            <a href="testegolpemensagem.html" class="btn btn--contorno">Experimentar o simulador</a>
+          </div>
+        </div>
+ 
+        <div class="hero__visual">
+          <div class="visual">
+            <div class="visual__circulo visual__circulo--amarelo"></div>
+            <div class="visual__circulo visual__circulo--azul"></div>
+ 
+            <!-- Slogan em arco -->
+            <svg class="visual__arco" viewBox="0 0 288 56" role="img" aria-label="Juntos contra golpes.">
+              <defs><path id="arco-slogan" d="M 18,46 Q 144,2 270,46"/></defs>
+              <text>
+                <textPath href="#arco-slogan" startOffset="50%" text-anchor="middle">Juntos contra golpes.</textPath>
+              </text>
+            </svg>
+ 
+            <!-- Celular -->
+            <div class="celular">
+              <div class="celular__tela">
+                <div class="msg-topo">
+                  <div class="msg-topo__avatar">?</div>
+                  <div>
+                    <strong>Número desconhecido</strong>
+                    <small>agora</small>
+                  </div>
                 </div>
-
-            </header>
-
-
-            <!-- BANNER DA MASCOTE -->
-            <section class="banner">
-
-                <div class="imagem-banner">
-                    <img src="../img/guardiaoinicial.png" alt="Mascote Guardião">
+                <div class="msg-balao">Seu Pix foi bloqueado! Acesse o link e confirme seus dados em 10 minutos.</div>
+                <div class="msg-link">liberar-meu-pix.example</div>
+ 
+                <div class="alerta">
+                  <div class="alerta__topo">
+                    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M12 2 L20 5 V11 C20 16 16.5 20 12 22 C7.5 20 4 16 4 11 V5 Z" fill="#1f4fd8"/>
+                      <path d="M12 8 V13 M12 16 V16.2" stroke="#ffd21f" stroke-width="2.4" stroke-linecap="round"/>
+                    </svg>
+                    <strong>Possível golpe</strong>
+                  </div>
+                  <p>Mensagens com urgência e link desconhecido são um sinal clássico. Não clique.</p>
+                  <span class="alerta__botao">Ver por quê</span>
                 </div>
-
-                <div class="texto-banner">
-                    <h2>Juntos contra golpes!</h2>
-                    <p>Aprenda, analise e se proteja.</p>
-                </div>
-
-            </section>
-
-
-            <!-- OPÇÕES PRINCIPAIS -->
-            <section class="opcoes-principais">
-
-                <!-- CARTÃO GUARDIÃO -->
-                <article class="card-opcao card-guardiao">
-
-                    <div class="icone-opcao">
-                        <img src="../img/escudoinicial.png" alt="Escudo do Guardião">
-                    </div>
-
-                    <h2>Guardião</h2>
-
-                    <p>
-                        Monitore, teste e
-                        <br>
-                        se proteja de golpes.
-                    </p>
-
-                    <a href="monitoramentoGuardiao.html" class="botao-acessar">
-                        Acessar
-                    </a>
-
-                </article>
-
-
-                <!-- CARTÃO BB DECISION -->
-                <article class="card-opcao card-decision">
-
-                    <div class="icone-opcao">
-                        <img src="../img/grafico.png" alt="Gráfico BB Decision">
-                    </div>
-
-                    <h2>BB Decision</h2>
-
-                    <p>
-                        Simule, aprenda e
-                        <br>
-                        tome melhores decisões.
-                    </p>
-
-                    <a href="#" class="botao-acessar">
-                        Acessar
-                    </a>
-
-                </article>
-
-            </section>
-
-        </main>
-
+              </div>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+    </section>
+ 
+    <!--MEUS ACESSOS -->
+    <section id="acessos" class="secao secao--branca secao--acessos">
+      <div class="container">
+        <header class="secao__titulo">
+          <span class="eyebrow">Meus acessos</span>
+          <h2>Por onde você quer começar?</h2>
+        </header>
+ 
+        <div class="acessos">
+ 
+          <article class="acesso acesso--azul">
+            <div class="acesso__icone acesso__icone--branco">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2.5 L19.5 5.5 V11 C19.5 15.8 16.4 19.6 12 21.5 C7.6 19.6 4.5 15.8 4.5 11 V5.5 Z" stroke="#14369b" stroke-width="1.7" stroke-linejoin="round"/>
+                <circle cx="12" cy="11.3" r="3.6" stroke="#14369b" stroke-width="1.6"/>
+                <path d="M10.4 11.4 L11.6 12.6 L13.8 10.2" stroke="#14369b" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Guardião</h3>
+            <p>Monitore, teste e se proteja de golpes.</p>
+            <a href="monitoramentoGuardiao.html" class="btn btn--branco btn--pequeno">
+              Acessar
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12 H19 M13 6 L19 12 L13 18" stroke="#1f4fd8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </article>
+ 
+          <article class="acesso acesso--amarelo">
+            <div class="acesso__icone acesso__icone--escuro">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="4" y="13" width="4" height="7" rx="1" fill="#ffd21f"/>
+                <rect x="10" y="9" width="4" height="11" rx="1" fill="#ffd21f"/>
+                <rect x="16" y="4" width="4" height="16" rx="1" fill="#ffd21f"/>
+              </svg>
+            </div>
+            <h3>BB Decision</h3>
+            <p>Simule, aprenda e tome melhores decisões.</p>
+            <a href="BBDecision.html" class="btn btn--escuro btn--pequeno">
+              Acessar
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12 H19 M13 6 L19 12 L13 18" stroke="#ffd21f" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </article>
+ 
+        </div>
+      </div>
+    </section>
+ 
+    <!-- COMO FUNCIONA -->
+    <section id="como-funciona" class="secao secao--branca secao--passos">
+      <div class="container">
+        <header class="secao__titulo">
+          <span class="eyebrow">Como funciona</span>
+          <h2>Três passos para não cair em golpes</h2>
+        </header>
+ 
+        <div class="passos">
+          <article class="passo">
+            <span class="passo__numero">1</span>
+            <h3>Receba a mensagem</h3>
+            <p>Chegou um link, um áudio ou uma ligação estranha? Traga o conteúdo para o Guardião antes de agir.</p>
+          </article>
+          <article class="passo">
+            <span class="passo__numero">2</span>
+            <h3>Analise os sinais</h3>
+            <p>Urgência, pedidos de código, links diferentes do oficial. O Guardião mostra o que merece desconfiança.</p>
+          </article>
+          <article class="passo">
+            <span class="passo__numero">3</span>
+            <h3>Decida com segurança</h3>
+            <p>Receba um alerta claro e saiba o próximo passo: ignorar, bloquear ou denunciar.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+ 
+    <!-- APRENDER SOBRE GOLPES  -->
+    <section id="golpes" class="secao secao--azul-claro">
+      <div class="container">
+        <header class="secao__titulo">
+          <span class="eyebrow">Biblioteca</span>
+          <h2>Aprender sobre golpes</h2>
+        </header> 
+ 
+        <div class="topicos">
+ 
+          <details class="topico" data-busca="phishing mensagens e-mails emails falsos">
+            <summary class="topico__resumo">
+            <svg class="topico__seta" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 L16 12 L9 19" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="topico__icone">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2.5 L19.5 5.5 V11 C19.5 15.8 16.4 19.6 12 21.5 C7.6 19.6 4.5 15.8 4.5 11 V5.5 Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                <circle cx="12" cy="11.3" r="3.6" stroke="currentColor" stroke-width="1.6"/>
+                <path d="M10.4 11.4 L11.6 12.6 L13.8 10.2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <strong>Phishing</strong>
+            <span>Mensagens e e-mails falsos.</span>
+          </summary>
+            <div class="topico__corpo">
+              <p>Mensagens ou e-mails que imitam uma empresa conhecida para roubar seus dados.</p>
+              <strong class="topico__sub">Como se proteger</strong>
+              <ul>
+              <li>Confira o endereço de quem enviou antes de abrir qualquer coisa.</li>
+              <li>Desconfie de urgência, ameaças e prazos curtos.</li>
+              <li>Nunca informe senhas ou códigos por mensagem.</li>
+              </ul>
+            </div>
+          </details>
+ 
+          <details class="topico" data-busca="falsas ofertas promocoes que parecem demais">
+            <summary class="topico__resumo">
+            <svg class="topico__seta" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 L16 12 L9 19" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="topico__icone">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M7 12 L17 6.5 M7 12 L17 17.5" stroke="currentColor" stroke-width="2"/>
+                <circle cx="6" cy="12" r="3" fill="currentColor"/>
+                <circle cx="18" cy="5.5" r="3" fill="currentColor"/>
+                <circle cx="18" cy="18.5" r="3" fill="currentColor"/>
+              </svg>
+            </span>
+            <strong>Falsas ofertas</strong>
+            <span>Promoções que parecem demais.</span>
+          </summary>
+            <div class="topico__corpo">
+              <p>Promoções boas demais para ser verdade, usadas para pedir pagamento ou dados pessoais.</p>
+              <strong class="topico__sub">Como se proteger</strong>
+              <ul>
+              <li>Compare o preço com o site ou o app oficial da loja.</li>
+              <li>Desconfie de prêmios e sorteios que você não pediu.</li>
+              <li>Pague apenas em ambientes que você mesmo abriu, nunca por link recebido.</li>
+              </ul>
+            </div>
+          </details>
+ 
+          <details class="topico" data-busca="links suspeitos nao clique em links desconhecidos">
+            <summary class="topico__resumo">
+            <svg class="topico__seta" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 L16 12 L9 19" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="topico__icone">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M10 14 L14 10 M8.2 11.8 L5.8 14.2 C4.4 15.6 4.4 17.9 5.8 19.3 C7.2 20.7 9.5 20.7 10.9 19.3 L13.3 16.9 M15.8 12.2 L18.2 9.8 C19.6 8.4 19.6 6.1 18.2 4.7 C16.8 3.3 14.5 3.3 13.1 4.7 L10.7 7.1" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <strong>Links suspeitos</strong>
+            <span>Não clique em links desconhecidos.</span>
+          </summary>
+            <div class="topico__corpo">
+              <p>Endereços que parecem oficiais, mas levam a páginas falsas que capturam seus dados.</p>
+              <strong class="topico__sub">Como se proteger</strong>
+              <ul>
+              <li>Veja o endereço completo antes de tocar no link.</li>
+              <li>Prefira digitar o site ou abrir o aplicativo oficial.</li>
+              <li>Tenha cuidado com links encurtados e com letras trocadas no endereço.</li>
+              </ul>
+            </div>
+          </details>
+ 
+          <details class="topico" data-busca="golpes por telefone se passam por bancos e empresas ligacao">
+            <summary class="topico__resumo">
+            <svg class="topico__seta" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 L16 12 L9 19" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="topico__icone">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 4 H9 L11 9 L8.5 10.5 C9.6 12.7 11.3 14.4 13.5 15.5 L15 13 L20 15 V19 C20 19.6 19.6 20 19 20 C10.7 20 4 13.3 4 5 C4 4.4 4.4 4 5 4 Z" fill="currentColor"/>
+                <path d="M14 5.5 C16.8 6 18.5 7.7 19 10.5 M14.5 8.5 C15.8 8.8 16.7 9.6 17 11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <strong>Golpes por telefone</strong>
+            <span>Se passam por bancos e empresas.</span>
+          </summary>
+            <div class="topico__corpo">
+              <p>Ligações de falsos atendentes que pedem dados, códigos ou transferências.</p>
+              <strong class="topico__sub">Como se proteger</strong>
+              <ul>
+              <li>Desligue e ligue de volta para o número oficial da empresa.</li>
+              <li>Nenhuma instituição séria pede senha ou código por telefone.</li>
+              <li>Não instale aplicativos a pedido de quem ligou.</li>
+              </ul>
+            </div>
+          </details>
+ 
+          <details class="topico" data-busca="redes sociais perfis falsos engenharia social">
+            <summary class="topico__resumo">
+            <svg class="topico__seta" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 L16 12 L9 19" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="topico__icone">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <circle cx="12" cy="8" r="3.6" fill="currentColor"/>
+                <path d="M5 20 C5 15.5 8 13.5 12 13.5 C16 13.5 19 15.5 19 20 Z" fill="currentColor"/>
+                <circle cx="5.5" cy="9" r="2.4" fill="currentColor"/>
+                <circle cx="18.5" cy="9" r="2.4" fill="currentColor"/>
+                <path d="M1.5 18 C1.5 15 3.2 13.6 5.5 13.6 C6 13.6 6.5 13.7 6.9 13.8 C5.8 14.8 5.2 16.2 5 18 Z M22.5 18 C22.5 15 20.8 13.6 18.5 13.6 C18 13.6 17.5 13.7 17.1 13.8 C18.2 14.8 18.8 16.2 19 18 Z" fill="currentColor"/>
+              </svg>
+            </span>
+            <strong>Redes sociais</strong>
+            <span>Perfis falsos e engenharia social.</span>
+          </summary>
+            <div class="topico__corpo">
+              <p>Perfis falsos ou clonados que se passam por conhecidos e pedem dinheiro ou dados.</p>
+              <strong class="topico__sub">Como se proteger</strong>
+              <ul>
+              <li>Confirme por outro canal, como uma ligação, antes de ajudar.</li>
+              <li>Desconfie de pedidos urgentes de dinheiro, mesmo de contatos conhecidos.</li>
+              <li>Ative a verificação em duas etapas nas suas contas.</li>
+              </ul>
+            </div>
+          </details>
+ 
+          <details class="topico" data-busca="outros golpes conheca mais e se proteja">
+            <summary class="topico__resumo">
+            <svg class="topico__seta" width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 5 L16 12 L9 19" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span class="topico__icone">
+              <svg width="32" height="32" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 7 C5 4.5 8 3 12 3 C16 3 19 4.5 19 7 L19 9 L5 9 Z" fill="currentColor"/>
+                <rect x="4" y="9" width="16" height="5" rx="2.5" fill="currentColor"/>
+                <rect class="furo" x="6.5" y="10.2" width="4" height="2.2" rx="1.1"/>
+                <rect class="furo" x="13.5" y="10.2" width="4" height="2.2" rx="1.1"/>
+                <path d="M7 14 L7 17 C7 18.5 9 20 12 20 C15 20 17 18.5 17 17 L17 14 Z" fill="currentColor"/>
+                <path d="M2.5 22 C3 19.5 5 18.5 7.5 18.5 L16.5 18.5 C19 18.5 21 19.5 21.5 22 Z" fill="currentColor"/>
+              </svg>
+            </span>
+            <strong>Outros golpes</strong>
+            <span>Conheça mais e se proteja.</span>
+          </summary>
+            <div class="topico__corpo">
+              <p>Existem muitas variações de golpe, mas quase todas usam pressa e pedem dados ou dinheiro.</p>
+              <strong class="topico__sub">Como se proteger</strong>
+              <ul>
+              <li>Pare e respire antes de agir.</li>
+              <li>Converse com alguém de confiança antes de decidir.</li>
+              <li>Bloqueie o contato e denuncie na plataforma.</li>
+              </ul>
+            </div>
+          </details>
+ 
+        </div>
+ 
+        
+      </div>
+    </section>
+ 
+    <!-- SIMULADOR-->
+    <section id="simulador" class="secao secao--azul-escuro">
+      <div class="container simulador">
+ 
+        <div class="simulador__texto">
+          <span class="eyebrow eyebrow--amarelo">Simulador</span>
+          <h2>Simule, aprenda e tome melhores decisões</h2>
+          <p>Treine com situações reais, sem risco. Escolha uma resposta e veja na hora o que aconteceria.</p>
+          <a href="testegolpemensagem.html" class="btn btn--amarelo">Começar a treinar</a>
+        </div>
+ 
+        <div class="simulador__quiz">
+          <div class="quiz">
+            <span class="quiz__etapa">Situação 1 de 5</span>
+            <p class="quiz__pergunta">Alguém liga dizendo ser do seu banco e pede o código que acabou de chegar por SMS. O que você faz?</p>
+ 
+            <button type="button" class="opcao"
+              data-correta="false"
+              data-titulo="Cuidado: isso é um golpe."
+              data-texto="O código de SMS é pessoal. Nenhuma instituição legítima pede esse número por telefone.">
+              <span class="opcao__letra">A</span>
+              <span>Passo o código para confirmar minha identidade</span>
+            </button>
+ 
+            <button type="button" class="opcao"
+              data-correta="true"
+              data-titulo="Correto: você evitou o golpe."
+              data-texto="Desligar e retornar por um canal oficial é a forma mais segura de confirmar qualquer contato.">
+              <span class="opcao__letra">B</span>
+              <span>Desligo e ligo para o número oficial do banco</span>
+            </button>
+ 
+            <button type="button" class="opcao"
+              data-correta="false"
+              data-titulo="Quase, mas ainda arriscado."
+              data-texto="Golpistas dão nomes falsos com facilidade. O melhor é encerrar a chamada e verificar por conta própria.">
+              <span class="opcao__letra">C</span>
+              <span>Peço o nome do atendente e continuo a conversa</span>
+            </button>
+ 
+            <div id="quiz-feedback" class="quiz__feedback" hidden aria-live="polite">
+              <strong id="quiz-feedback-titulo"></strong>
+              <span id="quiz-feedback-texto"></span>
+            </div>
+          </div>
+        </div>
+ 
+      </div>
+    </section>
+ 
+    <!--BANNER FINAL-->
+    <section class="secao secao--branca">
+      <div class="container">
+        <div class="banner">
+          <div class="banner__conteudo">
+            <img src="../img/mascotespulando.png" alt="Mascote do Guardião" class="banner__mascote">
+            <div>
+              <h2>Juntos contra golpes!</h2>
+              <p>Aprenda, analise e se proteja.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+ 
+  </main>
+ 
+  <!-- RODAPÉ -->
+  <footer class="rodape">
+    <div class="container rodape__inner">
+      <div class="rodape__marca">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2 L20 5 V11 C20 16 16.5 20 12 22 C7.5 20 4 16 4 11 V5 Z" fill="#ffd21f"/>
+          <path d="M8.5 12 L11 14.5 L15.5 9.5" stroke="#14369b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Guardião</span>
+      </div>
+      <span class="rodape__slogan">Sua segurança, em boas mãos.</span>
+      <nav class="rodape__links" aria-label="Rodapé">
+        <a href="guardiao.html">Guardião</a>
+        <a href="decision.html">BB Decision</a>
+      </nav>
     </div>
+  </footer>
 
+    </div><!-- /gd-content -->
+</div><!-- /gd-app -->
+
+  <script src="../js/menu.js"></script>
+  <script src="../js/home.js"></script>
+  <script src="../js/inicialopcao.js"></script>
+  <script src="../js/chatbot.js" defer></script>
 </body>
 </html>

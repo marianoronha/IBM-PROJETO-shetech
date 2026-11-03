@@ -38,3 +38,16 @@ html, body { margin: 0; padding: 0; }
 .gd-side.min .gd-logo .mk{display:block}
 .gd-side.min .gd-item{justify-content:center;padding:12px}
 .gd-side.min .gd-collapse svg{transform:rotate(180deg)}
+
+/* ── DARK THEME (applies site-wide via data-theme on <html>) ── */
+[data-theme="dark"]{
+  --gd-bg:#0d1520;
+  --gd-surface:#151f2e;
+  --gd-surface-2:#1a2637;
+  --gd-line:#253245;
+  --gd-text:#e2eaf6;
+  --gd-muted:#8fa0bc;
+  --gd-shadow:0 1px 2px rgba(0,0,0,.3),0 8px 24px rgba(0,0,0,.3);
+}
+[data-theme="dark"] body{background:var(--gd-bg);color:var(--gd-text)}
+[data-theme="dark"] .gd-app{background:var(--gd-bg)}

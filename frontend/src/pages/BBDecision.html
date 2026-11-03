@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="0;url=/bbdecision">
+    <title>Redirecionando para BB Decision…</title>
+    <script>
+      // Tenta rota do React SPA primeiro; se falhar (file://) abre pelo index
+      (function () {
+        var base = window.location.origin;
+        if (base === 'null' || base === 'file://') {
+          // aberto como arquivo local — tenta achar o index.html relativo
+          window.location.replace('../../index.html#bbdecision');
+        } else {
+          window.location.replace(base + '/bbdecision');
+        }
+      })();
+    </script>
+</head>
+<body>
+    <p>Redirecionando para o <a href="/bbdecision">BB Decision</a>…</p>
+</body>
+</html>
