@@ -114,7 +114,7 @@ Muitas pessoas decidem sem conseguir visualizar claramente os possíveis impacto
 <tr>
 <td align="center" width="50%">
 
-<img src="./assets/MascoteComEscuto2.png" width="200" alt="Mascote do Guardião">
+<img src="../img/MascoteComEscuto2.png" width="200" alt="Mascote do Guardião">
 
 ### 🛡️ Guardião
 
@@ -125,7 +125,7 @@ Análise inteligente de possíveis golpes, explicações acessíveis e experiên
 </td>
 <td align="center" width="50%">
 
-<img src="./assets/AMascote.png" width="200" alt="Mascote do BB Decision">
+<img src="../img/Amascote.png" width="200" alt="Mascote do BB Decision">
 
 ### 📈 BB Decision
 
