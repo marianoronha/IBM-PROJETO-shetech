@@ -160,7 +160,7 @@ export function Sidebar({ active }: { active: MenuKey }) {
 
         {/* SAIR */}
         <a
-          href={`${PAGES}telainicial-recuperada.html`}
+          href="/src/pages/telainicial-recuperada.html"
           className="gd-item gd-out"
           title="Sair"
         >

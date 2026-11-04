@@ -9,7 +9,7 @@
  * Guardião -> monitoramentoGuardiao.html
  * Decision -> apresentacaoDecision.html
  * Perfil   -> perfil.html
- * Sair     -> telainicial.html
+ * Sair     -> telainicial-recuperada.html
  *
  * O menu React continua em Sidebar.tsx.
  */
@@ -90,7 +90,7 @@
     {
       id: 'sair',
       texto: 'Sair',
-      link: PAGES + 'telainicial.html',
+      link: PAGES + 'telainicial-recuperada.html',
       icone: [
         'M10 4H5v16h5',
         'M9 12h11',
