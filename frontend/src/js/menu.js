@@ -115,7 +115,11 @@
     'testegolpemensagem.html',
     'testelink.html',
     'testetransacoes.html',
-    'testeaplicativos.html',
+    'testeaplicativos.html'
+  ]
+
+  const paginasPerfil = [
+    'perfil.html',
     'historicotestes.html'
   ]
 
@@ -130,7 +134,7 @@
     paginaAtiva = 'guardiao'
   } else if (paginasDecision.includes(pagina)) {
     paginaAtiva = 'decision'
-  } else if (pagina === 'perfil.html') {
+  } else if (paginasPerfil.includes(pagina)) {
     paginaAtiva = 'perfil'
   }
 

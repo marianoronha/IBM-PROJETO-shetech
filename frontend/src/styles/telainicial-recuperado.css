@@ -451,6 +451,17 @@ img { max-width: 100%; display: block; }
   max-width: none;
   object-fit: contain;
   filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.22));
+  transition: transform .25s cubic-bezier(.2, .8, .2, 1);
+  will-change: transform;
+}
+
+.produto:hover .produto__imagem img {
+  transform: translateY(-18px) scale(1.06);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .produto__imagem img { transition: none; }
+  .produto:hover .produto__imagem img { transform: none; }
 }
 
 /* ── CTA BANNER ─────────────────────────────────────────── */

@@ -585,7 +585,7 @@ img { max-width: 100%; display: block; }
 .banner p  { margin-top: 4px; font-size: .92rem; font-weight: 700; }
 
 /* ─── RODAPÉ ─────────────────────────────────────────── */
-.rodape { background: var(--azul-rodape); }
+.rodape { background: #002a63; }
 
 .rodape__inner {
   display: flex;
@@ -593,8 +593,9 @@ img { max-width: 100%; display: block; }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding-top: 24px;
-  padding-bottom: 24px;
+  padding: 22px 24px;
+  max-width: 1100px;
+  margin: 0 auto;
 }
 
 .rodape__marca  { display: flex; align-items: center; gap: 8px; color: var(--branco); font-size: 1rem; font-weight: 800; }
@@ -623,4 +624,22 @@ img { max-width: 100%; display: block; }
   .hero  { padding: 18px 0 64px; }
   .secao { padding: 22px 0; }
   .container { padding: 0 16px; }
+}
+
+/* ── HOVER DO MENU LATERAL (melhoria visual do botão) ─── */
+.gd-item {
+  transition: background .15s ease, color .15s ease, box-shadow .15s ease;
+}
+.gd-item:hover {
+  background: rgba(255,255,255,.15);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
+}
+.gd-out {
+  border-radius: 12px;
+}
+.gd-out:hover {
+  background: rgba(220,80,80,.22);
+  color: #ffb3b3;
+  box-shadow: 0 2px 8px rgba(0,0,0,.18);
 }

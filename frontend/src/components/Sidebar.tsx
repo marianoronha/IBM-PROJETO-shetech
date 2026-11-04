@@ -107,6 +107,11 @@ export function Sidebar({ active }: { active: MenuKey }) {
 
       {/* LOGO */}
       <div className="gd-logo">
+        <img
+          src="/src/img/logobdb.png"
+          alt="Banco do Brasil"
+          style={{ height: '28px', width: 'auto', flexShrink: 0 }}
+        />
         <svg
           className="mk"
           viewBox="0 0 24 24"
@@ -155,7 +160,7 @@ export function Sidebar({ active }: { active: MenuKey }) {
 
         {/* SAIR */}
         <a
-          href={`${PAGES}telainicial.html`}
+          href={`${PAGES}telainicial-recuperada.html`}
           className="gd-item gd-out"
           title="Sair"
         >

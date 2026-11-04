@@ -13,13 +13,26 @@ function Layout() {
   return (
     <div className="gd-app">
       <Sidebar active={active} />
-      <div className="gd-content" id="main-content">
+      <div className="gd-content" id="main-content" style={{ display: 'flex', flexDirection: 'column' }}>
         <Routes>
           {/* "/" abre direto a tela do Guardião. Troque aqui se quiser outra entrada. */}
           <Route path="/" element={<Navigate to="/guardiao" replace />} />
           <Route path="/guardiao" element={<GuardiaoPage />} />
           <Route path="/bbdecision" element={<BBDecisionPage />} />
         </Routes>
+        <footer className="rodape" style={{ marginTop: 'auto' }}>
+          <div className="rodape__inner">
+            <div className="rodape__marca">
+              <img src="/src/img/logobdb.png" alt="Banco do Brasil" className="rodape__logo-bb" />
+              <span>Guardião</span>
+              <span className="rodape__parceria">Um projeto <strong>SheTech</strong> em parceria com o Banco do Brasil.</span>
+            </div>
+            <nav className="rodape__links" aria-label="Rodapé">
+              <a href="/src/pages/monitoramentoGuardiao.html">Guardião</a>
+              <a href="/src/pages/BBDecision.html">BB Decision</a>
+            </nav>
+          </div>
+        </footer>
       </div>
     </div>
   )
