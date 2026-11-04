@@ -1,68 +1,97 @@
+
 <div align="center">
 
 # 💙 SheTech 💛
 
 ### Inteligência que protege. Tecnologia que transforma.
 
-**🛡️ Guardião &nbsp;+&nbsp; 📊 BB Decision**
+**GUARDIÃO + BB DECISION**
 
-Soluções com Inteligência Artificial para promover segurança digital,<br>
-educação financeira e decisões mais conscientes.
+Soluções com Inteligência Artificial para promover segurança digital, educação financeira e decisões mais conscientes.
 
-**Projeto IBM × Banco do Brasil · Serviços Financeiros**
+**Projeto IBM × Banco do Brasil | Serviços Financeiros**
 
 <br>
 
 ![Status](https://img.shields.io/badge/STATUS-EM_DESENVOLVIMENTO-2563EB?style=for-the-badge)
 ![Python](https://img.shields.io/badge/PYTHON-3.12-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FASTAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
 ![React](https://img.shields.io/badge/REACT-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![IBM](https://img.shields.io/badge/IBM-watsonx.ai-052FAD?style=for-the-badge)
+![IBM](https://img.shields.io/badge/IBM-watsonx-052FAD?style=for-the-badge)
 
 <br>
 
-**[Sobre](#-sobre-o-projeto) · [Soluções](#-nossas-soluções) · [Arquitetura](#-arquitetura) · [Como executar](#-como-executar) · [Segurança](#-segurança-e-ia-responsável) · [Equipe](#-equipe)**
+**[Sobre](#-sobre-o-projeto) • [Soluções](#-nossas-soluções) • [Tecnologias](#-tecnologias-utilizadas) • [Instalação](#-como-executar-o-projeto) • [Equipe](#-conheça-a-shetech)**
 
 </div>
 
 ---
 
-## 📑 Sumário
+## 👩‍💻 Conheça a SheTech
 
-- [Sobre o projeto](#-sobre-o-projeto)
-- [O problema](#-o-problema)
-- [Nossas soluções](#-nossas-soluções)
-  - [Guardião](#️-guardião)
-  - [BB Decision](#-bb-decision)
-- [Inteligência Artificial](#-inteligência-artificial)
-- [Tecnologias](#️-tecnologias)
-- [Arquitetura](#-arquitetura)
-- [Como executar](#-como-executar)
-- [Testes](#-testes)
-- [Estrutura do projeto](#-estrutura-do-projeto)
-- [Segurança e IA responsável](#-segurança-e-ia-responsável)
-- [Documentação adicional](#-documentação-adicional)
-- [Equipe](#-equipe)
-- [Aviso legal](#️-aviso-legal)
+<div align="center">
+
+### Três mulheres. Duas soluções. Um propósito.
+
+A **SheTech** é formada por três integrantes que compartilham o interesse por tecnologia, inovação e criação de soluções com impacto positivo.
+
+Nosso trabalho une criatividade, desenvolvimento de software, Inteligência Artificial e experiência do usuário.
+
+<br>
+
+<table>
+<tr>
+<td align="center" width="200">
+
+<a href="https://github.com/GiovannaMontoro">
+<img src="https://github.com/GiovannaMontoro.png" width="115" alt="Giovanna Montoro">
+<br>
+<strong>Giovanna Montoro</strong>
+</a>
+
+<br>
+<sub>@GiovannaMontoro</sub>
+
+</td>
+<td align="center" width="200">
+
+<a href="https://github.com/marianoronha">
+<img src="https://github.com/marianoronha.png" width="115" alt="Maria Noronha">
+<br>
+<strong>Maria Noronha</strong>
+</a>
+
+<br>
+<sub>@marianoronha</sub>
+
+</td>
+<td align="center" width="200">
+
+<a href="https://github.com/LaraAntuness">
+<img src="https://github.com/LaraAntuness.png" width="115" alt="Lara Antunes">
+<br>
+<strong>Lara Antunes</strong>
+</a>
+
+<br>
+<sub>@LaraAntuness</sub>
+
+</td>
+</tr>
+</table>
+
+<br>
+
+**Clique nas fotos para conhecer os perfis de cada integrante no GitHub.**
+
+*Tecnologia, colaboração e inovação para transformar ideias em soluções.*
+
+</div>
 
 ---
 
-## ✨ Sobre o projeto
+## 🌍 Impacto esperado
 
-> **E se a Inteligência Artificial pudesse ajudar você a identificar golpes antes de cair neles e a compreender os impactos das suas decisões financeiras antes de tomá-las?**
-
-Foi dessa pergunta que nasceu o projeto da equipe **SheTech**, desenvolvido no contexto da parceria **IBM × Banco do Brasil**.
-
-O sistema reúne duas soluções com um propósito em comum: tornar a experiência financeira **mais segura, inteligente e acessível**.
-
-| | Solução | Em uma frase |
-|---|---|---|
-| 🛡️ | **Guardião** | IA para prevenção de golpes de engenharia social, orientação e educação digital. |
-| 📊 | **BB Decision** | Simulador financeiro inteligente para explorar cenários e entender consequências. |
-
-> **Nossa missão:** transformar tecnologia em autonomia, proteção e conhecimento.
-
-### 🌍 Impacto esperado
+Com o Guardião e o BB Decision, buscamos:
 
 - 🛡️ Ampliar a conscientização sobre golpes digitais.
 - 💬 Facilitar o acesso a informações de segurança.
@@ -73,32 +102,53 @@ O sistema reúne duas soluções com um propósito em comum: tornar a experiênc
 
 ---
 
+## ✨ Sobre o projeto
+
+E se a Inteligência Artificial pudesse ajudar você a identificar golpes antes de cair neles e compreender os impactos das suas decisões financeiras antes de tomá-las?
+
+Foi a partir dessa ideia que nasceu o nosso projeto.
+
+Desenvolvido pela equipe **SheTech**, no contexto do projeto IBM × Banco do Brasil, o sistema reúne duas soluções que compartilham um propósito: tornar a experiência financeira mais segura, inteligente e acessível.
+
+O projeto é composto por:
+
+- 🛡️ **Guardião:** uma solução de IA voltada à prevenção de golpes de engenharia social, orientação e educação digital.
+- 📊 **BB Decision:** um simulador inteligente que permite explorar cenários financeiros e compreender possíveis consequências de decisões.
+
+Mais do que utilizar Inteligência Artificial, buscamos desenvolver experiências que considerem o contexto, a necessidade e a realidade de cada usuário.
+
+> **Nossa missão:** transformar tecnologia em autonomia, proteção e conhecimento.
+
+---
+
 ## 🎯 O problema
 
-O cotidiano financeiro envolve decisões que afetam diretamente a segurança e o bem-estar das pessoas. Identificamos dois desafios principais:
+O cotidiano financeiro envolve decisões que podem afetar diretamente a segurança e o bem-estar das pessoas.
+
+Identificamos dois desafios principais:
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🛡️ Golpes digitais
+<h3>🛡️ Golpes digitais</h3>
 
-Golpes de engenharia social usam mensagens falsas, senso de urgência e manipulação emocional para induzir vítimas a compartilhar informações ou transferir dinheiro.
+<p>Golpes de engenharia social utilizam mensagens falsas, senso de urgência e manipulação emocional para induzir vítimas a compartilhar informações ou transferir dinheiro.</p>
 
-Identificar apenas palavras suspeitas nem sempre basta para reconhecer uma tentativa de fraude.
+<p>A simples identificação de palavras suspeitas nem sempre é suficiente para compreender uma tentativa de fraude.</p>
 
-**Nosso desafio:** identificar sinais de risco e orientar o usuário *antes* que ele seja prejudicado.
+<p><strong>Nosso desafio:</strong> identificar sinais de risco e orientar o usuário antes que ele seja prejudicado.</p>
 
 </td>
 <td width="50%" valign="top">
 
-### 📊 Decisões financeiras
+<h3>📊 Decisões financeiras</h3>
 
-Compras parceladas, mudanças de renda e outros compromissos podem gerar consequências difíceis de prever.
+<p>Compras parceladas, mudanças de renda e outros compromissos financeiros podem gerar consequências difíceis de prever.</p>
 
-Muitas pessoas decidem sem conseguir visualizar claramente os possíveis impactos.
+<p>Muitas pessoas tomam decisões sem conseguir visualizar claramente seus possíveis impactos.</p>
 
-**Nosso desafio:** oferecer ferramentas que tornem o planejamento mais acessível e compreensível.
+<p><strong>Nosso desafio:</strong> oferecer ferramentas que tornem o planejamento mais acessível e compreensível.</p>
 
 </td>
 </tr>
@@ -114,24 +164,24 @@ Muitas pessoas decidem sem conseguir visualizar claramente os possíveis impacto
 <tr>
 <td align="center" width="50%">
 
-<img src="./frontend/src/assets/MascoteComEscuto2.png" width="210">
+<img src="./frontend/src/img/MascoteComEscudo2.png" width="210" alt="Mascote do Guardião">
 
-### 🛡️ Guardião
+<h3>🛡️ Guardião</h3>
 
-**Sua segurança em primeiro lugar.**
+<p><strong>Sua segurança em primeiro lugar.</strong></p>
 
-Análise inteligente de possíveis golpes, explicações acessíveis e experiências educativas.
+<p>Análise inteligente de possíveis golpes, explicações acessíveis e experiências educativas para prevenção de fraudes.</p>
 
 </td>
 <td align="center" width="50%">
 
-<img src="../img/Amascote.png" width="200" alt="Mascote do BB Decision">
+<img src="./frontend/src/img/Amascote.png" width="210" alt="Mascote do BB Decision">
 
-### 📈 BB Decision
+<h3>📈 BB Decision</h3>
 
-**Suas escolhas, seu futuro.**
+<p><strong>Suas escolhas, seu futuro.</strong></p>
 
-Simulações financeiras para explorar possibilidades e entender o impacto de cada decisão.
+<p>Simulações financeiras para explorar possibilidades e compreender os impactos de diferentes decisões.</p>
 
 </td>
 </tr>
@@ -141,95 +191,111 @@ Simulações financeiras para explorar possibilidades e entender o impacto de ca
 
 ---
 
-### 🛡️ Guardião
+# 🛡️ Guardião
 
-> *Proteção que vai além de um alerta.*
+### Proteção que vai além de um alerta.
 
-O Guardião analisa conteúdos suspeitos, identifica sinais de fraude e apresenta explicações claras ao usuário. A análise considera **o contexto e a intenção** por trás das mensagens, e não apenas palavras isoladas.
+O **Guardião** é uma solução de Inteligência Artificial desenvolvida para auxiliar na identificação de golpes de engenharia social e promover a educação em segurança digital.
 
-#### 🔍 Funcionalidades
+Seu objetivo é analisar conteúdos suspeitos, identificar sinais de fraude e apresentar explicações claras para o usuário.
+
+A proposta considera não apenas palavras isoladas, mas também o contexto e a intenção por trás das mensagens.
+
+### 🔍 Principais funcionalidades
 
 | Funcionalidade | Descrição |
 |---|---|
-| 🔎 **Análise de mensagens** | Identifica indícios de golpes e engenharia social |
-| 📊 **Indicador de risco** | Apresenta o risco estimado de fraude |
-| 💡 **Explicação de golpes** | Mostra o tipo de golpe e como ele funciona |
-| 💬 **Chat de dúvidas** | Orienta sobre segurança digital e golpes frequentes |
-| 🎮 **Testes interativos** | Situações práticas para aprender a reconhecer fraudes |
-| 🛡️ **Recomendações** | Orientações de prevenção e proteção |
+| 🔎 Análise de mensagens | Identificação de indícios de golpes e engenharia social |
+| 📊 Indicador de risco | Apresentação do risco estimado de fraude |
+| 💡 Explicação de golpes | Informações sobre o tipo de golpe e como funciona |
+| 💬 Chat de dúvidas | Orientações sobre segurança digital e golpes frequentes |
+| 🎮 Testes interativos | Situações práticas para aprender a identificar fraudes |
+| 🛡️ Recomendações | Orientações para prevenção e proteção |
 
-#### ⚙️ Como funciona
+### ⚙️ Como funciona?
 
-O fluxo de análise usa um agente construído com **LangGraph**, organizado em **seis nós**, que estruturam as etapas de processamento e utilizam modelos de linguagem para interpretar o conteúdo.
+O fluxo de análise do Guardião utiliza um agente desenvolvido com **LangGraph**, organizado em seis nós.
 
-```mermaid
-flowchart LR
-    A["📩 Entrada do usuário"] --> B["⚙️ Processamento"]
-    B --> C["🤖 Análise por IA"]
-    C --> D["📊 Avaliação de risco"]
-    D --> E["💡 Explicação e orientação"]
-```
+A arquitetura permite estruturar etapas de processamento e análise, utilizando modelos de linguagem para interpretar informações.
 
-#### 🎮 Aprendizado na prática
+De maneira simplificada:
 
-Além de identificar golpes, o Guardião ensina a reconhecê-los. Nos **testes interativos**, o usuário avalia se uma mensagem ou abordagem é um golpe e, após responder, recebe um **retorno educativo**.
+**Entrada do usuário → Processamento → Análise por IA → Avaliação de risco → Explicação e orientação**
 
-Assim, o Guardião promove não só proteção, mas também **conscientização e autonomia digital**.
+### 💬 Chat de dúvidas frequentes
+
+O Guardião também possui uma experiência voltada a esclarecer dúvidas sobre segurança digital.
+
+O objetivo é oferecer orientações acessíveis para perguntas relacionadas a golpes, mensagens suspeitas e cuidados com informações pessoais.
+
+### 🎮 Aprendizado na prática
+
+Além de identificar possíveis golpes, o projeto busca ensinar o usuário a reconhecê-los.
+
+No ambiente de testes interativos, são apresentadas situações nas quais a pessoa deve avaliar se determinada mensagem ou abordagem representa um golpe.
+
+Após responder, o usuário recebe um retorno educativo.
+
+Dessa forma, o Guardião promove não apenas proteção, mas também **conscientização e autonomia digital**.
 
 ---
 
-### 📊 BB Decision
+# 📊 BB Decision
 
-> *O futuro das suas decisões começa com uma pergunta.*
+### O futuro das suas decisões começa com uma pergunta.
 
-O BB Decision parte de uma pergunta simples:
+O **BB Decision** é um simulador financeiro inteligente que permite ao usuário explorar diferentes possibilidades antes de tomar decisões importantes.
+
+A experiência parte de uma pergunta simples:
 
 ### "E se eu fizer isso?"
 
-Com IA e um motor de cálculos financeiros, o sistema interpreta perguntas em linguagem natural e apresenta cenários de forma compreensível.
+Utilizando Inteligência Artificial e um motor de cálculos financeiros, o sistema busca interpretar perguntas em linguagem natural e apresentar cenários de forma compreensível.
 
-#### 💡 Exemplos de uso
+### 💡 Exemplos de utilização
 
 | Pergunta | O que pode ser analisado |
 |---|---|
 | 🛍️ E se eu parcelar uma compra? | Impacto das parcelas no orçamento |
-| 💰 E se minha renda diminuir? | Efeitos sobre despesas e reserva |
+| 💰 E se minha renda diminuir? | Possíveis efeitos sobre despesas e reserva |
 | 🏠 E se eu comprar uma casa? | Comprometimento da renda e metas |
 | 🎯 E se eu quiser economizar mais? | Alternativas de planejamento |
 | 💼 E se eu mudar de emprego? | Mudanças no cenário financeiro |
 
-#### ⚙️ Como funciona
+### ⚙️ Como funciona?
 
-O backend combina interpretação de linguagem natural com processamento financeiro estruturado: um **motor financeiro** faz os cálculos e um **narrador** apresenta os resultados em linguagem acessível.
+O BB Decision combina interpretação de linguagem natural com processamento financeiro estruturado.
 
-```mermaid
-flowchart LR
-    A["❓ Pergunta"] --> B["🧠 Interpretação"]
-    B --> C["🧮 Cálculos financeiros"]
-    C --> D["📈 Simulação"]
-    D --> E["💬 Explicação"]
-```
+Seu backend possui um motor financeiro e um componente responsável pela apresentação dos resultados em linguagem compreensível.
 
-> **Princípio de design:** a IA auxilia na *interpretação* e na *comunicação*. Os cálculos seguem regras financeiras confiáveis e verificáveis.
+**Pergunta → Interpretação → Cálculos financeiros → Simulação → Explicação**
 
-#### 🌟 Nosso diferencial
+A Inteligência Artificial auxilia na interpretação e na comunicação dos resultados. Os cálculos devem seguir regras financeiras confiáveis e verificáveis.
 
-O BB Decision não apenas mostra números: transforma informações financeiras em explicações acessíveis, permitindo comparar possibilidades e entender melhor cada escolha.
+### 🌟 Nosso diferencial
 
-> ⚠️ As simulações são estimativas para fins informativos e demonstrativos. Não representam garantia de resultados futuros nem recomendação de investimento.
+O BB Decision não busca apenas apresentar números.
+
+Nossa proposta é transformar informações financeiras em explicações acessíveis, permitindo que o usuário compare possibilidades e compreenda melhor suas escolhas.
+
+> As simulações são estimativas para fins informativos e demonstrativos. Não representam garantias de resultados futuros nem recomendações de investimento.
 
 ---
 
 ## 🧠 Inteligência Artificial
 
-A arquitetura permite trabalhar com diferentes provedores de modelos de linguagem:
+O projeto utiliza uma arquitetura que permite trabalhar com diferentes provedores de modelos de linguagem.
 
-- **IBM watsonx.ai** *(padrão)*
+Entre as opções previstas estão:
+
+- **IBM watsonx.ai**
 - **OpenAI**
 
-O provedor é escolhido pela variável de ambiente `LLM_PROVIDER`.
+A seleção do provedor é configurada por meio da variável de ambiente `LLM_PROVIDER`.
 
-| 🛡️ Guardião | 📊 BB Decision |
+### Aplicações de IA
+
+| Guardião | BB Decision |
 |---|---|
 | Análise de mensagens suspeitas | Interpretação de perguntas financeiras |
 | Identificação de sinais de engenharia social | Explicação de cenários |
@@ -237,11 +303,11 @@ O provedor é escolhido pela variável de ambiente `LLM_PROVIDER`.
 | Orientações de segurança | Apoio ao planejamento |
 | Agente estruturado com LangGraph | Motor financeiro e narrador |
 
-A IA é usada para **interpretação e explicação**; cálculos e operações críticas ficam sujeitos a mecanismos apropriados de validação.
+A arquitetura busca utilizar a IA para interpretação e explicação, mantendo cálculos e operações críticas sujeitos a mecanismos apropriados de validação.
 
 ---
 
-## 🛠️ Tecnologias
+## 🛠️ Tecnologias utilizadas
 
 <div align="center">
 
@@ -250,31 +316,43 @@ A IA é usada para **interpretação e explicação**; cálculos e operações c
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![Node.js](https://img.shields.io/badge/Node.js-20_LTS-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![IBM watsonx](https://img.shields.io/badge/IBM-watsonx.ai-052FAD?style=for-the-badge)
+![IBM watsonx](https://img.shields.io/badge/IBM-watsonx-052FAD?style=for-the-badge)
 ![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
 
 </div>
 
-| Camada | Tecnologias |
-|---|---|
-| **Backend** | Python 3.12, FastAPI, LangGraph, SQLAlchemy, Pytest |
-| **Frontend** | React, Vite, JavaScript, CSS |
-| **IA** | IBM watsonx.ai, OpenAI |
+### Backend
 
-O sistema separa frontend e backend, expõe APIs REST, organiza componentes específicos para cada solução e abstrai os provedores de IA.
+- Python 3.12
+- FastAPI
+- LangGraph
+- SQLAlchemy
+- IBM watsonx.ai / OpenAI
+- Pytest
+
+### Frontend
+
+- React
+- Vite
+- JavaScript
+- CSS
+
+### Organização técnica
+
+O sistema conta com separação entre frontend e backend, APIs REST, componentes específicos para cada solução e abstração para provedores de IA.
 
 ---
 
-## 🏗️ Arquitetura
+## 🏗️ Arquitetura do sistema
 
-A aplicação é dividida em componentes independentes, o que facilita a manutenção e a evolução das funcionalidades.
+A aplicação é organizada em componentes independentes para favorecer manutenção, desenvolvimento e evolução das funcionalidades.
 
 ```mermaid
 flowchart TD
-    A["👤 Usuário"] --> B["Frontend<br/>React + Vite"]
+    A["Usuário"] --> B["Frontend React + Vite"]
     B --> C["API FastAPI"]
-    C --> D["🛡️ Guardião"]
-    C --> E["📊 BB Decision"]
+    C --> D["Guardião"]
+    C --> E["BB Decision"]
     D --> F["Agente LangGraph"]
     E --> G["Motor financeiro + Narrador"]
     F --> H["Abstração de LLM"]
@@ -283,18 +361,23 @@ flowchart TD
     C --> J["Auditoria e dados"]
 ```
 
-| Componente | Responsabilidade |
-|---|---|
-| **Frontend** | Interface, navegação e interação do usuário |
-| **API FastAPI** | Recebe requisições e conecta a interface aos serviços |
-| **Guardião** | Agente estruturado com LangGraph |
-| **BB Decision** | Processamento financeiro e explicação dos resultados |
-| **Camada LLM** | Abstração para comunicação com os provedores de IA |
-| **Auditoria e dados** | Registro estruturado e organização das informações |
+### Componentes principais
+
+**Frontend:** responsável pela interface, navegação e interação do usuário.
+
+**API FastAPI:** recebe as requisições e conecta as interfaces aos serviços.
+
+**Guardião:** possui um agente estruturado com LangGraph.
+
+**BB Decision:** combina processamento financeiro e explicação dos resultados.
+
+**Camada LLM:** oferece abstração para comunicação com os provedores de Inteligência Artificial.
+
+**Auditoria e dados:** componentes voltados ao registro estruturado e à organização de informações da aplicação.
 
 ---
 
-## 💻 Como executar
+## 💻 Como executar o projeto
 
 ### Pré-requisitos
 
@@ -304,28 +387,25 @@ flowchart TD
 | Node.js | 20 LTS |
 | pip | 23+ |
 
-### 1️⃣ Configurar o ambiente
+### 1. Configurar o ambiente
 
-Na raiz do repositório:
+Na pasta raiz do repositório:
 
 ```bash
 cp .env.example .env
 ```
 
-No Windows PowerShell:
+No Windows PowerShell, utilize:
 
 ```powershell
 Copy-Item .env.example .env
 ```
 
-Edite o `.env` com as credenciais necessárias.
+Edite o arquivo `.env` com as credenciais necessárias.
 
-> 🔐 **Nunca compartilhe nem versione arquivos que contenham chaves de API.**
+**Nunca compartilhe ou versione arquivos que contenham chaves de API.**
 
-<details>
-<summary><b>📋 Variáveis de ambiente</b></summary>
-
-<br>
+### Variáveis de ambiente
 
 | Variável | Descrição |
 |---|---|
@@ -336,25 +416,27 @@ Edite o `.env` com as credenciais necessárias.
 | `WATSONX_MODEL_ID` | Modelo utilizado (padrão: `ibm/granite-13b-chat-v2`) |
 | `OPENAI_API_KEY` | Obrigatória apenas quando `LLM_PROVIDER=openai` |
 
-</details>
+### 2. Executar o backend
 
-### 2️⃣ Executar o backend
+A partir da raiz do repositório:
 
 ```bash
 cd backend
 python -m venv .venv
 ```
 
-Ative o ambiente virtual:
+Ative o ambiente virtual.
 
-```bash
-# Linux / macOS
-source .venv/bin/activate
-```
+**Windows PowerShell:**
 
 ```powershell
-# Windows PowerShell
 .\.venv\Scripts\Activate.ps1
+```
+
+**Linux/Mac:**
+
+```bash
+source .venv/bin/activate
 ```
 
 Instale as dependências e inicie a API:
@@ -364,12 +446,12 @@ python -m pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
 
-| Recurso | Endereço |
-|---|---|
-| API | http://localhost:8000 |
-| Documentação interativa | http://localhost:8000/docs |
+**Endereços locais:**
 
-### 3️⃣ Executar o frontend
+- API: http://localhost:8000
+- Documentação interativa: http://localhost:8000/docs
+
+### 3. Executar o frontend
 
 Em outro terminal, a partir da raiz do repositório:
 
@@ -379,54 +461,51 @@ npm install
 npm run dev
 ```
 
-A aplicação estará em **http://localhost:5173**.
+A aplicação estará disponível em:
 
-> 💡 O frontend usa o proxy do Vite para encaminhar requisições `/api/*` ao backend local.
->
-> Para apontar para outro backend, crie um `.env` em `frontend/`:
->
-> ```env
-> VITE_API_URL=http://seu-backend:8000
-> ```
+**http://localhost:5173**
+
+> O frontend utiliza o proxy do Vite para encaminhar requisições `/api/*` ao backend local.
+
+Para configurar outro endereço de backend, crie um arquivo `.env` na pasta `frontend/`:
+
+```env
+VITE_API_URL=http://seu-backend:8000
+```
 
 ---
 
 ## 🧪 Testes
 
-<table>
-<tr>
-<td width="50%" valign="top">
+O repositório inclui testes automatizados para auxiliar na validação das funcionalidades.
 
-**Backend** (`backend/`)
+### Backend
+
+Na pasta `backend/`:
 
 ```bash
 pytest tests/ -v --tb=short
 ```
 
-Cobertura:
+Para verificar a cobertura:
 
 ```bash
 pytest tests/ --cov=app --cov-report=term-missing
 ```
 
-</td>
-<td width="50%" valign="top">
+### Frontend
 
-**Frontend** (`frontend/`)
+Na pasta `frontend/`:
 
 ```bash
 npm test
 ```
 
-Modo de observação:
+Para executar em modo de observação:
 
 ```bash
 npm run test:watch
 ```
-
-</td>
-</tr>
-</table>
 
 ---
 
@@ -437,49 +516,68 @@ bb-ia-mvp/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py
-│   │   ├── api/          # rotas REST
-│   │   ├── guardiao/     # agente LangGraph (6 nós)
-│   │   ├── bbdecision/   # motor financeiro e narrador
-│   │   ├── llm/          # abstração watsonx.ai / OpenAI
-│   │   ├── audit/        # logs estruturados em JSON
-│   │   ├── data/         # dados sintéticos
-│   │   └── db/           # modelos SQLAlchemy
-│   └── tests/            # testes automatizados
+│   │   ├── api/
+│   │   ├── guardiao/
+│   │   ├── bbdecision/
+│   │   ├── llm/
+│   │   ├── audit/
+│   │   ├── data/
+│   │   └── db/
+│   └── tests/
 │
 ├── frontend/
 │   └── src/
+│       └── img/
+│           ├── MascoteComEscudo2.png
+│           └── Amascote.png
 │
-├── docs/                 # documentação técnica e relatórios
-│
+├── docs/
 ├── .env.example
 ├── .gitignore
 └── README.md
 ```
 
+**Descrição das pastas:**
+
+- `api/` — rotas REST da aplicação.
+- `guardiao/` — agente LangGraph organizado em seis nós.
+- `bbdecision/` — motor financeiro e narrador.
+- `llm/` — abstração de provedores IBM watsonx.ai e OpenAI.
+- `audit/` — logs estruturados em JSON.
+- `data/` — dados sintéticos.
+- `db/` — modelos SQLAlchemy.
+- `tests/` — testes automatizados.
+- `docs/` — documentação técnica e relatórios.
+- `frontend/src/img/` — recursos visuais e mascotes do projeto.
+
 ---
 
 ## 🔒 Segurança e IA responsável
 
+A segurança e a responsabilidade no uso da IA são aspectos importantes do projeto.
+
 ### Medidas documentadas
 
-- ✅ Credenciais mantidas fora dos arquivos versionados.
-- ✅ Sanitização de entradas antes do processamento pelos modelos de linguagem.
-- ✅ Mecanismos de proteção contra *prompt injection*.
-- ✅ Logs de auditoria sem dados pessoais identificáveis.
-- ✅ Uso de dados sintéticos.
+- Credenciais mantidas fora dos arquivos versionados.
+- Sanitização de entradas antes do processamento pelos modelos de linguagem.
+- Mecanismos de proteção contra prompt injection.
+- Logs de auditoria sem dados pessoais identificáveis.
+- Utilização de dados sintéticos.
 
 ### Privacidade
 
-Os dados de usuários, transações e casos de teste usados no protótipo são **100% fictícios**. Nenhum dado real de clientes é utilizado nas demonstrações.
+Os dados de usuários, transações e casos de teste utilizados no protótipo são **100% fictícios**.
+
+Nenhum dado real de clientes é utilizado nas demonstrações documentadas.
 
 ### Limitações
 
-O projeto é um **protótipo funcional** para desenvolvimento, estudo e demonstração.
+O projeto é um protótipo funcional para fins de desenvolvimento, estudo e demonstração.
 
 - A análise de risco não garante a identificação de todos os golpes.
 - Os resultados de IA podem exigir verificação.
-- Simulações financeiras são estimativas.
-- Decisões críticas devem contar com validação e supervisão adequadas.
+- Simulações financeiras representam estimativas.
+- Decisões críticas devem contar com validações e supervisão adequadas.
 
 ---
 
@@ -487,60 +585,22 @@ O projeto é um **protótipo funcional** para desenvolvimento, estudo e demonstr
 
 | Documento | Localização |
 |---|---|
-| Arquitetura e decisões técnicas | [`docs/architecture.md`](docs/architecture.md) |
-| Especificação OpenAPI | [`docs/openapi.yaml`](docs/openapi.yaml) |
-| Matriz de rastreabilidade | [`docs/traceability_matrix.md`](docs/traceability_matrix.md) |
-| Relatório de IA responsável | [`docs/responsible_ai_report.md`](docs/responsible_ai_report.md) |
+| Arquitetura e decisões técnicas | `docs/architecture.md` |
+| Especificação OpenAPI | `docs/openapi.yaml` |
+| Matriz de rastreabilidade | `docs/traceability_matrix.md` |
+| Relatório de IA responsável | `docs/responsible_ai_report.md` |
 
----
-
-## 👩‍💻 Equipe
-
-<div align="center">
-
-### Três mulheres. Duas soluções. Um propósito.
-
-A **SheTech** reúne três integrantes com interesse em tecnologia, inovação e soluções de impacto positivo, unindo criatividade, desenvolvimento de software, Inteligência Artificial e experiência do usuário.
-
-<br>
-
-<table>
-<tr>
-<td align="center" width="200">
-<a href="https://github.com/GiovannaMontoro">
-<img src="https://github.com/GiovannaMontoro.png" width="115" alt="Giovanna Montoro"><br>
-<strong>Giovanna Montoro</strong>
-</a><br>
-<sub>@GiovannaMontoro</sub>
-</td>
-<td align="center" width="200">
-<a href="https://github.com/marianoronha">
-<img src="https://github.com/marianoronha.png" width="115" alt="Maria Noronha"><br>
-<strong>Maria Noronha</strong>
-</a><br>
-<sub>@marianoronha</sub>
-</td>
-<td align="center" width="200">
-<a href="https://github.com/LaraAntuness">
-<img src="https://github.com/LaraAntuness.png" width="115" alt="Lara Antunes"><br>
-<strong>Lara Antunes</strong>
-</a><br>
-<sub>@LaraAntuness</sub>
-</td>
-</tr>
-</table>
-
-<sub>Clique nas fotos para conhecer o perfil de cada integrante no GitHub.</sub>
-
-</div>
+A documentação reúne detalhes sobre a organização técnica, os serviços e os princípios adotados no desenvolvimento.
 
 ---
 
 ## ⚖️ Aviso legal
 
-Este projeto tem caráter **demonstrativo** e foi desenvolvido no contexto da parceria IBM × Banco do Brasil. As soluções **não** devem ser interpretadas como serviços bancários oficiais em produção.
+Este projeto possui caráter demonstrativo e foi desenvolvido no contexto do projeto IBM × Banco do Brasil.
 
-As análises de golpes são recursos de apoio à identificação de riscos, e as simulações financeiras são estimativas informativas.
+As soluções não devem ser interpretadas como serviços bancários oficiais em produção.
+
+As análises de golpes são recursos de apoio à identificação de riscos, enquanto as simulações financeiras são estimativas informativas.
 
 ---
 
@@ -548,7 +608,7 @@ As análises de golpes são recursos de apoio à identificação de riscos, e as
 
 ### 💙 Tecnologia com propósito. Inovação com impacto. 💛
 
-**SheTech · Guardião + BB Decision**
+**SheTech | Guardião + BB Decision**
 
 *Protegendo escolhas. Transformando futuros.*
 
