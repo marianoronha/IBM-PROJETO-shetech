@@ -114,7 +114,7 @@ Muitas pessoas decidem sem conseguir visualizar claramente os possíveis impacto
 <tr>
 <td align="center" width="50%">
 
-<img src="../frontend/img/MascoteComEscuto2.png" width="200" alt="Mascote do Guardião">
+<img src="./frontend/src/assets/MascoteComEscuto2.png" width="210">
 
 ### 🛡️ Guardião
 
