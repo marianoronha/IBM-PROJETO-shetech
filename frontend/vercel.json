@@ -1,13 +1,16 @@
 
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/src/pages/telainicial-recuperada.html",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/:path*",
       "destination": "https://ibm-projeto-shetech.onrender.com/api/:path*"
-    },
-    {
-      "source": "/",
-      "destination": "/src/pages/telainicial-recuperada.html"
     },
     {
       "source": "/guardiao",
