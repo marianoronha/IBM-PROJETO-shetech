@@ -1,10 +1,11 @@
+
 {
   "name": "bb-ia-mvp-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "tsc && vite build && node scripts/copy-static.mjs",
     "preview": "vite preview",
     "test": "vitest run",
     "test:watch": "vitest",
