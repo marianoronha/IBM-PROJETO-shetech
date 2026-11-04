@@ -1,119 +1,402 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>BB Decision — Apresentação</title>
+
     <link rel="stylesheet" href="../styles/menu.css">
     <link rel="stylesheet" href="../styles/monitoramentoGuardiao.css">
+
     <style>
-        /* ícone em emoji nos cartões (o Guardião usa imagens) */
-        .ap-ico--emoji{display:grid;place-items:center;font-size:2.1rem;line-height:1}
+        /* Ícones em emoji nos cartões */
+        .ap-ico--emoji {
+            display: grid;
+            place-items: center;
+            font-size: 2.1rem;
+            line-height: 1;
+        }
     </style>
 </head>
+
 <body>
 
 <div class="gd-app">
 
-      <!-- MENU LATERAL -->
+    <!-- MENU LATERAL -->
     <aside class="gd-side" id="gd-side">
-        <button type="button" class="gd-collapse" id="gd-col" aria-label="Recolher menu">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 6-6 6 6 6"/></svg>
+
+        <button
+            type="button"
+            class="gd-collapse"
+            id="gd-col"
+            aria-label="Recolher menu"
+        >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m15 6-6 6 6 6"/>
+            </svg>
         </button>
+
+        <!-- LOGO -->
         <div class="gd-logo">
-            <svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z" fill="#fcd116"/><path d="m8.5 12 2.6 2.6L16 9.7" stroke="#002a63" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            <span class="gd-wm">Guardião<i></i></span>
+
+            <svg
+                class="mk"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+            >
+                <path
+                    d="M12 2 4 5v6c0 5 3.4 9.4 8 11 4.6-1.6 8-6 8-11V5l-8-3Z"
+                    fill="#fcd116"
+                />
+
+                <path
+                    d="m8.5 12 2.6 2.6L16 9.7"
+                    stroke="#002a63"
+                    stroke-width="2.2"
+                    fill="none"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                />
+            </svg>
+
+            <span class="gd-wm">
+                Guardião<i></i>
+            </span>
+
         </div>
-        <nav class="gd-nav" aria-label="Menu principal">
-            <a class="gd-item" href="inicialopcao.html" title="Início" aria-current="page">
-                <svg viewBox="0 0 24 24"><path d="M3 11 12 3l9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/></svg>
+
+        <!-- NAVEGAÇÃO -->
+        <nav
+            class="gd-nav"
+            aria-label="Menu principal"
+        >
+
+            <!-- INÍCIO -->
+            <a
+                class="gd-item"
+                href="inicialopcao.html"
+                title="Início"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 11 12 3l9 8"/>
+                    <path d="M5 10v10h14V10"/>
+                    <path d="M10 20v-6h4v6"/>
+                </svg>
+
                 <span class="gd-lbl">Início</span>
             </a>
-            <a class="gd-item" href="monitoramentoGuardiao.html" title="Guardião">
-                <svg viewBox="0 0 24 24"><path d="M12 3 5 6v5c0 4.5 3 8.2 7 10 4-1.8 7-5.5 7-10V6z"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+
+            <!-- GUARDIÃO -->
+            <a
+                class="gd-item"
+                href="monitoramentoGuardiao.html"
+                title="Guardião"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 3 5 6v5c0 4.5 3 8.2 7 10 4-1.8 7-5.5 7-10V6z"/>
+                    <path d="M12 8v5"/>
+                    <path d="M12 16h.01"/>
+                </svg>
+
                 <span class="gd-lbl">Guardião</span>
             </a>
-            <a class="gd-item" href="BBDecision.html" title="Decision">
-                <svg viewBox="0 0 24 24"><path d="M5 20V12"/><path d="M12 20V5"/><path d="M19 20v-9"/></svg>
+
+            <!-- BB DECISION -->
+            <a
+                class="gd-item"
+                href="apresentacaoDecision.html"
+                title="Decision"
+                aria-current="page"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M5 20V12"/>
+                    <path d="M12 20V5"/>
+                    <path d="M19 20v-9"/>
+                </svg>
+
                 <span class="gd-lbl">Decision</span>
             </a>
-            <a class="gd-item" href="perfil.html" title="Perfil">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></svg>
+
+            <!-- PERFIL -->
+            <a
+                class="gd-item"
+                href="perfil.html"
+                title="Perfil"
+            >
+                <svg viewBox="0 0 24 24">
+                    <circle cx="12" cy="8" r="4"/>
+                    <path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>
+                </svg>
+
                 <span class="gd-lbl">Perfil</span>
             </a>
-            <a class="gd-item gd-out" href="telainicial.html" title="Sair">
-                <svg viewBox="0 0 24 24"><path d="M10 4H5v16h5"/><path d="M9 12h11"/><path d="m16 8 4 4-4 4"/></svg>
+
+            <!-- SAIR -->
+            <a
+                class="gd-item gd-out"
+                href="telainicial.html"
+                title="Sair"
+            >
+                <svg viewBox="0 0 24 24">
+                    <path d="M10 4H5v16h5"/>
+                    <path d="M9 12h11"/>
+                    <path d="m16 8 4 4-4 4"/>
+                </svg>
+
                 <span class="gd-lbl">Sair</span>
             </a>
+
         </nav>
+
     </aside>
 
-    <!-- CONTEÚDO -->
-
-    
+    <!-- CONTEÚDO PRINCIPAL -->
     <div class="gd-content">
 
         <!-- APRESENTAÇÃO -->
         <header class="ap-hero">
+
             <div class="ap-hero__in">
-                <a href="/" class="ap-back" aria-label="Voltar para o início">
-                    <svg viewBox="0 0 24 24"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+
+                <!-- VOLTAR -->
+                <a
+                    href="/"
+                    class="ap-back"
+                    aria-label="Voltar para o início"
+                >
+                    <svg viewBox="0 0 24 24">
+                        <path d="M19 12H5"/>
+                        <path d="m12 19-7-7 7-7"/>
+                    </svg>
                 </a>
+
+                <!-- TEXTO PRINCIPAL -->
                 <div class="ap-hero__text">
-                    <span class="ap-chip"><span class="ap-dot"></span> Simulador de decisões financeiras</span>
+
+                    <span class="ap-chip">
+                        <span class="ap-dot"></span>
+                        Simulador de decisões financeiras
+                    </span>
+
                     <h1>BB Decision</h1>
-                    <p>Simule decisões financeiras antes de tomá-las. Pergunte como numa conversa e veja lado a lado como ficam seus números hoje e no cenário alternativo.</p>
-                    <!-- BOTÃO PRINCIPAL: abre a tela de simulação (rota React /bbdecision) -->
-                    <a href="/bbdecision" class="ap-cta">Fazer uma simulação
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+
+                    <p>
+                        Simule decisões financeiras antes de tomá-las.
+                        Pergunte como numa conversa e veja lado a lado
+                        como ficam seus números hoje e no cenário
+                        alternativo.
+                    </p>
+
+                    <!-- BOTÃO PARA O SIMULADOR -->
+                    <a
+                        href="/bbdecision"
+                        class="ap-cta"
+                    >
+                        Fazer uma simulação
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path d="M5 12h14"/>
+                            <path d="m13 6 6 6-6 6"/>
+                        </svg>
                     </a>
+
                 </div>
-                <img class="ap-mascote" src="../img/Amascote.png" alt="Mascote Guardião">
+
+                <!-- MASCOTE -->
+                <img
+                    class="ap-mascote"
+                    src="../img/Amascote.png"
+                    alt="Mascote Guardião"
+                />
+
             </div>
+
         </header>
 
+        <!-- ÁREA INFERIOR -->
         <main class="ap-main">
 
+            <!-- COMO FUNCIONA -->
             <section aria-labelledby="t-como">
-                <h2 id="t-como" class="ap-h2">Como o Decision ajuda você</h2>
+
+                <h2
+                    id="t-como"
+                    class="ap-h2"
+                >
+                    Como o Decision ajuda você
+                </h2>
+
                 <div class="ap-steps">
-                    <article class="ap-step"><span class="ap-num">1</span><h3>Você pergunta</h3><p>Escreva um “E se eu...?” do seu jeito, como faria em uma conversa.</p></article>
-                    <article class="ap-step"><span class="ap-num">2</span><h3>A IA simula</h3><p>Identifica o cenário, cruza com o seu perfil financeiro sintético e faz as contas.</p></article>
-                    <article class="ap-step"><span class="ap-num">3</span><h3>Você compara</h3><p>Vê a situação atual e a alternativa lado a lado, com avisos e as premissas usadas.</p></article>
+
+                    <!-- PASSO 1 -->
+                    <article class="ap-step">
+
+                        <span class="ap-num">1</span>
+
+                        <h3>Você pergunta</h3>
+
+                        <p>
+                            Escreva um “E se eu...?” do seu jeito,
+                            como faria em uma conversa.
+                        </p>
+
+                    </article>
+
+                    <!-- PASSO 2 -->
+                    <article class="ap-step">
+
+                        <span class="ap-num">2</span>
+
+                        <h3>A IA simula</h3>
+
+                        <p>
+                            Identifica o cenário, cruza com o
+                            seu perfil financeiro sintético e
+                            faz as contas.
+                        </p>
+
+                    </article>
+
+                    <!-- PASSO 3 -->
+                    <article class="ap-step">
+
+                        <span class="ap-num">3</span>
+
+                        <h3>Você compara</h3>
+
+                        <p>
+                            Vê a situação atual e a alternativa
+                            lado a lado, com avisos e as
+                            premissas usadas.
+                        </p>
+
+                    </article>
+
                 </div>
+
             </section>
 
+            <!-- SIMULAÇÕES -->
             <section aria-labelledby="t-sim">
-                <h2 id="t-sim" class="ap-h2">O que você pode simular?</h2>
+
+                <h2
+                    id="t-sim"
+                    class="ap-h2"
+                >
+                    O que você pode simular?
+                </h2>
+
                 <div class="ap-grid">
-                    <a href="/bbdecision" class="ap-card ap-card--main">
-                        <span class="ap-ico ap-ico--emoji" aria-hidden="true">📦</span>
+
+                    <!-- PARCELAMENTO -->
+                    <a
+                        href="/bbdecision"
+                        class="ap-card ap-card--main"
+                    >
+
+                        <span
+                            class="ap-ico ap-ico--emoji"
+                            aria-hidden="true"
+                        >
+                            📦
+                        </span>
+
                         <h3>Parcelamento</h3>
+
                         <small>Testar agora</small>
+
                     </a>
-                    <a href="/bbdecision" class="ap-card">
-                        <span class="ap-ico ap-ico--emoji" aria-hidden="true">📉</span>
+
+                    <!-- PERDA DE RENDA -->
+                    <a
+                        href="/bbdecision"
+                        class="ap-card"
+                    >
+
+                        <span
+                            class="ap-ico ap-ico--emoji"
+                            aria-hidden="true"
+                        >
+                            📉
+                        </span>
+
                         <h3>Perda de renda</h3>
+
                     </a>
-                    <a href="/bbdecision" class="ap-card">
-                        <span class="ap-ico ap-ico--emoji" aria-hidden="true">💼</span>
+
+                    <!-- MUDAR DE EMPREGO -->
+                    <a
+                        href="/bbdecision"
+                        class="ap-card"
+                    >
+
+                        <span
+                            class="ap-ico ap-ico--emoji"
+                            aria-hidden="true"
+                        >
+                            💼
+                        </span>
+
                         <h3>Mudar de emprego</h3>
+
                     </a>
-                    <a href="/bbdecision" class="ap-card">
-                        <span class="ap-ico ap-ico--emoji" aria-hidden="true">🏠</span>
+
+                    <!-- COMPRAR UMA CASA -->
+                    <a
+                        href="/bbdecision"
+                        class="ap-card"
+                    >
+
+                        <span
+                            class="ap-ico ap-ico--emoji"
+                            aria-hidden="true"
+                        >
+                            🏠
+                        </span>
+
                         <h3>Comprar uma casa</h3>
+
                     </a>
+
                 </div>
-                <p class="ap-extra">Desconfiou de uma mensagem ou link? <a href="monitoramentoGuardiao.html">Verifique no Guardião</a> antes de decidir.</p>
+
+                <!-- CONEXÃO COM O GUARDIÃO -->
+                <p class="ap-extra">
+
+                    Desconfiou de uma mensagem ou link?
+
+                    <a href="monitoramentoGuardiao.html">
+                        Verifique no Guardião
+                    </a>
+
+                    antes de decidir.
+
+                </p>
+
             </section>
 
-            <p class="ap-priv">⚠️ As simulações são estimativas para fins educacionais. Não garantem resultados futuros nem constituem recomendação de investimento. Os perfis usados são sintéticos (demonstração).</p>
+            <!-- AVISO -->
+            <p class="ap-priv">
+                ⚠️ As simulações são estimativas para fins
+                educacionais. Não garantem resultados futuros
+                nem constituem recomendação de investimento.
+                Os perfis usados são sintéticos (demonstração).
+            </p>
+
         </main>
+
     </div>
+
 </div>
 
+<!-- MENU COMPARTILHADO -->
 <script src="../js/menu.js"></script>
-<script src="../js/chatbot.js" defer></script>
 
 </body>
 </html>

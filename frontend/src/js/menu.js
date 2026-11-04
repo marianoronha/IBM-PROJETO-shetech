@@ -1,20 +1,26 @@
 
 /**
- * Menu lateral compartilhado — Guardião
+ * MENU LATERAL COMPARTILHADO — GUARDIÃO
  *
- * Páginas HTML utilizam este arquivo.
- * Páginas React utilizam Sidebar.tsx.
+ * Usado pelas páginas HTML do projeto.
+ * Mantém as telas de apresentação.
  *
- * Mantém as telas de apresentação:
- * Início -> inicialopcao.html
+ * Início   -> inicialopcao.html
  * Guardião -> monitoramentoGuardiao.html
  * Decision -> apresentacaoDecision.html
- * Perfil -> perfil.html
- * Sair -> telainicial.html
+ * Perfil   -> perfil.html
+ * Sair     -> telainicial.html
+ *
+ * O menu React continua em Sidebar.tsx.
  */
 
-// Restaura o tema salvo
 (function () {
+  'use strict'
+
+  // ============================================
+  // 1. RESTAURAR TEMA
+  // ============================================
+
   const tema = localStorage.getItem('gd-theme')
 
   if (tema) {
@@ -23,167 +29,254 @@
       tema
     )
   }
-})()
 
-// Configura o menu das páginas HTML
-;(function () {
-  const side = document.querySelector('.gd-side')
+  // ============================================
+  // 2. LOCALIZAR MENU
+  // ============================================
 
-  if (!side) return
+  const sidebar = document.querySelector('.gd-side')
+
+  if (!sidebar) return
+
+  const nav = sidebar.querySelector('.gd-nav')
+
+  if (!nav) return
 
   const PAGES = '/src/pages/'
 
-  const MENU = [
+  // ============================================
+  // 3. ITENS DO MENU
+  // ============================================
+
+  const itens = [
     {
-      key: 'inicio',
-      label: 'Início',
-      href: `${PAGES}inicialopcao.html`,
-      svg: `
-        <path d="M3 11 12 3l9 8"/>
-        <path d="M5 10v10h14V10"/>
-        <path d="M10 20v-6h4v6"/>
-      `
+      id: 'inicio',
+      texto: 'Início',
+      link: PAGES + 'inicialopcao.html',
+      icone: [
+        'M3 11 12 3l9 8',
+        'M5 10v10h14V10',
+        'M10 20v-6h4v6'
+      ]
     },
     {
-      key: 'guardiao',
-      label: 'Guardião',
-      href: `${PAGES}monitoramentoGuardiao.html`,
-      svg: `
-        <path d="M12 3 5 6v5c0 4.5 3 8.2 7 10 4-1.8 7-5.5 7-10V6z"/>
-        <path d="M12 8v5"/>
-        <path d="M12 16h.01"/>
-      `
+      id: 'guardiao',
+      texto: 'Guardião',
+      link: PAGES + 'monitoramentoGuardiao.html',
+      icone: [
+        'M12 3 5 6v5c0 4.5 3 8.2 7 10 4-1.8 7-5.5 7-10V6z',
+        'M12 8v5',
+        'M12 16h.01'
+      ]
     },
     {
-      key: 'decision',
-      label: 'Decision',
-      href: `${PAGES}apresentacaoDecision.html`,
-      svg: `
-        <path d="M5 20V12"/>
-        <path d="M12 20V5"/>
-        <path d="M19 20v-9"/>
-      `
+      id: 'decision',
+      texto: 'Decision',
+      link: PAGES + 'apresentacaoDecision.html',
+      icone: [
+        'M5 20V12',
+        'M12 20V5',
+        'M19 20v-9'
+      ]
     },
     {
-      key: 'perfil',
-      label: 'Perfil',
-      href: `${PAGES}perfil.html`,
-      svg: `
-        <circle cx="12" cy="8" r="4"/>
-        <path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>
-      `
+      id: 'perfil',
+      texto: 'Perfil',
+      link: PAGES + 'perfil.html',
+      icone: [
+        null
+      ]
     },
     {
-      key: 'sair',
-      label: 'Sair',
-      href: `${PAGES}telainicial.html`,
-      svg: `
-        <path d="M10 4H5v16h5"/>
-        <path d="M9 12h11"/>
-        <path d="m16 8 4 4-4 4"/>
-      `
+      id: 'sair',
+      texto: 'Sair',
+      link: PAGES + 'telainicial.html',
+      icone: [
+        'M10 4H5v16h5',
+        'M9 12h11',
+        'm16 8 4 4-4 4'
+      ]
     }
   ]
 
-  // Identifica qual página está aberta
+  // ============================================
+  // 4. IDENTIFICAR PÁGINA ATUAL
+  // ============================================
+
   const pagina = window.location.pathname
     .split('/')
     .pop()
     .toLowerCase()
 
-  let active = ''
+  let paginaAtiva = ''
+
+  const paginasGuardiao = [
+    'monitoramentoguardiao.html',
+    'testegolpemensagem.html',
+    'testelink.html',
+    'testetransacoes.html',
+    'testeaplicativos.html',
+    'historicotestes.html'
+  ]
+
+  const paginasDecision = [
+    'apresentacaodecision.html',
+    'bbdecision.html'
+  ]
 
   if (pagina === 'inicialopcao.html') {
-    active = 'inicio'
-  } else if (
-    pagina === 'monitoramentoguardiao.html' ||
-    pagina === 'testegolpemensagem.html' ||
-    pagina === 'testelink.html' ||
-    pagina === 'testetransacoes.html' ||
-    pagina === 'testeaplicativos.html' ||
-    pagina === 'historicotestes.html'
-  ) {
-    active = 'guardiao'
-  } else if (
-    pagina === 'apresentacaodecision.html' ||
-    pagina === 'bbdecision.html'
-  ) {
-    active = 'decision'
+    paginaAtiva = 'inicio'
+  } else if (paginasGuardiao.includes(pagina)) {
+    paginaAtiva = 'guardiao'
+  } else if (paginasDecision.includes(pagina)) {
+    paginaAtiva = 'decision'
   } else if (pagina === 'perfil.html') {
-    active = 'perfil'
+    paginaAtiva = 'perfil'
   }
 
-  // Reutiliza o menu existente
-  const nav = side.querySelector('.gd-nav')
+  // ============================================
+  // 5. CRIAR ÍCONES
+  // ============================================
 
-  if (nav) {
-    nav.setAttribute('aria-label', 'Menu principal')
+  const SVG_NS = 'http://www.w3.org/2000/svg'
 
-    // Substitui somente os itens de navegação.
-    // Não modifica o conteúdo das páginas.
-    nav.replaceChildren()
+  function criarIcone(item) {
+    const svg = document.createElementNS(
+      SVG_NS,
+      'svg'
+    )
 
-    MENU.forEach(item => {
-      const link = document.createElement('a')
+    svg.setAttribute('viewBox', '0 0 24 24')
+    svg.setAttribute('aria-hidden', 'true')
 
-      link.className =
-        item.key === 'sair'
-          ? 'gd-item gd-out'
-          : 'gd-item'
-
-      link.href = item.href
-      link.title = item.label
-
-      if (active === item.key) {
-        link.setAttribute('aria-current', 'page')
-      }
-
-      const svg = document.createElementNS(
-        'http://www.w3.org/2000/svg',
-        'svg'
+    if (item.id === 'perfil') {
+      const circulo = document.createElementNS(
+        SVG_NS,
+        'circle'
       )
 
-      svg.setAttribute('viewBox', '0 0 24 24')
-      svg.setAttribute('aria-hidden', 'true')
+      circulo.setAttribute('cx', '12')
+      circulo.setAttribute('cy', '8')
+      circulo.setAttribute('r', '4')
 
-      // SVGs são constantes definidas neste arquivo
-      svg.innerHTML = item.svg
+      svg.appendChild(circulo)
 
-      const label = document.createElement('span')
-      label.className = 'gd-lbl'
-      label.textContent = item.label
+      const path = document.createElementNS(
+        SVG_NS,
+        'path'
+      )
 
-      link.append(svg, label)
-      nav.appendChild(link)
-    })
+      path.setAttribute(
+        'd',
+        'M4 21c1-4 4-6 8-6s7 2 8 6'
+      )
+
+      svg.appendChild(path)
+    } else {
+      item.icone.forEach(d => {
+        const path = document.createElementNS(
+          SVG_NS,
+          'path'
+        )
+
+        path.setAttribute('d', d)
+        svg.appendChild(path)
+      })
+    }
+
+    return svg
   }
 
-  // Botão de recolher e expandir
-  const btn = side.querySelector('.gd-collapse')
+  // ============================================
+  // 6. CONSTRUIR MENU
+  // ============================================
 
-  if (!btn) return
+  const fragmento = document.createDocumentFragment()
+
+  itens.forEach(item => {
+    const link = document.createElement('a')
+
+    link.href = item.link
+    link.title = item.texto
+
+    link.className =
+      item.id === 'sair'
+        ? 'gd-item gd-out'
+        : 'gd-item'
+
+    if (paginaAtiva === item.id) {
+      link.setAttribute('aria-current', 'page')
+    }
+
+    const svg = criarIcone(item)
+
+    const texto = document.createElement('span')
+    texto.className = 'gd-lbl'
+    texto.textContent = item.texto
+
+    link.appendChild(svg)
+    link.appendChild(texto)
+
+    fragmento.appendChild(link)
+  })
+
+  nav.replaceChildren(fragmento)
+
+  // ============================================
+  // 7. CORRIGIR LINKS ANTIGOS DO DECISION
+  // ============================================
+
+  document.querySelectorAll('a[href]').forEach(link => {
+    const href = link.getAttribute('href')
+
+    if (
+      href === 'BBDecision.html' ||
+      href === '/src/pages/BBDecision.html'
+    ) {
+      link.setAttribute(
+        'href',
+        PAGES + 'apresentacaoDecision.html'
+      )
+    }
+  })
+
+  // ============================================
+  // 8. RECOLHER / EXPANDIR MENU
+  // ============================================
+
+  const botao = sidebar.querySelector('.gd-collapse')
+
+  if (!botao) return
+
+  function atualizarBotao() {
+    const recolhido = sidebar.classList.contains(
+      'min'
+    )
+
+    botao.setAttribute(
+      'aria-label',
+      recolhido
+        ? 'Expandir menu'
+        : 'Recolher menu'
+    )
+
+    botao.setAttribute(
+      'aria-expanded',
+      String(!recolhido)
+    )
+  }
 
   if (
     window.matchMedia('(max-width:760px)').matches
   ) {
-    side.classList.add('min')
-  }
-
-  function atualizarBotao() {
-    const min = side.classList.contains('min')
-
-    btn.setAttribute(
-      'aria-label',
-      min ? 'Expandir menu' : 'Recolher menu'
-    )
-
-    btn.setAttribute('aria-expanded', String(!min))
+    sidebar.classList.add('min')
   }
 
   atualizarBotao()
 
-  btn.addEventListener('click', function () {
-    side.classList.toggle('min')
+  botao.addEventListener('click', () => {
+    sidebar.classList.toggle('min')
     atualizarBotao()
   })
+
 })()
