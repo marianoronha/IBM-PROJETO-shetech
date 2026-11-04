@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Guardião</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/telainicial-recuperado.css">
+</head>
+<body>
+
+  <!--HEADER -->
+  <header class="topo">
+    <div class="container topo__inner">
+      <a href="#" class="topo__marca" aria-label="Guardião">
+        <img src="../img/logobdb.png" alt="Banco do Brasil" class="topo__logo-bb">
+        <span>Guardião<i class="topo__dot"></i></span>
+      </a>
+      <nav class="topo__nav">
+        <a href="login.html" class="btn btn--contorno-branco">Entrar</a>
+        <a href="cadastro.html" class="btn btn--amarelo">Criar conta</a>
+      </nav>
+    </div>
+  </header>
+
+  <!--HERO -->
+    <!-- ── HERO (carrossel) -->
+  <section class="hero" aria-roledescription="carrossel" aria-label="Destaques">
+    <div class="hero__slides">
+      <img src="../img/imagem1.png" alt="Pessoa usando o celular" class="hero__slide hero__slide--ativo">
+      <img src="../img/imagem2.png" alt="Homem sorrindo diante do notebook" class="hero__slide hero__slide--sombra" loading="lazy">
+      <img src="../img/imagem3.png" alt="Mulher mexendo no celular no sofá" class="hero__slide hero__slide--sombra" loading="lazy">
+    </div>
+
+    <div class="container hero__inner">
+      <div class="hero__texto">
+        <h1>Sua segurança,<br><span class="destaque">em boas mãos.</span></h1>
+        <p class="hero__lead">Proteção contra golpes e apoio em decisões financeiras mais seguras.</p>
+        <div class="hero__botoes">
+          <a href="cadastro.html" class="btn btn--amarelo">Criar conta</a>
+          <a href="login.html"    class="btn btn--contorno-branco">Já tenho conta</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__pontos" id="heroPontos"></div>
+  </section>
+
+  <!--IA AGÊNTICA -->
+  <section class="secao secao--branca">
+    <div class="container secao__dupla">
+      <div class="secao__texto">
+        <span class="eyebrow">Inteligência agêntica</span>
+        <h2>A inteligência agêntica chegou para cuidar de você.</h2>
+        <p>A IA agêntica do Banco do Brasil atua de forma proativa, analisa sinais, identifica possíveis fraudes e oferece apoio personalizado para que você tome decisões financeiras mais seguras, com mais tranquilidade e confiança.</p>
+      </div>
+      <div class="secao__imagem">
+        <img src="../img/duplamascotes.png" alt="Mascotes do Guardião">
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOLUÇÕES ───────────────────────────────────────── -->
+  <section class="secao secao--branca">
+    <div class="container">
+      <header class="secao__titulo">
+        <span class="eyebrow">Produtos</span>
+        <h2>Conheça nossas soluções inteligentes</h2>
+      </header>
+
+      <!-- Card Guardião: mascote esquerda, texto direita -->
+      <div class="produto produto--amarelo">
+        <div class="produto__imagem">
+          <img src="../img/Amascote.png" alt="Mascote do Guardião com lupa">
+        </div>
+        <div class="produto__texto">
+          <h3><span class="produto__barra"></span> Guardião</h3>
+          <p>Analisa mensagens, links e contatos para identificar possíveis golpes e ajudar a prevenir fraudes.</p>
+        </div>
+      </div>
+
+      <!-- Card BB Decision: texto esquerda, mascote direita -->
+      <div class="produto produto--azul">
+        <div class="produto__texto">
+          <h3><span class="produto__barra"></span> BB Decision</h3>
+          <p>Apoia suas escolhas financeiras, explica cenários e oferece orientações para decisões mais seguras.</p>
+        </div>
+        <div class="produto__imagem">
+          <img src="../img/Omascote.png" alt="Mascote do BB Decision com celular">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ────────────────────────────────────────────── -->
+  <section class="cta">
+    <div class="container cta__inner">
+      <h2>Proteção e conhecimento começam aqui.</h2>
+      <div class="cta__botoes">
+        <a href="cadastro.html" class="btn btn--azul-escuro">Criar conta</a>
+        <a href="login.html"    class="btn btn--contorno-escuro">Fazer login</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ────────────────────────────────────────────── -->
+  <section class="secao secao--branca">
+    <div class="container">
+      <header class="secao__titulo">
+        <span class="eyebrow">Dúvidas</span>
+        <h2>Perguntas frequentes</h2>
+      </header>
+
+      <div class="faq">
+        <details class="faq__item">
+          <summary class="faq__resumo">
+            O que é inteligência agêntica e como ela funciona no Banco do Brasil?
+            <svg class="faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9 L12 15 L18 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="faq__corpo">
+            <p>A inteligência agêntica é uma IA que age de forma autônoma e proativa, monitorando sinais de risco e tomando ações preventivas — tudo para proteger você antes mesmo que um golpe aconteça.</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__resumo">
+            Como o Guardião ajuda a evitar golpes?
+            <svg class="faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9 L12 15 L18 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="faq__corpo">
+            <p>O Guardião analisa mensagens, links e contatos suspeitos, identifica padrões de golpes conhecidos e emite alertas para que você não caia em armadilhas.</p>
+          </div>
+        </details>
+
+        <details class="faq__item">
+          <summary class="faq__resumo">
+            O que é o BB Decision e como ele me auxilia nas decisões financeiras?
+            <svg class="faq__seta" width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M6 9 L12 15 L18 9" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </summary>
+          <div class="faq__corpo">
+            <p>O BB Decision simula cenários financeiros, explica os riscos de cada escolha e orienta você a tomar decisões mais seguras e conscientes no dia a dia.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── RODAPÉ ──────────────────────────────────────────── -->
+  <footer class="rodape">
+    <div class="container rodape__inner">
+      <div class="rodape__marca">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 2 L20 5 V11 C20 16 16.5 20 12 22 C7.5 20 4 16 4 11 V5 Z" fill="#ffd21f"/>
+          <path d="M8.5 12 L11 14.5 L15.5 9.5" stroke="#14369b" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Guardião</span>
+        <span class="rodape__parceria">Um projeto <strong>SheTech</strong> em parceria com o Banco do Brasil.</span>
+      </div>
+      <nav class="rodape__links" aria-label="Rodapé">
+        <a href="monitoramentoGuardiao.html">Guardião</a>
+        <a href="BBDecision.html">BB Decision</a>
+      </nav>
+    </div>
+  </footer>
+<script src="../js/telainicial.js"></script>
+</body>
+</html>
