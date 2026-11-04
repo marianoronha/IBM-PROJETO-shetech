@@ -89,6 +89,15 @@ img { max-width: 100%; display: block; }
 }
 .btn--contorno-branco:hover { background: rgba(255,255,255,.12); }
 
+/* transparente por dentro, borda amarela */
+.btn--contorno-amarelo {
+  background: transparent;
+  color: var(--azul-navy);
+  border-color: var(--amarelo);
+  font-weight: 800;
+}
+.btn--contorno-amarelo:hover { background: var(--amarelo); }
+
 .btn--amarelo {
   background: var(--amarelo);
   color: var(--azul-navy);
@@ -285,8 +294,25 @@ img { max-width: 100%; display: block; }
 }
 
 /* SEÇÕES GENÉRICAS */
-.secao { padding: 56px 0; }
+.secao { padding: 32px 0 56px; } /* padding-top menor: sobe o bloco inteiro */
 .secao--branca { background: var(--branco); }
+
+/* sobe os títulos "Conheça nossas soluções..." e "Perguntas frequentes" */
+.secao + .secao,   /* seção de produtos (vem logo após a IA agêntica) */
+.cta + .secao {    /* seção de FAQ (vem logo após o banner CTA) */
+  padding-top: 12px;
+}
+
+/* Produtos: sobe só o título (o card não se mexe), para afastar da cabeça do mascote */
+.secao + .secao .secao__titulo {
+  position: relative;
+  top: -16px;
+}
+
+/* FAQ: o título sobe, mas a tabela fica no lugar original (12px + 20px = 32px de antes) */
+.cta + .secao .secao__titulo {
+  margin-bottom: 20px;
+}
 
 .secao__titulo {
   margin-bottom: 0;
@@ -433,6 +459,8 @@ img { max-width: 100%; display: block; }
   border-top: 1px solid rgba(255,210,31,.35);
   border-bottom: 1px solid rgba(255,210,31,.35);
   padding: 36px 0;
+  margin-top: 32px;      /* distância do card de produtos acima */
+  margin-bottom: 32px;   /* distância do título "Perguntas frequentes" abaixo */
 }
 
 .cta__inner {
@@ -521,6 +549,7 @@ img { max-width: 100%; display: block; }
 }
 
 .rodape__marca  { display: flex; align-items: center; gap: 8px; color: var(--branco); font-size: 1rem; font-weight: 800; }
+.rodape__logo-bb { height: 32px; width: auto; display: block; flex-shrink: 0; }
 .rodape__parceria { font-size: .75rem; font-weight: 500; color: #aabbdd; margin-left: 10px; border-left: 1px solid rgba(255,255,255,.2); padding-left: 10px; }
 .rodape__parceria strong { font-weight: 800; color: #dbe4ff; }
 .rodape__links  { display: flex; flex-wrap: wrap; gap: 18px; }

@@ -5,204 +5,251 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Cadastro — Guardião</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../styles/cadastro.css">
 </head>
 <body>
 
-  <!-- DECORAÇÕES DE FUNDO -->
-  <div class="bg-deco" aria-hidden="true">
-    <img src="../img/abstratolateral.png" class="deco-lateral" alt="">
-  </div>
+  <!-- HEADER -->
+  <header class="topo">
+    <div class="container topo__inner">
+      <a href="telainicial.html" class="topo__marca" aria-label="Guardião">
+        <img src="../img/logobdb.png" alt="Banco do Brasil" class="topo__logo-bb">
+        <span>Guardião<i class="topo__dot"></i></span>
+      </a>
+      <nav class="topo__nav">
+        <a href="login.html"   class="btn btn--contorno-branco">Entrar</a>
+        <a href="cadastro.html" class="btn btn--amarelo">Criar conta</a>
+      </nav>
+    </div>
+  </header>
 
-  <!-- CONTEÚDO PRINCIPAL -->
+  <!-- LAYOUT PRINCIPAL -->
   <main class="pagina">
 
-    <!-- LADO ESQUERDO: formulário de cadastro -->
-    <div class="lado-form">
+    <!-- LADO ESQUERDO: painel azul com degradê -->
+    <div class="painel-azul" aria-hidden="true">
+      <img src="../img/fundoazuldegrade.png" alt="" class="painel-azul__bg">
+      <div class="painel-azul__conteudo">
+        <span class="painel-azul__eyebrow">CADASTRO</span>
+        <h2 class="painel-azul__titulo">Crie sua <span>conta</span></h2>
+        <p class="painel-azul__sub">Cadastre-se para acessar recursos de segurança, identificar golpes e proteger suas informações.</p>
+      </div>
+    </div>
 
-      <!-- Badge + Título fora do card -->
-      <div class="titulo-wrap">
-        <span class="badge-guardiao">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-          </svg>
-          Guardião
-        </span>
-        <h1 class="titulo-guardiao"><em>C</em>adastro</h1>
+    <!-- LADO DIREITO: formulário em etapas -->
+    <div class="painel-form">
+
+      <div class="form-cabecalho">
+        <h1>Cadastre-se</h1>
+        <p>É rápido, gratuito e seguro.</p>
       </div>
 
-      <div class="card-principal">
+      <!-- STEPPER (indicador de etapas) -->
+      <div class="stepper" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="3" id="stepper">
+        <div class="stepper__item stepper__item--ativo" data-step="1">
+          <div class="stepper__circulo">1</div>
+          <span>Dados pessoais</span>
+        </div>
+        <div class="stepper__linha"></div>
+        <div class="stepper__item" data-step="2">
+          <div class="stepper__circulo">2</div>
+          <span>Acesso</span>
+        </div>
+        <div class="stepper__linha"></div>
+        <div class="stepper__item" data-step="3">
+          <div class="stepper__circulo">3</div>
+          <span>Confirmação</span>
+        </div>
+      </div>
 
-        <!-- Subtítulo -->
-        <div class="card-subtitulo">
-          <p class="subtitulo">Crie sua conta no Guardião.<br><span>Rápido, seguro e gratuito.</span></p>
+      <form id="form-cadastro" novalidate>
+
+        <!-- ── ETAPA 1: Dados pessoais ── -->
+        <div class="etapa" id="etapa-1">
+          <div class="campo-grupo">
+            <div class="campo">
+              <div class="input-wrap">
+                <svg class="input-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <input type="text" id="nome" name="nome" placeholder="Nome completo" required autocomplete="name">
+              </div>
+            </div>
+            <div class="campo">
+              <div class="input-wrap">
+                <svg class="input-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                <input type="email" id="email" name="email" placeholder="E-mail" required autocomplete="email">
+              </div>
+            </div>
+            <div class="campo">
+              <div class="input-wrap">
+                <svg class="input-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <input type="text" id="cpf" name="cpf" placeholder="CPF" maxlength="14" required autocomplete="off">
+              </div>
+            </div>
+            <div class="campo">
+              <div class="input-wrap">
+                <svg class="input-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                <input type="date" id="nascimento" name="nascimento" required>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <hr class="divisor">
-
-        <!-- Formulário -->
-        <form action="login.html" method="get" autocomplete="off">
-
-          <!-- Seção: Dados pessoais -->
-          <p class="secao-label">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-            Dados pessoais
-          </p>
-
-          <!-- Nome e Sobrenome -->
-          <div class="form-row">
+        <!-- ── ETAPA 2: Acesso ── -->
+        <div class="etapa etapa--oculta" id="etapa-2">
+          <div class="campo-grupo">
             <div class="campo">
-              <label for="nome">Nome</label>
-              <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+              <div class="input-wrap">
+                <svg class="input-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                <input type="tel" id="telefone" name="telefone" placeholder="Telefone" maxlength="15" autocomplete="tel">
+              </div>
             </div>
             <div class="campo">
-              <label for="sobrenome">Sobrenome</label>
-              <input type="text" id="sobrenome" name="sobrenome" placeholder="Seu sobrenome" required>
-            </div>
-          </div>
-
-          <!-- E-mail -->
-          <div class="form-row" style="margin-top:10px;">
-            <div class="campo full">
-              <label for="email">E-mail</label>
-              <input type="email" id="email" name="email" placeholder="voce@email.com" required>
-            </div>
-          </div>
-
-          <!-- CPF e Data de nascimento -->
-          <div class="form-row" style="margin-top:10px;">
-            <div class="campo">
-              <label for="cpf">CPF</label>
-              <input type="text" id="cpf" name="cpf" placeholder="000.000.000-00" maxlength="14" required>
+              <div class="input-wrap">
+                <svg class="input-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <select id="perfil" name="perfil" required>
+                  <option value="" disabled selected>Perfil</option>
+                  <option value="usuario">Usuário</option>
+                  <option value="gerente">Gerente</option>
+                  <option value="analista">Analista</option>
+                </select>
+              </div>
             </div>
             <div class="campo">
-              <label for="nascimento">Nascimento</label>
-              <input type="date" id="nascimento" name="nascimento" required>
-            </div>
-          </div>
-
-          <!-- Seção: Conta -->
-          <p class="secao-label" style="margin-top:10px;">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-            </svg>
-            Acesso
-          </p>
-
-          <!-- Telefone e Perfil -->
-          <div class="form-row">
-            <div class="campo">
-              <label for="telefone">Telefone</label>
-              <input type="tel" id="telefone" name="telefone" placeholder="(00) 00000-0000" maxlength="15">
-            </div>
-            <div class="campo">
-              <label for="perfil">Perfil</label>
-              <select id="perfil" name="perfil" required>
-                <option value="" disabled selected>Selecione</option>
-                <option value="usuario">Usuário</option>
-                <option value="gerente">Gerente</option>
-                <option value="analista">Analista</option>
-              </select>
-            </div>
-          </div>
-
-          <!-- Senha -->
-          <div class="form-row" style="margin-top:10px;">
-            <div class="campo full">
-              <label for="senha">Senha</label>
-              <div class="senha-wrap">
-                <input type="password" id="senha" name="senha" placeholder="Mínimo 8 caracteres" required
-                       oninput="avaliarSenha(this.value)">
-                <button type="button" class="senha-toggle" onclick="toggleSenha()" aria-label="Mostrar senha">
-                  <svg id="icon-olho" width="18" height="18" viewBox="0 0 24 24" fill="none"
-                       stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                    <circle cx="12" cy="12" r="3"/>
-                  </svg>
+              <div class="input-wrap">
+                <svg class="input-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <input type="password" id="senha" name="senha" placeholder="Senha" required autocomplete="new-password" oninput="avaliarSenha(this.value)">
+                <button type="button" class="senha-toggle" onclick="toggleSenha('senha','icon-olho-1')" aria-label="Mostrar senha">
+                  <svg id="icon-olho-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                 </button>
               </div>
-              <!-- Indicador de força -->
               <div class="forca-senha" id="forca-senha" style="display:none;">
                 <div class="forca-barras">
-                  <div class="forca-barra" id="b1"></div>
-                  <div class="forca-barra" id="b2"></div>
-                  <div class="forca-barra" id="b3"></div>
-                  <div class="forca-barra" id="b4"></div>
+                  <div class="forca-barra" id="b1"></div><div class="forca-barra" id="b2"></div>
+                  <div class="forca-barra" id="b3"></div><div class="forca-barra" id="b4"></div>
                 </div>
                 <span class="forca-label" id="forca-label"></span>
               </div>
             </div>
+            <div class="campo">
+              <div class="input-wrap">
+                <svg class="input-icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Confirmar senha" required autocomplete="new-password">
+                <button type="button" class="senha-toggle" onclick="toggleSenha('confirmar-senha','icon-olho-2')" aria-label="Mostrar senha">
+                  <svg id="icon-olho-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                </button>
+              </div>
+            </div>
           </div>
+        </div>
 
-          <!-- Termos -->
-          <label class="termos" style="margin-top:4px;">
-            <input type="checkbox" required>
-            Li e concordo com os <a href="#">Termos de Uso</a> e a <a href="#">Política de Privacidade</a> do Guardião.
+        <!-- ── ETAPA 3: Confirmação ── -->
+        <div class="etapa etapa--oculta" id="etapa-3">
+          <div class="confirmacao">
+            <svg class="confirmacao__icone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h3>Quase lá!</h3>
+            <p>Revise seus dados antes de finalizar o cadastro.</p>
+          </div>
+          <label class="termos">
+            <input type="checkbox" id="aceite" required>
+            Li e aceito os <a href="#">termos de uso</a> e a <a href="#">política de privacidade</a>.
           </label>
+        </div>
 
-          <!-- Botão -->
-          <button type="submit" class="btn-cadastrar" style="margin-top:8px;">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
-                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <line x1="19" y1="8" x2="19" y2="14"/>
-              <line x1="22" y1="11" x2="16" y2="11"/>
-            </svg>
-            Criar minha conta
+        <!-- NAVEGAÇÃO ENTRE ETAPAS -->
+        <div class="form-nav">
+          <button type="button" class="btn-voltar" id="btn-voltar" style="display:none;" onclick="irEtapa(-1)">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            Voltar
           </button>
+          <button type="button" class="btn-avancar" id="btn-avancar" onclick="irEtapa(1)">
+            Avançar
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+          </button>
+          <button type="submit" class="btn-cadastrar" id="btn-submit" style="display:none;" onclick="submeter(event)">
+            Criar conta
+          </button>
+        </div>
 
-        </form>
+      </form>
 
-        <!-- Rodapé -->
-        <p class="rodape-card">
-          Já tem conta? <a href="login.html">Faça login</a>
-        </p>
-
-      </div>
-    </div>
-
-    <!-- LADO DIREITO: mascote -->
-    <div class="lado-mascote">
-      <img src="../img/mascotespensando.png" alt="Mascote do Guardião" class="mascote-img">
+      <p class="rodape-form">Já tem uma conta? <a href="login.html">Entrar</a></p>
     </div>
 
   </main>
 
   <script>
+    let etapaAtual = 1;
+    const totalEtapas = 3;
+
+    function irEtapa(delta) {
+      const etapaEl = document.getElementById('etapa-' + etapaAtual);
+
+      // Validação simples dos campos visíveis na etapa atual
+      const campos = etapaEl.querySelectorAll('input[required], select[required]');
+      if (delta > 0) {
+        for (const c of campos) {
+          if (!c.value.trim()) {
+            c.focus();
+            c.classList.add('campo--erro');
+            c.addEventListener('input', () => c.classList.remove('campo--erro'), { once: true });
+            return;
+          }
+        }
+      }
+
+      etapaEl.classList.add('etapa--oculta');
+      etapaAtual += delta;
+      document.getElementById('etapa-' + etapaAtual).classList.remove('etapa--oculta');
+      atualizarStepper();
+      atualizarBotoes();
+    }
+
+    function atualizarStepper() {
+      document.querySelectorAll('.stepper__item').forEach(item => {
+        const s = parseInt(item.dataset.step);
+        item.classList.toggle('stepper__item--ativo', s === etapaAtual);
+        item.classList.toggle('stepper__item--feito', s < etapaAtual);
+      });
+      document.getElementById('stepper').setAttribute('aria-valuenow', etapaAtual);
+    }
+
+    function atualizarBotoes() {
+      document.getElementById('btn-voltar').style.display  = etapaAtual > 1 ? 'inline-flex' : 'none';
+      document.getElementById('btn-avancar').style.display = etapaAtual < totalEtapas ? 'inline-flex' : 'none';
+      document.getElementById('btn-submit').style.display  = etapaAtual === totalEtapas ? 'inline-flex' : 'none';
+    }
+
+    function submeter(e) {
+      e.preventDefault();
+      const aceite = document.getElementById('aceite');
+      if (!aceite.checked) { aceite.focus(); return; }
+      window.location.href = 'login.html';
+    }
+
     function avaliarSenha(v) {
       const wrap = document.getElementById('forca-senha');
       const label = document.getElementById('forca-label');
-      const barras = [document.getElementById('b1'), document.getElementById('b2'),
-                      document.getElementById('b3'), document.getElementById('b4')];
-
+      const barras = ['b1','b2','b3','b4'].map(id => document.getElementById(id));
       if (!v) { wrap.style.display = 'none'; return; }
       wrap.style.display = 'flex';
-
       let pts = 0;
-      if (v.length >= 8)              pts++;
-      if (/[A-Z]/.test(v))            pts++;
-      if (/[0-9]/.test(v))            pts++;
-      if (/[^A-Za-z0-9]/.test(v))     pts++;
-
-      const classes = ['fraca','fraca','media','forte'];
-      const labels  = ['Fraca','Fraca','Média','Forte'];
-
-      barras.forEach((b, i) => {
-        b.className = 'forca-barra' + (i < pts ? ' ' + classes[pts - 1] : '');
-      });
-      label.textContent = labels[pts - 1] || '';
+      if (v.length >= 8)          pts++;
+      if (/[A-Z]/.test(v))        pts++;
+      if (/[0-9]/.test(v))        pts++;
+      if (/[^A-Za-z0-9]/.test(v)) pts++;
+      const cls = ['fraca','fraca','media','forte'];
+      const lbl = ['Fraca','Fraca','Média','Forte'];
+      barras.forEach((b, i) => { b.className = 'forca-barra' + (i < pts ? ' ' + cls[pts-1] : ''); });
+      label.textContent = lbl[pts-1] || '';
     }
 
-    function toggleSenha() {
-      const input = document.getElementById('senha');
-      const icone = document.getElementById('icon-olho');
-      const visivel = input.type === 'text';
-      input.type = visivel ? 'password' : 'text';
-      icone.innerHTML = visivel
+    function toggleSenha(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icone = document.getElementById(iconId);
+      const vis = input.type === 'text';
+      input.type = vis ? 'password' : 'text';
+      icone.innerHTML = vis
         ? '<path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>'
         : '<path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/>';
     }
@@ -211,8 +258,8 @@
     document.getElementById('cpf').addEventListener('input', function () {
       let v = this.value.replace(/\D/g, '').slice(0, 11);
       if (v.length > 9)      v = v.replace(/(\d{3})(\d{3})(\d{3})(\d{0,2})/, '$1.$2.$3-$4');
-      else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/,        '$1.$2.$3');
-      else if (v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/,               '$1.$2');
+      else if (v.length > 6) v = v.replace(/(\d{3})(\d{3})(\d{0,3})/, '$1.$2.$3');
+      else if (v.length > 3) v = v.replace(/(\d{3})(\d{0,3})/, '$1.$2');
       this.value = v;
     });
 
@@ -220,8 +267,8 @@
     document.getElementById('telefone').addEventListener('input', function () {
       let v = this.value.replace(/\D/g, '').slice(0, 11);
       if (v.length > 6)      v = v.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
-      else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/,        '($1) $2');
-      else if (v.length > 0) v = v.replace(/(\d{0,2})/,               '($1');
+      else if (v.length > 2) v = v.replace(/(\d{2})(\d{0,5})/, '($1) $2');
+      else if (v.length > 0) v = v.replace(/(\d{0,2})/, '($1');
       this.value = v;
     });
   </script>

@@ -1,406 +1,144 @@
+/* Histórico de Testes — depende de menu.css (variáveis, fonte, sidebar) */
+html, body { margin: 0; padding: 0; }
+body { background: var(--gd-bg); }
+[hidden] { display: none !important; }
 
-/* CONFIGURAÇÕES GERAIS */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ── HERO ─────────────────────────────────────────────── */
+.ht-hero {
+  background: linear-gradient(160deg, var(--gd-navy) 0%, var(--gd-navy-2) 100%);
+  color: #fff;
+  padding: 36px 28px 64px;
+  overflow: hidden;
 }
 
-body {
-    font-family: Georgia, 'Times New Roman', serif;
-    background-color: #ffffff;
-    overflow-x: hidden;
+.ht-hero__in {
+  max-width: 980px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
 
-.container {
-    display: flex;
-    min-height: 100vh;
+.ht-hero__texto h1 {
+  margin: 0 0 4px;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  color: #fff;
 }
 
-
-/* MENU LATERAL */
-.sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 278px;
-    height: 100vh;
-    background-color: #001869;
-    display: flex;
-    flex-direction: column;
-    padding: 27px 13px;
-    overflow: hidden;
-    flex-shrink: 0;
-    z-index: 100;
+.ht-hero__texto p {
+  margin: 0;
+  color: #c9d7f2;
+  font-size: .9rem;
+  font-weight: 500;
 }
 
-.logo {
-    color: #ffffff;
-    font-size: 45px;
-    font-weight: bold;
-    margin-left: 2px;
-    margin-bottom: 35px;
-    white-space: nowrap;
+/* back button (reusa classe do perfil) */
+.pf-back {
+  flex: none;
+  align-self: flex-start;
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  display: grid; place-items: center;
+  color: #fff;
+  background: rgba(255,255,255,.1);
+  border: 1px solid rgba(255,255,255,.18);
+  text-decoration: none;
+  transition: background .15s;
+}
+.pf-back:hover { background: rgba(255,255,255,.2); }
+.pf-back svg {
+  width: 22px; height: 22px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round; stroke-linejoin: round;
 }
 
-.logo-detail {
-    color: #00d6ad;
+/* ── MAIN ─────────────────────────────────────────────── */
+.ht-main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 0 28px 56px;
+  display: grid;
+  gap: 24px;
 }
 
-.menu {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    width: 100%;
+.ht-main > section { margin-top: 32px; }
+
+/* ── REUTILIZA CLASSES DO PERFIL ─────────────────────── */
+.pf-section-head {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 12px;
+}
+.pf-h2 {
+  margin: 0;
+  font-size: 1.15rem; font-weight: 800;
+  letter-spacing: -.01em;
+  color: var(--gd-text);
 }
 
-.menu-item {
-    display: flex;
-    align-items: center;
-    gap: 24px;
-    width: 100%;
-    min-height: 70px;
-    height: 70px;
-    padding: 0 10px;
-    border-radius: 16px;
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 23px;
-    flex-shrink: 0;
-    transition: background-color 0.2s ease;
+.pf-card {
+  background: var(--gd-surface);
+  border: 1px solid var(--gd-line);
+  border-radius: 18px;
+  box-shadow: var(--gd-shadow);
+  padding: 24px;
+}
+.pf-card--stack { padding: 0; display: flex; flex-direction: column; overflow: hidden; }
+
+.pf-activity-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 20px;
 }
 
-.menu-item svg {
-    width: 36px;
-    height: 36px;
-    flex-shrink: 0;
-    fill: currentColor;
-    stroke: currentColor;
-    stroke-width: 1.2;
-    color: #ffffff;
+.pf-act-ico {
+  flex: none; width: 32px; height: 32px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+}
+.pf-act-ico svg {
+  width: 15px; height: 15px;
+  stroke: currentColor; fill: none;
+  stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round;
+}
+.pf-act-ico--ok   { background: var(--gd-ok-bg);   color: var(--gd-ok); }
+.pf-act-ico--warn { background: var(--gd-warn-bg);  color: var(--gd-warn); }
+.pf-act-ico--blue { background: #eaf1fd;             color: var(--gd-blue); }
+
+.pf-act-text { flex: 1; min-width: 0; }
+.pf-act-text strong { display: block; font-size: .88rem; font-weight: 700; color: var(--gd-text); }
+.pf-act-text span   { display: block; font-size: .78rem; color: var(--gd-muted); margin-top: 1px; }
+
+.pf-act-time { font-size: .75rem; font-weight: 600; color: var(--gd-muted); white-space: nowrap; flex: none; }
+
+.pf-divider { border: none; border-top: 1px solid var(--gd-line); margin: 0; }
+
+/* ── BADGES DE CLASSIFICAÇÃO ─────────────────────────── */
+.ht-badge {
+  flex: none;
+  display: inline-flex; align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: .75rem; font-weight: 800;
+  letter-spacing: .03em;
+}
+.ht-badge--golpe {
+  background: var(--gd-warn-bg);
+  color: var(--gd-warn);
+  border: 1px solid rgba(180,83,9,.2);
+}
+.ht-badge--seguro {
+  background: var(--gd-ok-bg);
+  color: var(--gd-ok);
+  border: 1px solid rgba(22,101,52,.15);
 }
 
-.menu-item:hover {
-    background-color: #073b9b;
-}
-
-.menu-item.active {
-    background-color: #0758c8;
-}
-
-.sair {
-    margin-top: auto;
-}
-
-
-/* CONTEÚDO PRINCIPAL */
-.conteudo {
-    width: calc(100% - 278px);
-    min-height: 100vh;
-    margin-left: 278px;
-    padding: 40px 35px 50px;
-    background-color: #ffffff;
-}
-
-
-/* CABEÇALHO */
-.cabecalho-pagina {
-    display: flex;
-    align-items: center;
-    gap: 25px;
-    margin-bottom: 38px;
-}
-
-.voltar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45px;
-    height: 45px;
-    color: #073b82;
-    text-decoration: none;
-    flex-shrink: 0;
-}
-
-.voltar svg {
-    width: 42px;
-    height: 42px;
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 3;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.cabecalho-pagina h1 {
-    color: #073b82;
-    font-size: 34px;
-    font-weight: bold;
-}
-
-
-/* LISTA DE HISTÓRICO */
-.lista-historico {
-    display: flex;
-    flex-direction: column;
-    gap: 17px;
-    width: 100%;
-}
-
-
-/* CADA ITEM */
-.item-historico {
-    width: 100%;
-    min-height: 135px;
-    padding: 18px 30px;
-    border: 2px solid #e1eaf3;
-    border-radius: 22px;
-    background-color: #ffffff;
-
-    display: flex;
-    align-items: center;
-    gap: 30px;
-}
-
-
-/* ÍCONES */
-.icone-historico {
-    width: 96px;
-    height: 96px;
-    min-width: 96px;
-    border-radius: 22px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.icone-historico img {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-}
-
-.icone-golpe {
-    background-color: #fde6e6;
-}
-
-.icone-seguro {
-    background-color: #e0f8e6;
-}
-
-
-/* INFORMAÇÕES DO TESTE */
-.informacoes-teste {
-    flex: 1;
-    min-width: 0;
-}
-
-.informacoes-teste h2 {
-    color: #092f5c;
-    font-size: 25px;
-    margin-bottom: 9px;
-}
-
-.informacoes-teste p {
-    color: #71849a;
-    font-size: 22px;
-}
-
-
-/* CLASSIFICAÇÃO */
-.classificacao {
-    min-width: 155px;
-    padding: 14px 20px;
-    border-radius: 17px;
-    text-align: center;
-    font-size: 22px;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.classificacao.golpe {
-    background-color: #fde3e3;
-    color: #c91e25;
-}
-
-.classificacao.seguro {
-    background-color: #ddf7e3;
-    color: #087445;
-}
-
-
-/* RESPONSIVIDADE */
-@media (max-width: 1150px) {
-
-    .sidebar {
-        width: 250px;
-    }
-
-    .conteudo {
-        width: calc(100% - 250px);
-        margin-left: 250px;
-        padding: 30px 20px 50px;
-    }
-
-    .logo {
-        font-size: 37px;
-    }
-
-    .menu-item {
-        font-size: 20px;
-        gap: 17px;
-    }
-
-    .item-historico {
-        gap: 18px;
-        padding: 18px;
-    }
-
-    .icone-historico {
-        width: 80px;
-        height: 80px;
-        min-width: 80px;
-    }
-
-    .icone-historico img {
-        width: 55px;
-        height: 55px;
-    }
-
-    .informacoes-teste h2 {
-        font-size: 21px;
-    }
-
-    .informacoes-teste p {
-        font-size: 18px;
-    }
-
-    .classificacao {
-        min-width: 125px;
-        font-size: 18px;
-        padding: 12px;
-    }
-}
-
-
-@media (max-width: 760px) {
-
-    .container {
-        flex-direction: column;
-    }
-
-    .sidebar {
-        position: relative;
-        width: 100%;
-        height: auto;
-        min-height: auto;
-        padding: 15px;
-        overflow: visible;
-    }
-
-    .logo {
-        font-size: 30px;
-        margin: 0 0 15px 10px;
-    }
-
-    .menu {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 5px;
-    }
-
-    .menu-item {
-        width: auto;
-        min-height: 48px;
-        height: 48px;
-        padding: 0 12px;
-        gap: 8px;
-        font-size: 16px;
-    }
-
-    .menu-item svg {
-        width: 24px;
-        height: 24px;
-    }
-
-    .sair {
-        margin-top: 5px;
-    }
-
-    .conteudo {
-        width: 100%;
-        margin-left: 0;
-        padding: 25px 18px 45px;
-    }
-
-    .cabecalho-pagina {
-        gap: 15px;
-        margin-bottom: 25px;
-    }
-
-    .cabecalho-pagina h1 {
-        font-size: 27px;
-    }
-
-    .item-historico {
-        min-height: 105px;
-        padding: 13px;
-        gap: 12px;
-    }
-
-    .icone-historico {
-        width: 65px;
-        height: 65px;
-        min-width: 65px;
-        border-radius: 16px;
-    }
-
-    .icone-historico img {
-        width: 43px;
-        height: 43px;
-    }
-
-    .informacoes-teste h2 {
-        font-size: 17px;
-        margin-bottom: 5px;
-    }
-
-    .informacoes-teste p {
-        font-size: 14px;
-    }
-
-    .classificacao {
-        min-width: auto;
-        padding: 9px 10px;
-        font-size: 14px;
-        border-radius: 12px;
-    }
-}
-
-
-@media (max-width: 420px) {
-
-    .menu-item {
-        font-size: 14px;
-        padding: 0 8px;
-        gap: 5px;
-    }
-
-    .menu-item svg {
-        width: 20px;
-        height: 20px;
-    }
-
-    .item-historico {
-        flex-wrap: wrap;
-    }
-
-    .informacoes-teste {
-        flex: 1;
-    }
-
-    .classificacao {
-        margin-left: auto;
-    }
+/* ── RESPONSIVIDADE ───────────────────────────────────── */
+@media (max-width: 640px) {
+  .ht-hero  { padding: 24px 16px 48px; }
+  .ht-main  { padding: 0 16px 40px; }
+  .pf-activity-item { flex-wrap: wrap; gap: 10px; }
+  .ht-badge { margin-left: 44px; }
+  .pf-act-time { margin-left: 44px; }
 }
