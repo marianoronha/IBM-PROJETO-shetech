@@ -10,20 +10,23 @@ python-multipart>=0.0.9
 langgraph>=0.1.9
 langchain-core>=0.2.19
 
-# IBM watsonx.ai
+# IBM watsonx.ai — usado pelo pipeline de análise textual (LLM provider opcional)
 ibm-watsonx-ai>=1.0.4
 
-# OpenAI (fallback para análise textual via LLM — opcional)
+# OpenAI — usado pelo pipeline de análise textual (LLM provider opcional)
 openai>=1.30.1
 
-# ── Multimodal LOCAL (sem chave de API) ──────────────────────────────────────
-# Imagens: OCR local via EasyOCR + Pillow (nenhum binário externo necessário)
+# ── Multimodal LOCAL (sem chave de API, sem serviços externos) ───────────────
+# Imagens: OCR local via EasyOCR + Pillow
+# Áudio:   transcrição local via openai-whisper (biblioteca local, não a API)
+#
+# Instalação no primeiro uso: baixa modelos automaticamente (~84 MB total)
+# Requer internet apenas na 1ª execução; depois funciona offline.
 Pillow>=10.0.0
 easyocr>=1.7.0
-# Áudio: transcrição local via openai-whisper + PyTorch CPU
 openai-whisper>=20230918
-torch>=2.0.0            # CPU é suficiente; instale torch+cpu se preferir versão menor
-imageio-ffmpeg>=0.4.9   # bundla ffmpeg estático — usado pelo Whisper para decodificar áudio
+torch>=2.0.0            # CPU é suficiente; para GPU instale a variante CUDA
+imageio-ffmpeg>=0.4.9   # bundla ffmpeg estático — sem instalação manual necessária
 
 # Banco de dados
 sqlalchemy>=2.0.30

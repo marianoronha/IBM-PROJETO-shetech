@@ -18,7 +18,7 @@
  * - Links suspeitos exibidos como texto puro (SafeText)
  */
 
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { analyzeMessage, analyzeFile } from '../api/client'
 import type { GuardiaoResponse } from '../types/api'
 import { RiskGauge } from '../components/RiskGauge'
@@ -109,9 +109,38 @@ export function GuardiaoPage() {
 
   const fileInputRef = useRef<HTMLInputElement>(null)
   const attachmentMenuRef = useRef<HTMLDivElement>(null)
+  const attachBtnRef = useRef<HTMLButtonElement>(null)
 
   const [pendingAttachType, setPendingAttachType] =
     useState<AttachmentType | null>(null)
+
+  // ── Fechar menu de anexo com Esc / clique fora ──
+  useEffect(() => {
+    if (!attachmentMenuOpen) return
+
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        attachmentMenuRef.current &&
+        !attachmentMenuRef.current.contains(e.target as Node)
+      ) {
+        setAttachmentMenuOpen(false)
+      }
+    }
+
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') {
+        setAttachmentMenuOpen(false)
+        attachBtnRef.current?.focus()
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside)
+    document.addEventListener('keydown', handleKeyDown)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+      document.removeEventListener('keydown', handleKeyDown)
+    }
+  }, [attachmentMenuOpen])
 
   // ── Análise de mensagens e arquivos ──────────
 
@@ -400,6 +429,7 @@ export function GuardiaoPage() {
                 ref={attachmentMenuRef}
               >
                 <button
+                  ref={attachBtnRef}
                   type="button"
                   className="gd-btn-attach"
                   aria-haspopup="true"
@@ -478,9 +508,7 @@ export function GuardiaoPage() {
                 </span>
 
                 <span className="gd-attach-preview__name">
-                  {attachment.type === 'image'
-                    ? 'Imagem'
-                    : 'Áudio'} anexado
+                  {attachment.rawFile.name}
                 </span>
 
                 <button

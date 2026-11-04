@@ -1,14 +1,32 @@
 """
 Configurações centrais da aplicação, carregadas de variáveis de ambiente.
 Nenhuma credencial deve ser escrita aqui — use o arquivo .env.
+
+O .env pode estar na raiz do projeto (bb-ia-mvp/) ou em backend/.
+A busca é feita em ambos os locais, em ordem de prioridade.
 """
 
+from __future__ import annotations
+import os
+from pathlib import Path
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# Localiza o .env: verifica backend/.env e a raiz do projeto (um nível acima)
+_here = Path(__file__).resolve().parent.parent  # backend/
+_root = _here.parent                             # bb-ia-mvp/
+
+_env_files: list[str] = []
+for candidate in (_here / ".env", _root / ".env"):
+    if candidate.is_file():
+        _env_files.append(str(candidate))
+
+# Fallback: usa ".env" relativo ao diretório de trabalho
+_env_paths: tuple[str, ...] = tuple(_env_files) if _env_files else (".env",)
 
 
 class Settings(BaseSettings):
     model_config = SettingsConfigDict(
-        env_file=".env",
+        env_file=_env_paths,
         env_file_encoding="utf-8",
         extra="ignore",
     )
@@ -18,16 +36,23 @@ class Settings(BaseSettings):
     # Com credenciais ausentes, watsonx/openai recaem automaticamente em mock.
     llm_provider: str = "mock"
 
-    # IBM watsonx.ai
+    # IBM watsonx.ai — texto (LLM pipeline) + visão (multimodal)
     watsonx_api_key: str = ""
     watsonx_project_id: str = ""
     watsonx_url: str = "https://us-south.ml.cloud.ibm.com"
     watsonx_model_id: str = "ibm/granite-13b-chat-v2"
+    # Modelo multimodal de visão para análise de imagens
+    # Multitenant (sem deploy on demand), suporta português
+    watsonx_vision_model_id: str = "meta-llama/llama-3-2-90b-vision-instruct"
 
-    # OpenAI (fallback + multimodal)
+    # IBM Watson Speech to Text — transcrição de áudios
+    # Serviço separado do watsonx.ai: requer instância própria no IBM Cloud
+    watson_stt_api_key: str = ""
+    watson_stt_url: str = ""
+
+    # OpenAI (mantido para compatibilidade — não é usado pelo multimodal IBM)
     openai_api_key: str = ""
     openai_model_id: str = "gpt-4o"
-    # Modelo com suporte a visão, usado para análise de imagens (multimodal)
     openai_vision_model_id: str = "gpt-4o"
 
     # Aplicação

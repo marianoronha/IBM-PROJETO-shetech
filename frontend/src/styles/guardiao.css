@@ -53,6 +53,90 @@
 .gd-opt input:focus-visible + .gd-opt__box{outline:3px solid var(--gd-yellow);outline-offset:2px}
 .gd-select{width:100%;padding:14px 16px;border:1.5px solid var(--gd-line);border-radius:14px;background:var(--gd-surface-2);font:inherit;color:inherit;cursor:pointer}
 .gd-select:disabled{opacity:.6;cursor:not-allowed}
+/* ── Linha hint + botão Anexo ───────────────────────────────────────────── */
+.gd-hint-row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-top:8px;flex-wrap:wrap}
+.gd-hint-row .gd-hint{margin-top:0;flex:1;min-width:0}
+
+/* Botão de Anexo */
+.gd-attach-wrap{position:relative;flex:none}
+.gd-btn-attach{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:7px 14px;
+  font:600 .88rem var(--gd-font);
+  color:var(--gd-navy-2);
+  background:#eaf1fd;
+  border:1.5px solid #b6ccf5;
+  border-radius:10px;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:background .15s,border-color .15s,box-shadow .15s;
+  line-height:1;
+}
+.gd-btn-attach:hover:not(:disabled){background:#d8e8fc;border-color:var(--gd-blue);box-shadow:0 2px 8px rgba(26,95,208,.15)}
+.gd-btn-attach:focus-visible{outline:3px solid var(--gd-yellow);outline-offset:2px}
+.gd-btn-attach:disabled{opacity:.45;cursor:not-allowed}
+.gd-attach-icon{width:15px;height:15px;stroke:var(--gd-navy-2);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+
+/* Menu flutuante do Anexo */
+.gd-attach-menu{
+  position:absolute;bottom:calc(100% + 6px);right:0;
+  background:#fff;border:1.5px solid var(--gd-line);
+  border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.12);
+  padding:6px;min-width:220px;z-index:100;
+  animation:gd-fadeup .12s ease;
+}
+@keyframes gd-fadeup{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}
+.gd-attach-menu__item{
+  display:flex;align-items:center;gap:10px;
+  width:100%;padding:10px 14px;
+  font:500 .92rem var(--gd-font);color:var(--gd-text);
+  background:transparent;border:none;border-radius:8px;
+  cursor:pointer;text-align:left;
+  transition:background .12s;
+}
+.gd-attach-menu__item:hover{background:var(--gd-surface-2)}
+.gd-attach-menu__item:focus-visible{outline:3px solid var(--gd-yellow);outline-offset:2px;border-radius:8px}
+
+/* Input nativo oculto */
+.gd-attach-input-hidden{
+  position:absolute;width:1px;height:1px;opacity:0;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;pointer-events:none;
+}
+
+/* Cartão do arquivo selecionado */
+.gd-attach-preview{
+  display:inline-flex;align-items:center;gap:8px;
+  margin-top:10px;padding:8px 12px;
+  background:#eaf1fd;border:1.5px solid #b6ccf5;border-radius:10px;
+  font-size:.88rem;color:var(--gd-navy-2);max-width:100%;
+}
+.gd-attach-preview__icon{font-size:1.1rem;line-height:1;flex:none}
+.gd-attach-preview__name{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:200px}
+.gd-attach-preview__remove{
+  flex:none;margin-left:4px;width:22px;height:22px;
+  border-radius:50%;border:none;background:transparent;
+  color:var(--gd-navy-2);cursor:pointer;font-size:.85rem;
+  display:grid;place-items:center;padding:0;
+  transition:background .12s,color .12s;
+}
+.gd-attach-preview__remove:hover{background:var(--gd-bad-bg);color:var(--gd-bad)}
+.gd-attach-preview__remove:focus-visible{outline:3px solid var(--gd-yellow);outline-offset:2px}
+
+/* Mensagem de erro do anexo */
+.gd-attach-error{
+  margin-top:8px;padding:10px 14px;
+  background:var(--gd-bad-bg);border:1px solid var(--gd-bad);
+  border-left:4px solid var(--gd-bad);border-radius:10px;
+  font-size:.88rem;color:var(--gd-bad);
+}
+
+/* Responsividade do bloco hint-row */
+@media (max-width:480px){
+  .gd-hint-row{flex-direction:column;align-items:flex-start}
+  .gd-attach-menu{right:auto;left:0}
+  .gd-attach-preview__name{max-width:140px}
+}
+
 .gd-actions{display:flex;gap:12px;margin-top:28px}
 .gd-btn{border-radius:12px;padding:14px 26px;font:700 1rem var(--gd-font);cursor:pointer;border:1.5px solid transparent;text-align:center;text-decoration:none;display:inline-block}
 .gd-btn--primary{background:var(--gd-navy-2);color:#fff;flex:1;box-shadow:0 6px 16px rgba(0,58,138,.3)}
