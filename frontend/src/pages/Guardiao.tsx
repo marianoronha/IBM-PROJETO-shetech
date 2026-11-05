@@ -1,4 +1,3 @@
-
 /**
  * Guardião — UI principal (T-13).
  *
@@ -83,6 +82,39 @@ function validateAttachment(file: File): string | null {
 }
 
 // ── Página Guardião ─────────────────────────────
+
+/**
+ * Separa o número de destaque da descrição da anomalia.
+ * Procura "12.7x" ou "54.3%" em qualquer parte do texto.
+ * "12.7x o Pix médio histórico (R$ 150.00)." -> big "12,7x",
+ *   text "maior que o Pix médio histórico (R$ 150,00)."
+ * "54.3% da renda mensal estimada." -> big "54%",
+ *   text "da renda mensal estimada."
+ * Se o número estiver no meio da frase, o texto completo é mantido.
+ * Se não houver número, devolve big = null.
+ */
+function splitHighlight(
+  description: string
+): { big: string | null; text: string } {
+  const m = description.match(/(\d+(?:[.,]\d+)?)\s*(x|×|%)/i)
+  if (!m || m.index === undefined) {
+    return { big: null, text: description }
+  }
+  const num = parseFloat(m[1].replace(',', '.'))
+  const unit = m[2] === '%' ? '%' : 'x'
+  const big =
+    unit === '%'
+      ? `${Math.round(num)}%`
+      : `${String(num).replace('.', ',')}x`
+  const commaDecimals = (t: string) => t.replace(/(\d)\.(\d)/g, '$1,$2')
+
+  const atStart = description.slice(0, m.index).trim() === ''
+  if (!atStart) return { big, text: commaDecimals(description) }
+
+  let text = commaDecimals(description.slice(m.index + m[0].length).trim())
+  if (unit === 'x' && !/^maior/i.test(text)) text = `maior que ${text}`
+  return { big, text }
+}
 
 export function GuardiaoPage() {
   const [message, setMessage] = useState('')
@@ -805,27 +837,46 @@ export function GuardiaoPage() {
                   />
                 </div>
 
-                {/* Pix pausado */}
-                {result.intervention.pix_flow && (
-                  <div
-                    className="intervention__pix-actions"
-                    data-testid="pix-actions"
-                  >
-                    <p className="intervention__pix-note">
-                      Esta transação está temporariamente
-                      pausada para sua proteção.
-                      Você decide o próximo passo.
+                {/* Caixa de proteção: Pix pausado ou alerta geral */}
+                <div
+                  className="intervention__pix-actions"
+                  data-testid={
+                    result.intervention.pix_flow
+                      ? 'pix-actions'
+                      : 'alert-actions'
+                  }
+                >
+                  <div className="intervention__pix-text">
+                    <p className="intervention__pix-title">
+                      {result.intervention.pix_flow
+                        ? 'Pix pausado para sua proteção'
+                        : 'Alerta de segurança'}
                     </p>
-
-                    <a
-                      href="tel:40040001"
-                      className="gd-btn gd-btn--danger"
-                      data-testid="btn-attendant"
-                    >
-                      Falar com atendente BB (4004-0001)
-                    </a>
+                    <p className="intervention__pix-note">
+                      Você decide o próximo passo.
+                      {result.intervention.pix_flow && (
+                        <span className="gd-sr-only">
+                          {' '}Esta transação está temporariamente
+                          pausada.
+                        </span>
+                      )}
+                    </p>
                   </div>
-                )}
+
+                  <a
+                    href="tel:40040001"
+                    className="gd-btn gd-btn--danger"
+                    data-testid={
+                      result.intervention.pix_flow
+                        ? 'btn-attendant'
+                        : 'btn-attendant-alert'
+                    }
+                    aria-label="Falar com atendente BB, telefone 4004-0001"
+                  >
+                    <span aria-hidden="true">📞</span>
+                    {' '}Falar com atendente BB
+                  </a>
+                </div>
 
                 {/* Controle do cliente */}
                 <div
@@ -890,16 +941,22 @@ export function GuardiaoPage() {
                       key={s.signal_id}
                       className="signals-list__item"
                     >
-                      <strong>{s.label}</strong>:
-                      {' '}{s.description}
+                      <strong className="signals-list__label">
+                        {s.label}
+                      </strong>
+                      <span className="signals-list__desc">
+                        {s.description}
+                      </span>
 
                       {s.evidence && (
                         <span
                           className="signals-list__evidence"
                           aria-label="Evidência na mensagem"
                         >
-                          {' '}— evidência:
-                          {' '}<em>{s.evidence}</em>
+                          <span className="signals-list__tag">
+                            Evidência
+                          </span>
+                          <em>{s.evidence}</em>
                         </span>
                       )}
                     </li>
@@ -923,48 +980,88 @@ export function GuardiaoPage() {
               />
             </div>
 
-            {/* Anomalias de perfil */}
+            {/* Perfil: o que chamou atenção */}
             {result.profile_found &&
               result.anomalies.length > 0 && (
-                <details className="anomalies-detail">
-
-                  <summary>
-                    Análise de perfil
-                    {' '}({result.anomalies.length} anomalia(s))
-                  </summary>
-
-                  <ul aria-label="Anomalias de perfil">
-                    {result.anomalies.map(a => (
-                      <li key={a.anomaly_id}>
-                        <strong>{a.label}</strong>:
-                        {' '}{a.description}
-
-                        <span
-                          className={`delta ${
-                            a.score_delta > 0
-                              ? 'delta--up'
-                              : 'delta--down'
-                          }`}
-                        >
-                          {a.score_delta > 0
-                            ? `+${a.score_delta}`
-                            : a.score_delta}
-                          {' '}pts
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  <p className="score-breakdown">
-                    Score: Nível 1 = {result.level1_score}%
-                    {' '}→ Nível 2 ={' '}
-                    {(
-                      result.level1_score +
-                      result.level2_score_delta
-                    ).toFixed(1)}%
+                <section
+                  className="gd-profile"
+                  aria-labelledby="gd-profile-title"
+                  data-testid="profile-analysis"
+                >
+                  <h3
+                    id="gd-profile-title"
+                    className="gd-profile__title"
+                  >
+                    O que chamou atenção no seu perfil
+                  </h3>
+                  <p className="gd-profile__sub">
+                    Comparamos o pedido com o seu histórico.
                   </p>
 
-                </details>
+                  <div
+                    className="gd-profile__grid"
+                    role="list"
+                    aria-label="Anomalias de perfil"
+                  >
+                    {result.anomalies.map(a => {
+                      const { big, text } = splitHighlight(a.description)
+                      return (
+                        <div
+                          key={a.anomaly_id}
+                          role="listitem"
+                          className="gd-profile__card"
+                        >
+                          <span className="gd-sr-only">
+                            {a.label}:{' '}
+                          </span>
+                          <span
+                            className={
+                              big
+                                ? 'gd-profile__big'
+                                : 'gd-profile__big gd-profile__big--text'
+                            }
+                          >
+                            {big ?? a.label}
+                          </span>
+                          <p className="gd-profile__text">
+                            {big ? text : a.description}
+                          </p>
+                          <span
+                            className={`delta ${
+                              a.score_delta > 0
+                                ? 'delta--up'
+                                : 'delta--down'
+                            }`}
+                          >
+                            {a.score_delta > 0
+                              ? `+${a.score_delta}`
+                              : a.score_delta}
+                            {' '}pts
+                          </span>
+                        </div>
+                      )
+                    })}
+                  </div>
+
+                  <p className="gd-profile__sum score-breakdown">
+                    <span aria-hidden="true">🧮</span>
+                    <span>
+                      Score da mensagem{' '}
+                      <strong>{Math.round(result.level1_score)}%</strong>
+                      {' '}+ perfil{' '}
+                      <strong>
+                        {Math.round(result.level2_score_delta)} pts
+                      </strong>
+                      {' '}= risco final{' '}
+                      <strong>
+                        {Math.round(
+                          result.level1_score +
+                            result.level2_score_delta
+                        )}%
+                      </strong>
+                    </span>
+                  </p>
+                </section>
               )}
 
           </section>
