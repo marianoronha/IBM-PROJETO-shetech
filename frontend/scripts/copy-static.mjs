@@ -1,68 +1,17 @@
 
-import { cp, copyFile, mkdir } from 'node:fs/promises'
-import { join } from 'node:path'
+import { cpSync, mkdirSync } from 'node:fs';
 
-// Pastas necessárias para as páginas HTML
-const folders = [
-  'pages',
-  'styles',
-  'js',
-  'img'
-]
+const pastas = ['pages', 'styles', 'img', 'js'];
 
-// Copia os arquivos estáticos para o build
-for (const folder of folders) {
-  const source = join('src', folder)
-  const target = join('dist', 'src', folder)
+for (const pasta of pastas) {
+  mkdirSync(`dist/src/${pasta}`, { recursive: true });
 
-  await mkdir(target, {
-    recursive: true
-  })
-
-  await cp(source, target, {
+  cpSync(`src/${pasta}`, `dist/src/${pasta}`, {
     recursive: true,
+    force: true
+  });
 
-    // Não copia arquivos React/TypeScript
-    // como se fossem páginas HTML.
-    filter: path =>
-      folder !== 'pages' ||
-      !/\.(tsx?|jsx?)$/i.test(path)
-  })
-
-  console.log(
-    `Copiado: ${source} → ${target}`
-  )
+  console.log(`Copiado: src/${pasta}`);
 }
 
-// Corrige o destino do botão Sair.
-//
-// No projeto existe:
-// telainicial-recuperada.html
-//
-// Mas os menus apontam para:
-// telainicial.html
-//
-// Cria uma cópia no build sem modificar
-// o arquivo original.
-await copyFile(
-  join(
-    'dist',
-    'src',
-    'pages',
-    'telainicial-recuperada.html'
-  ),
-  join(
-    'dist',
-    'src',
-    'pages',
-    'telainicial.html'
-  )
-)
-
-console.log(
-  'Página telainicial.html criada no build.'
-)
-
-console.log(
-  'Arquivos HTML, CSS, JS e imagens preparados.'
-)
+console.log('Arquivos estáticos preparados para o Vercel!');

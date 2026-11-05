@@ -1,5 +1,12 @@
 
 {
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "/src/pages/telainicial-recuperada.html",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/api/:path*",
