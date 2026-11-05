@@ -565,7 +565,7 @@ img { max-width: 100%; display: block; }
 .rodape__parceria strong { font-weight: 800; color: #dbe4ff; }
 .rodape__links  { display: flex; flex-wrap: wrap; gap: 18px; }
 .rodape__links a { font-size: .8rem; font-weight: 700; color: var(--branco); text-decoration: none; }
-.rodape__links a:hover { text-decoration: underline; }
+
 
 /* ── RESPONSIVIDADE ─────────────────────────────────────── */
 @media (max-width: 820px) {
