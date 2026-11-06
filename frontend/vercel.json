@@ -10,7 +10,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "https://ibm-projeto-shetech.onrender.com/api/:path*"
+      "destination": "https://shetech-production.up.railway.app/api/:path*"
     },
     {
       "source": "/guardiao",
