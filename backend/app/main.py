@@ -6,7 +6,7 @@ Inicializa a aplicação, registra routers e configura middleware.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import guardiao, bbdecision, auth
+from app.api import guardiao, bbdecision, auth, chat
 from app.config import settings
 
 app = FastAPI(
@@ -55,6 +55,7 @@ app.add_middleware(
 app.include_router(guardiao.router, prefix="/api/guardiao", tags=["Guardião"])
 app.include_router(bbdecision.router, prefix="/api/bbdecision", tags=["BB Decision"])
 app.include_router(auth.router, prefix="/api/auth", tags=["Autenticação"])
+app.include_router(chat.router, prefix="/api/chat", tags=["Chat"])
 
 
 @app.get("/health", tags=["Infraestrutura"])
