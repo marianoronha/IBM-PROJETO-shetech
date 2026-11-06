@@ -508,3 +508,23 @@ async def delete_me(current_user: dict = Depends(get_current_user)) -> None:
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail={"error": "Serviço temporariamente indisponível.", "code": "SERVICE_UNAVAILABLE"},
         )
+
+
+@router.post(
+    "/logout",
+    status_code=status.HTTP_204_NO_CONTENT,
+    responses={401: {"model": ErrorResponse}},
+    summary="Encerra a sessão (instrui o cliente a descartar o token)",
+)
+async def logout(current_user: dict = Depends(get_current_user)) -> None:
+    """
+    Endpoint de logout.
+
+    JWT é stateless — não há revogação server-side nesta implementação.
+    O endpoint valida o token, confirma a autenticação e sinaliza ao cliente
+    que deve descartar o token localmente.
+
+    Em uma implementação futura, o token pode ser adicionado a uma blocklist
+    persistida no Cloudant até sua expiração natural.
+    """
+    # No-op server-side: o cliente deve remover gd_token do localStorage.

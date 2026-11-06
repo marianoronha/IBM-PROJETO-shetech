@@ -377,3 +377,25 @@ class TestDeleteMe:
 
             deleted_id = mock_del.call_args[0][0]
             assert deleted_id == "user_abc123"   # não "user_outro"
+
+
+# ---------------------------------------------------------------------------
+# POST /logout
+# ---------------------------------------------------------------------------
+
+class TestLogout:
+
+    def test_logout_authenticated(self):
+        token = _make_token()
+        with patch("app.api.auth.get_user_by_id", new_callable=AsyncMock) as mock_get:
+            mock_get.return_value = _CREATED_USER_DOC
+            resp = client.post("/api/auth/logout", headers={"Authorization": f"Bearer {token}"})
+        assert resp.status_code == 204
+
+    def test_logout_no_token(self):
+        resp = client.post("/api/auth/logout")
+        assert resp.status_code == 401
+
+    def test_logout_invalid_token(self):
+        resp = client.post("/api/auth/logout", headers={"Authorization": "Bearer token.invalido"})
+        assert resp.status_code == 401

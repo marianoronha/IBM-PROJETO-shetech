@@ -12,7 +12,15 @@
     catch { return {}; }
   }
   function saveUser(u) { localStorage.setItem('gd_user', JSON.stringify(u)); }
-  function clearSession() {
+  async function clearSession() {
+    const token = getToken();
+    if (token) {
+      // Notifica o backend (best-effort — não bloqueia o logout local)
+      fetch(API_BASE + '/logout', {
+        method: 'POST',
+        headers: { 'Authorization': 'Bearer ' + token },
+      }).catch(() => {});
+    }
     localStorage.removeItem('gd_token');
     localStorage.removeItem('gd_user');
     window.location.href = 'login.html';

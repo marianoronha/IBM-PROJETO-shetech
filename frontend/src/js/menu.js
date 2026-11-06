@@ -195,6 +195,15 @@
   // 6. CONSTRUIR MENU
   // ============================================
 
+  // ============================================
+  // 6a. LOGOUT — limpa sessão antes de sair
+  // ============================================
+
+  function _clearSession() {
+    localStorage.removeItem('gd_token')
+    localStorage.removeItem('gd_user')
+  }
+
   const fragmento = document.createDocumentFragment()
 
   itens.forEach(item => {
@@ -207,6 +216,13 @@
       item.id === 'sair'
         ? 'gd-item gd-out'
         : 'gd-item'
+
+    if (item.id === 'sair') {
+      link.addEventListener('click', function (e) {
+        _clearSession()
+        // Navegação natural continua para telainicial-recuperada.html
+      })
+    }
 
     if (paginaAtiva === item.id) {
       link.setAttribute('aria-current', 'page')
