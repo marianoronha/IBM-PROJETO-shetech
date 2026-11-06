@@ -6,7 +6,7 @@ Inicializa a aplicação, registra routers e configura middleware.
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from app.api import guardiao, bbdecision
+from app.api import guardiao, bbdecision, auth
 from app.config import settings
 
 app = FastAPI(
@@ -22,17 +22,39 @@ app = FastAPI(
     redoc_url="/redoc",
 )
 
-# CORS — em produção, restringir a origens conhecidas
+# ---------------------------------------------------------------------------
+# CORS
+#
+# Origens permitidas (em ordem de prioridade):
+#   1. frontend_url do .env (URL de produção no Vercel, ex: https://shetech.vercel.app)
+#   2. Origens fixas de desenvolvimento local
+#
+# Em produção, defina FRONTEND_URL no painel do Render para restringir ao
+# domínio Vercel correto. Sem ela, apenas localhost é aceito.
+# ---------------------------------------------------------------------------
+
+_LOCAL_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://127.0.0.1:5173",
+    "http://127.0.0.1:3000",
+]
+
+_allowed_origins: list[str] = list(_LOCAL_ORIGINS)
+if settings.frontend_url:
+    _allowed_origins.append(settings.frontend_url.rstrip("/"))
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000"],
+    allow_origins=_allowed_origins,
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=["Authorization", "Content-Type"],
 )
 
 app.include_router(guardiao.router, prefix="/api/guardiao", tags=["Guardião"])
 app.include_router(bbdecision.router, prefix="/api/bbdecision", tags=["BB Decision"])
+app.include_router(auth.router, prefix="/api/auth", tags=["Autenticação"])
 
 
 @app.get("/health", tags=["Infraestrutura"])

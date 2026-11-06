@@ -49,4 +49,5 @@ class AgentState(TypedDict, total=False):
     followup_message: str
 
     # --- Auditoria ---
-    audit_logged: bool
+    audit_logged: bool                  # True = registro local gravado
+    audit_cloudant_persisted: bool      # True = gravação remota confirmada pelo Cloudant

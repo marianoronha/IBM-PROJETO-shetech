@@ -23,6 +23,7 @@ from fastapi import APIRouter, HTTPException, UploadFile, File, Form, status
 from pydantic import BaseModel, Field, field_validator
 
 from app.guardiao.agent import run_guardiao
+from app.guardiao.state import AgentState
 from app.guardiao.prompt_guard import InputValidationError
 from app.guardiao.multimodal import (
     extract_text_from_image,
@@ -178,7 +179,7 @@ class ErrorResponse(BaseModel):
 # endpoints para não duplicar a lógica de construção da resposta).
 # ---------------------------------------------------------------------------
 
-def _build_response(result: dict, input_channel: str, language_profile: str) -> GuardiaoResponse:
+def _build_response(result: AgentState, input_channel: str, language_profile: str) -> GuardiaoResponse:
     """Converte AgentState final em GuardiaoResponse."""
     l1 = result.get("level1_result", {})
     l2 = result.get("level2_result", {})

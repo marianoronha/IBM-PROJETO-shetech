@@ -218,11 +218,66 @@
       document.getElementById('btn-submit').style.display  = etapaAtual === totalEtapas ? 'inline-flex' : 'none';
     }
 
-    function submeter(e) {
+    async function submeter(e) {
       e.preventDefault();
       const aceite = document.getElementById('aceite');
       if (!aceite.checked) { aceite.focus(); return; }
-      window.location.href = 'login.html';
+
+      const senha    = document.getElementById('senha').value;
+      const confirma = document.getElementById('confirmar-senha').value;
+      if (senha !== confirma) {
+        mostrarErro('As senhas não coincidem.');
+        return;
+      }
+
+      const btn = document.getElementById('btn-submit');
+      btn.disabled = true;
+      btn.textContent = 'Aguarde…';
+
+      const payload = {
+        nome:          document.getElementById('nome').value.trim(),
+        email:         document.getElementById('email').value.trim(),
+        cpf:           document.getElementById('cpf').value,
+        nascimento:    document.getElementById('nascimento').value,
+        telefone:      document.getElementById('telefone').value,
+        perfil:        document.getElementById('perfil').value,
+        senha:         senha,
+        aceite_termos: true,
+      };
+
+      try {
+        const resp = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload),
+        });
+        const data = await resp.json();
+        if (!resp.ok) {
+          const msg = data?.detail?.error || data?.detail || 'Erro ao cadastrar.';
+          mostrarErro(msg);
+          return;
+        }
+        // Sucesso — vai para login com flag de feedback
+        sessionStorage.setItem('cadastro_ok', '1');
+        window.location.href = 'login.html';
+      } catch (err) {
+        mostrarErro('Erro de conexão. Tente novamente.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Criar conta';
+      }
+    }
+
+    function mostrarErro(msg) {
+      let el = document.getElementById('msg-erro-cadastro');
+      if (!el) {
+        el = document.createElement('p');
+        el.id = 'msg-erro-cadastro';
+        el.style.cssText = 'color:#c0392b;font-size:.9rem;margin:.5rem 0 0;text-align:center;';
+        document.getElementById('btn-submit').insertAdjacentElement('afterend', el);
+      }
+      el.textContent = msg;
+      el.style.display = 'block';
     }
 
     function avaliarSenha(v) {

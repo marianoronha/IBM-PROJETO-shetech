@@ -55,10 +55,26 @@ class Settings(BaseSettings):
     openai_model_id: str = "gpt-4o"
     openai_vision_model_id: str = "gpt-4o"
 
+    
     # Aplicação
     app_env: str = "development"
     log_level: str = "INFO"
     database_url: str = "sqlite:///./bb_ia_mvp.db"
+
+    # IBM Cloudant — Banco de dados em nuvem
+    ibm_cloudant_url: str = ""
+    ibm_cloudant_apikey: str = ""
+
+    # Autenticação JWT — assinar tokens de sessão dos usuários
+    # Gere um valor seguro: python -c "import secrets; print(secrets.token_hex(32))"
+    # Obrigatório em produção. Em desenvolvimento usa um fallback inseguro.
+    secret_key: str = "CHANGE_ME_IN_PRODUCTION_USE_32_RANDOM_BYTES"
+    jwt_algorithm: str = "HS256"
+    jwt_expire_minutes: int = 60 * 24 * 7   # 7 dias
+
+    # URL pública do frontend (usado no CORS de produção)
+    # Exemplos: "https://shetech.vercel.app" ou "https://meusite.com"
+    frontend_url: str = ""
 
     # Segurança
     max_input_length: int = 2000

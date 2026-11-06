@@ -42,7 +42,7 @@
         <p>Entre com seu e-mail e senha.</p>
       </div>
 
-      <form id="form-login" action="#" method="post" autocomplete="on">
+      <form id="form-login" action="#" method="post" autocomplete="on" onsubmit="fazerLogin(event)">
 
         <!-- E-mail -->
         <div class="campo-grupo">
@@ -99,6 +99,65 @@
 
 
   <script>
+    /* Mostra feedback de cadastro concluído */
+    if (sessionStorage.getItem('cadastro_ok') === '1') {
+      sessionStorage.removeItem('cadastro_ok');
+      const banner = document.createElement('p');
+      banner.textContent = '✅ Conta criada com sucesso! Faça login para continuar.';
+      banner.style.cssText = 'color:#1a7a3c;background:#e6f9ee;border:1px solid #a3d9b1;padding:.7rem 1rem;border-radius:6px;font-size:.9rem;margin-bottom:1rem;';
+      document.getElementById('form-login').prepend(banner);
+    }
+
+    async function fazerLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const senha = document.getElementById('senha').value;
+      const btn   = document.querySelector('.btn-entrar');
+
+      btn.disabled = true;
+      btn.textContent = 'Aguarde…';
+
+      try {
+        const resp = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, senha }),
+        });
+        const data = await resp.json();
+        if (!resp.ok) {
+          const msg = data?.detail?.error || data?.detail || 'E-mail ou senha incorretos.';
+          mostrarErro(msg);
+          return;
+        }
+        /* Salva token e dados básicos — nunca a senha */
+        localStorage.setItem('gd_token', data.access_token);
+        localStorage.setItem('gd_user', JSON.stringify({
+          id:       data.user.id,
+          nome:     data.user.nome,
+          email:    data.user.email,
+          telefone: data.user.telefone,
+          perfil:   data.user.perfil,
+        }));
+        window.location.href = 'inicialopcao.html';
+      } catch (err) {
+        mostrarErro('Erro de conexão. Tente novamente.');
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Entrar';
+      }
+    }
+
+    function mostrarErro(msg) {
+      let el = document.getElementById('msg-erro-login');
+      if (!el) {
+        el = document.createElement('p');
+        el.id = 'msg-erro-login';
+        el.style.cssText = 'color:#c0392b;font-size:.9rem;margin:.5rem 0 0;text-align:center;';
+        document.querySelector('.btn-entrar').insertAdjacentElement('beforebegin', el);
+      }
+      el.textContent = msg;
+    }
+
     function toggleSenha() {
       const input = document.getElementById('senha');
       const icone = document.getElementById('icon-olho');
