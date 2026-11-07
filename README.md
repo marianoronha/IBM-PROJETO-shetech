@@ -1,4 +1,3 @@
-
 <div align="center">
 
 # 💙 SheTech 💛
@@ -23,6 +22,75 @@ Soluções com Inteligência Artificial para promover segurança digital, educa�
 **[Sobre](#-sobre-o-projeto) • [Soluções](#-nossas-soluções) • [Tecnologias](#-tecnologias-utilizadas) • [Instalação](#-como-executar-o-projeto) • [Equipe](#-conheça-a-shetech)**
 
 </div>
+
+---
+
+> [!IMPORTANT]
+> ### ⚠️ O anexo do Guardião funciona apenas localmente
+>
+> A funcionalidade de **anexar arquivos para análise no Guardião** exige um processamento que ultrapassa o limite do deploy do backend. Por isso, ela **não está disponível na versão publicada** e só funciona quando o projeto roda na sua máquina.
+>
+> As demais funcionalidades (análise de mensagens, indicador de risco, chat de dúvidas, testes interativos e BB Decision) funcionam normalmente. Para testar o anexo, siga o passo a passo abaixo. 👇
+
+## ⚡ Teste o anexo do Guardião localmente
+
+**Pré-requisitos:** Python 3.12+, Node.js 20 LTS e Git.
+
+> 🔑 Você vai precisar de uma chave de API própria do provedor de IA escolhido (IBM watsonx.ai ou OpenAI), pois o arquivo `.env` não é versionado.
+
+### 1. Clone o repositório e configure o `.env`
+
+```bash
+git clone https://github.com/marianoronha/IBM-PROJETO-shetech.git
+cd IBM-PROJETO-shetech
+cp .env.example .env
+```
+
+No Windows PowerShell, use `Copy-Item .env.example .env`.
+
+Abra o `.env` e preencha as credenciais (`LLM_PROVIDER` e a chave do provedor escolhido).
+
+### 2. Rode o backend (Python)
+
+```bash
+cd backend
+python -m venv .venv
+```
+
+Ative o ambiente virtual:
+
+```bash
+# Windows PowerShell
+.\.venv\Scripts\Activate.ps1
+
+# Linux / Mac
+source .venv/bin/activate
+```
+
+Instale as dependências e inicie a API:
+
+```bash
+python -m pip install -r requirements.txt
+uvicorn app.main:app --reload --port 8000
+```
+
+✅ API em http://localhost:8000 e documentação em http://localhost:8000/docs
+
+### 3. Rode o frontend (em outro terminal)
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+✅ Aplicação em **http://localhost:5173**
+
+### 4. Teste o anexo
+
+Com backend e frontend rodando, abra o Guardião no navegador e use a opção de anexar arquivo.
+
+> 💡 Mantenha os **dois terminais abertos** ao mesmo tempo. O frontend encaminha as chamadas `/api/*` para o backend na porta 8000 pelo proxy do Vite.
 
 ---
 
@@ -206,6 +274,7 @@ A proposta considera não apenas palavras isoladas, mas também o contexto e a i
 | Funcionalidade | Descrição |
 |---|---|
 | 🔎 Análise de mensagens | Identificação de indícios de golpes e engenharia social |
+| 📎 Anexo de arquivos | Análise de arquivos enviados pelo usuário *(disponível apenas em execução local)* |
 | 📊 Indicador de risco | Apresentação do risco estimado de fraude |
 | 💡 Explicação de golpes | Informações sobre o tipo de golpe e como funciona |
 | 💬 Chat de dúvidas | Orientações sobre segurança digital e golpes frequentes |
@@ -379,6 +448,8 @@ flowchart TD
 
 ## 💻 Como executar o projeto
 
+> Já viu o passo a passo rápido no topo deste README? Esta seção traz os mesmos passos com mais detalhes (variáveis de ambiente, testes e configurações extras).
+
 ### Pré-requisitos
 
 | Ferramenta | Versão mínima |
@@ -512,7 +583,7 @@ npm run test:watch
 ## 📁 Estrutura do projeto
 
 ```text
-bb-ia-mvp/
+IBM-PROJETO-shetech/
 ├── backend/
 │   ├── app/
 │   │   ├── main.py
@@ -578,6 +649,7 @@ O projeto é um protótipo funcional para fins de desenvolvimento, estudo e demo
 - Os resultados de IA podem exigir verificação.
 - Simulações financeiras representam estimativas.
 - Decisões críticas devem contar com validações e supervisão adequadas.
+- O anexo de arquivos do Guardião está disponível apenas em execução local.
 
 ---
 
