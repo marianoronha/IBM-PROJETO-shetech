@@ -19,7 +19,7 @@ Soluções com Inteligência Artificial para promover segurança digital, educa�
 
 <br>
 
-**[Sobre](#-sobre-o-projeto) • [Soluções](#-nossas-soluções) • [Tecnologias](#-tecnologias-utilizadas) • [Instalação](#-como-executar-o-projeto) • [Equipe](#-conheça-a-shetech)**
+**[Como executar](#-como-executar-o-projeto) • [Sobre](#-sobre-o-projeto) • [Soluções](#-nossas-soluções) • [Tecnologias](#-tecnologias-utilizadas) • [Equipe](#-conheça-a-shetech)**
 
 </div>
 
@@ -32,11 +32,14 @@ Soluções com Inteligência Artificial para promover segurança digital, educa�
 >
 > As demais funcionalidades (análise de mensagens, indicador de risco, chat de dúvidas, testes interativos e BB Decision) funcionam normalmente. Para testar o anexo, siga o passo a passo abaixo. 👇
 
-## ⚡ Teste o anexo do Guardião localmente
+## 💻 Como executar o projeto
 
-**Pré-requisitos:** Python 3.12+, Node.js 20 LTS e Git.
-
-> 🔑 Você vai precisar de uma chave de API própria do provedor de IA escolhido (IBM watsonx.ai ou OpenAI), pois o arquivo `.env` não é versionado.
+| Ferramenta | Versão mínima |
+|---|---|
+| Python | 3.12 |
+| Node.js | 20 LTS |
+| pip | 23+ |
+| Git | qualquer versão recente |
 
 ### 1. Clone o repositório e configure o `.env`
 
@@ -48,7 +51,18 @@ cp .env.example .env
 
 No Windows PowerShell, use `Copy-Item .env.example .env`.
 
-Abra o `.env` e preencha as credenciais (`LLM_PROVIDER` e a chave do provedor escolhido).
+Edite o `.env` com as credenciais do provedor de IA escolhido. Você vai precisar de uma chave de API própria, pois o arquivo não é versionado.
+
+| Variável | Descrição |
+|---|---|
+| `LLM_PROVIDER` | `watsonx` (padrão) ou `openai` |
+| `WATSONX_API_KEY` | Chave da API IBM watsonx.ai |
+| `WATSONX_PROJECT_ID` | ID do projeto IBM watsonx |
+| `WATSONX_URL` | URL da instância watsonx (padrão: us-south) |
+| `WATSONX_MODEL_ID` | Modelo utilizado (padrão: `ibm/granite-13b-chat-v2`) |
+| `OPENAI_API_KEY` | Obrigatória apenas quando `LLM_PROVIDER=openai` |
+
+**Nunca compartilhe ou versione arquivos que contenham chaves de API.**
 
 ### 2. Rode o backend (Python)
 
@@ -74,7 +88,7 @@ python -m pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
 
-✅ API em http://localhost:8000 e documentação em http://localhost:8000/docs
+✅ API em http://localhost:8000 e documentação interativa em http://localhost:8000/docs
 
 ### 3. Rode o frontend (em outro terminal)
 
@@ -86,11 +100,17 @@ npm run dev
 
 ✅ Aplicação em **http://localhost:5173**
 
-### 4. Teste o anexo
+> O frontend usa o proxy do Vite para encaminhar as chamadas `/api/*` ao backend local. Mantenha os **dois terminais abertos**.
+
+Para apontar para outro backend, crie um `.env` na pasta `frontend/`:
+
+```env
+VITE_API_URL=http://seu-backend:8000
+```
+
+### 4. Teste o anexo do Guardião
 
 Com backend e frontend rodando, abra o Guardião no navegador e use a opção de anexar arquivo.
-
-> 💡 Mantenha os **dois terminais abertos** ao mesmo tempo. O frontend encaminha as chamadas `/api/*` para o backend na porta 8000 pelo proxy do Vite.
 
 ---
 
@@ -178,11 +198,6 @@ Foi a partir dessa ideia que nasceu o nosso projeto.
 
 Desenvolvido pela equipe **SheTech**, no contexto do projeto IBM × Banco do Brasil, o sistema reúne duas soluções que compartilham um propósito: tornar a experiência financeira mais segura, inteligente e acessível.
 
-O projeto é composto por:
-
-- 🛡️ **Guardião:** uma solução de IA voltada à prevenção de golpes de engenharia social, orientação e educação digital.
-- 📊 **BB Decision:** um simulador inteligente que permite explorar cenários financeiros e compreender possíveis consequências de decisões.
-
 Mais do que utilizar Inteligência Artificial, buscamos desenvolver experiências que considerem o contexto, a necessidade e a realidade de cada usuário.
 
 > **Nossa missão:** transformar tecnologia em autonomia, proteção e conhecimento.
@@ -238,7 +253,7 @@ Identificamos dois desafios principais:
 
 <p><strong>Sua segurança em primeiro lugar.</strong></p>
 
-<p>Análise inteligente de possíveis golpes, explicações acessíveis e experiências educativas para prevenção de fraudes.</p>
+<p>Prevenção de golpes de engenharia social, com análise inteligente, explicações acessíveis e experiências educativas.</p>
 
 </td>
 <td align="center" width="50%">
@@ -249,7 +264,7 @@ Identificamos dois desafios principais:
 
 <p><strong>Suas escolhas, seu futuro.</strong></p>
 
-<p>Simulações financeiras para explorar possibilidades e compreender os impactos de diferentes decisões.</p>
+<p>Simulador financeiro inteligente para explorar possibilidades e compreender os impactos de diferentes decisões.</p>
 
 </td>
 </tr>
@@ -263,11 +278,7 @@ Identificamos dois desafios principais:
 
 ### Proteção que vai além de um alerta.
 
-O **Guardião** é uma solução de Inteligência Artificial desenvolvida para auxiliar na identificação de golpes de engenharia social e promover a educação em segurança digital.
-
-Seu objetivo é analisar conteúdos suspeitos, identificar sinais de fraude e apresentar explicações claras para o usuário.
-
-A proposta considera não apenas palavras isoladas, mas também o contexto e a intenção por trás das mensagens.
+O **Guardião** analisa conteúdos suspeitos, identifica sinais de fraude e apresenta explicações claras para o usuário. A proposta considera não apenas palavras isoladas, mas também o contexto e a intenção por trás das mensagens.
 
 ### 🔍 Principais funcionalidades
 
@@ -277,33 +288,19 @@ A proposta considera não apenas palavras isoladas, mas também o contexto e a i
 | 📎 Anexo de arquivos | Análise de arquivos enviados pelo usuário *(disponível apenas em execução local)* |
 | 📊 Indicador de risco | Apresentação do risco estimado de fraude |
 | 💡 Explicação de golpes | Informações sobre o tipo de golpe e como funciona |
-| 💬 Chat de dúvidas | Orientações sobre segurança digital e golpes frequentes |
+| 💬 Chat de dúvidas | Orientações sobre segurança digital, mensagens suspeitas e cuidados com informações pessoais |
 | 🎮 Testes interativos | Situações práticas para aprender a identificar fraudes |
 | 🛡️ Recomendações | Orientações para prevenção e proteção |
 
 ### ⚙️ Como funciona?
 
-O fluxo de análise do Guardião utiliza um agente desenvolvido com **LangGraph**, organizado em seis nós.
-
-A arquitetura permite estruturar etapas de processamento e análise, utilizando modelos de linguagem para interpretar informações.
-
-De maneira simplificada:
+O fluxo de análise utiliza um agente desenvolvido com **LangGraph**, organizado em seis nós, que usa modelos de linguagem para interpretar as informações.
 
 **Entrada do usuário → Processamento → Análise por IA → Avaliação de risco → Explicação e orientação**
 
-### 💬 Chat de dúvidas frequentes
-
-O Guardião também possui uma experiência voltada a esclarecer dúvidas sobre segurança digital.
-
-O objetivo é oferecer orientações acessíveis para perguntas relacionadas a golpes, mensagens suspeitas e cuidados com informações pessoais.
-
 ### 🎮 Aprendizado na prática
 
-Além de identificar possíveis golpes, o projeto busca ensinar o usuário a reconhecê-los.
-
-No ambiente de testes interativos, são apresentadas situações nas quais a pessoa deve avaliar se determinada mensagem ou abordagem representa um golpe.
-
-Após responder, o usuário recebe um retorno educativo.
+Nos testes interativos, a pessoa avalia se determinada mensagem ou abordagem representa um golpe e, depois de responder, recebe um retorno educativo.
 
 Dessa forma, o Guardião promove não apenas proteção, mas também **conscientização e autonomia digital**.
 
@@ -313,13 +310,11 @@ Dessa forma, o Guardião promove não apenas proteção, mas também **conscient
 
 ### O futuro das suas decisões começa com uma pergunta.
 
-O **BB Decision** é um simulador financeiro inteligente que permite ao usuário explorar diferentes possibilidades antes de tomar decisões importantes.
-
-A experiência parte de uma pergunta simples:
+O **BB Decision** parte de uma pergunta simples:
 
 ### "E se eu fizer isso?"
 
-Utilizando Inteligência Artificial e um motor de cálculos financeiros, o sistema busca interpretar perguntas em linguagem natural e apresentar cenários de forma compreensível.
+Utilizando Inteligência Artificial e um motor de cálculos financeiros, o sistema interpreta perguntas em linguagem natural e apresenta cenários de forma compreensível.
 
 ### 💡 Exemplos de utilização
 
@@ -333,19 +328,15 @@ Utilizando Inteligência Artificial e um motor de cálculos financeiros, o siste
 
 ### ⚙️ Como funciona?
 
-O BB Decision combina interpretação de linguagem natural com processamento financeiro estruturado.
-
-Seu backend possui um motor financeiro e um componente responsável pela apresentação dos resultados em linguagem compreensível.
+O backend possui um motor financeiro e um componente responsável pela apresentação dos resultados em linguagem compreensível.
 
 **Pergunta → Interpretação → Cálculos financeiros → Simulação → Explicação**
 
-A Inteligência Artificial auxilia na interpretação e na comunicação dos resultados. Os cálculos devem seguir regras financeiras confiáveis e verificáveis.
+A IA auxilia na interpretação e na comunicação dos resultados. Os cálculos seguem regras financeiras confiáveis e verificáveis.
 
 ### 🌟 Nosso diferencial
 
-O BB Decision não busca apenas apresentar números.
-
-Nossa proposta é transformar informações financeiras em explicações acessíveis, permitindo que o usuário compare possibilidades e compreenda melhor suas escolhas.
+O BB Decision não busca apenas apresentar números: transforma informações financeiras em explicações acessíveis, permitindo que o usuário compare possibilidades e compreenda melhor suas escolhas.
 
 > As simulações são estimativas para fins informativos e demonstrativos. Não representam garantias de resultados futuros nem recomendações de investimento.
 
@@ -353,26 +344,12 @@ Nossa proposta é transformar informações financeiras em explicações acessí
 
 ## 🧠 Inteligência Artificial
 
-O projeto utiliza uma arquitetura que permite trabalhar com diferentes provedores de modelos de linguagem.
-
-Entre as opções previstas estão:
+O projeto permite trabalhar com diferentes provedores de modelos de linguagem:
 
 - **IBM watsonx.ai**
 - **OpenAI**
 
-A seleção do provedor é configurada por meio da variável de ambiente `LLM_PROVIDER`.
-
-### Aplicações de IA
-
-| Guardião | BB Decision |
-|---|---|
-| Análise de mensagens suspeitas | Interpretação de perguntas financeiras |
-| Identificação de sinais de engenharia social | Explicação de cenários |
-| Processamento contextual | Comparação de alternativas |
-| Orientações de segurança | Apoio ao planejamento |
-| Agente estruturado com LangGraph | Motor financeiro e narrador |
-
-A arquitetura busca utilizar a IA para interpretação e explicação, mantendo cálculos e operações críticas sujeitos a mecanismos apropriados de validação.
+A seleção é feita pela variável de ambiente `LLM_PROVIDER`. A IA é utilizada para interpretação e explicação, enquanto cálculos e operações críticas ficam sujeitos a mecanismos apropriados de validação.
 
 ---
 
@@ -390,23 +367,9 @@ A arquitetura busca utilizar a IA para interpretação e explicação, mantendo 
 
 </div>
 
-### Backend
+**Backend:** Python 3.12, FastAPI, LangGraph, SQLAlchemy, IBM watsonx.ai / OpenAI e Pytest.
 
-- Python 3.12
-- FastAPI
-- LangGraph
-- SQLAlchemy
-- IBM watsonx.ai / OpenAI
-- Pytest
-
-### Frontend
-
-- React
-- Vite
-- JavaScript
-- CSS
-
-### Organização técnica
+**Frontend:** React, Vite, JavaScript e CSS.
 
 O sistema conta com separação entre frontend e backend, APIs REST, componentes específicos para cada solução e abstração para provedores de IA.
 
@@ -430,125 +393,9 @@ flowchart TD
     C --> J["Auditoria e dados"]
 ```
 
-### Componentes principais
-
-**Frontend:** responsável pela interface, navegação e interação do usuário.
-
-**API FastAPI:** recebe as requisições e conecta as interfaces aos serviços.
-
-**Guardião:** possui um agente estruturado com LangGraph.
-
-**BB Decision:** combina processamento financeiro e explicação dos resultados.
-
-**Camada LLM:** oferece abstração para comunicação com os provedores de Inteligência Artificial.
-
-**Auditoria e dados:** componentes voltados ao registro estruturado e à organização de informações da aplicação.
-
----
-
-## 💻 Como executar o projeto
-
-> Já viu o passo a passo rápido no topo deste README? Esta seção traz os mesmos passos com mais detalhes (variáveis de ambiente, testes e configurações extras).
-
-### Pré-requisitos
-
-| Ferramenta | Versão mínima |
-|---|---|
-| Python | 3.12 |
-| Node.js | 20 LTS |
-| pip | 23+ |
-
-### 1. Configurar o ambiente
-
-Na pasta raiz do repositório:
-
-```bash
-cp .env.example .env
-```
-
-No Windows PowerShell, utilize:
-
-```powershell
-Copy-Item .env.example .env
-```
-
-Edite o arquivo `.env` com as credenciais necessárias.
-
-**Nunca compartilhe ou versione arquivos que contenham chaves de API.**
-
-### Variáveis de ambiente
-
-| Variável | Descrição |
-|---|---|
-| `LLM_PROVIDER` | `watsonx` (padrão) ou `openai` |
-| `WATSONX_API_KEY` | Chave da API IBM watsonx.ai |
-| `WATSONX_PROJECT_ID` | ID do projeto IBM watsonx |
-| `WATSONX_URL` | URL da instância watsonx (padrão: us-south) |
-| `WATSONX_MODEL_ID` | Modelo utilizado (padrão: `ibm/granite-13b-chat-v2`) |
-| `OPENAI_API_KEY` | Obrigatória apenas quando `LLM_PROVIDER=openai` |
-
-### 2. Executar o backend
-
-A partir da raiz do repositório:
-
-```bash
-cd backend
-python -m venv .venv
-```
-
-Ative o ambiente virtual.
-
-**Windows PowerShell:**
-
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-
-**Linux/Mac:**
-
-```bash
-source .venv/bin/activate
-```
-
-Instale as dependências e inicie a API:
-
-```bash
-python -m pip install -r requirements.txt
-uvicorn app.main:app --reload --port 8000
-```
-
-**Endereços locais:**
-
-- API: http://localhost:8000
-- Documentação interativa: http://localhost:8000/docs
-
-### 3. Executar o frontend
-
-Em outro terminal, a partir da raiz do repositório:
-
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-A aplicação estará disponível em:
-
-**http://localhost:5173**
-
-> O frontend utiliza o proxy do Vite para encaminhar requisições `/api/*` ao backend local.
-
-Para configurar outro endereço de backend, crie um arquivo `.env` na pasta `frontend/`:
-
-```env
-VITE_API_URL=http://seu-backend:8000
-```
-
 ---
 
 ## 🧪 Testes
-
-O repositório inclui testes automatizados para auxiliar na validação das funcionalidades.
 
 ### Backend
 
@@ -608,8 +455,6 @@ IBM-PROJETO-shetech/
 └── README.md
 ```
 
-**Descrição das pastas:**
-
 - `api/` — rotas REST da aplicação.
 - `guardiao/` — agente LangGraph organizado em seis nós.
 - `bbdecision/` — motor financeiro e narrador.
@@ -625,8 +470,6 @@ IBM-PROJETO-shetech/
 
 ## 🔒 Segurança e IA responsável
 
-A segurança e a responsabilidade no uso da IA são aspectos importantes do projeto.
-
 ### Medidas documentadas
 
 - Credenciais mantidas fora dos arquivos versionados.
@@ -637,19 +480,13 @@ A segurança e a responsabilidade no uso da IA são aspectos importantes do proj
 
 ### Privacidade
 
-Os dados de usuários, transações e casos de teste utilizados no protótipo são **100% fictícios**.
-
-Nenhum dado real de clientes é utilizado nas demonstrações documentadas.
+Os dados de usuários, transações e casos de teste utilizados no protótipo são **100% fictícios**. Nenhum dado real de clientes é utilizado nas demonstrações documentadas.
 
 ### Limitações
 
-O projeto é um protótipo funcional para fins de desenvolvimento, estudo e demonstração.
-
 - A análise de risco não garante a identificação de todos os golpes.
 - Os resultados de IA podem exigir verificação.
-- Simulações financeiras representam estimativas.
 - Decisões críticas devem contar com validações e supervisão adequadas.
-- O anexo de arquivos do Guardião está disponível apenas em execução local.
 
 ---
 
@@ -662,17 +499,13 @@ O projeto é um protótipo funcional para fins de desenvolvimento, estudo e demo
 | Matriz de rastreabilidade | `docs/traceability_matrix.md` |
 | Relatório de IA responsável | `docs/responsible_ai_report.md` |
 
-A documentação reúne detalhes sobre a organização técnica, os serviços e os princípios adotados no desenvolvimento.
-
 ---
 
 ## ⚖️ Aviso legal
 
-Este projeto possui caráter demonstrativo e foi desenvolvido no contexto do projeto IBM × Banco do Brasil.
+Este projeto é um protótipo funcional de caráter demonstrativo, desenvolvido para fins de estudo no contexto do projeto IBM × Banco do Brasil.
 
 As soluções não devem ser interpretadas como serviços bancários oficiais em produção.
-
-As análises de golpes são recursos de apoio à identificação de riscos, enquanto as simulações financeiras são estimativas informativas.
 
 ---
 
